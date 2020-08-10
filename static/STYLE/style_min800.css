@@ -1,0 +1,191 @@
+@media only screen and (min-width: 800px){
+
+    #news{
+
+        width: 90%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+
+    }
+
+    .square{
+
+        margin: 0;
+        margin-bottom: 2rem;
+        width: 340px;
+        height: 350px;
+
+    }
+
+
+    .square .text{
+
+        font-size: 0rem;
+        display: block;
+        opacity: 0;
+        height: 0px;
+    
+    }
+
+    .square .next {
+
+        position: absolute;
+        width: 100%;
+        height: 20px;
+        display: block;
+        bottom: 1rem;
+        font-size: 1rem;
+
+    
+    }
+
+    .square .img{
+
+        max-height: unset;
+        height: 100%;
+        width: 100%;
+
+    }
+
+    .square .notImg {
+
+        height: 100px;
+    }
+
+    .square:hover .notImg{
+
+        height: 100%;
+        transition: .2s;
+
+
+    }
+
+    .square:hover .text{
+        height: initial;
+        transition: .2s;
+        opacity: 1;
+        font-size: 1.3rem;
+        transition: font-size 0s linear .05s;
+    }
+
+    .square:hover .next{
+        display: block;
+        transition: .2s;
+    }
+
+    .article{
+
+        height: 300px;
+        cursor: pointer;
+        flex-direction: row;
+        align-items: center;
+    
+    }
+
+    .article .title{
+        font-size: 2.1rem;
+        margin-bottom: .5rem;
+    }
+
+    .article .text{
+        font-size: 1.3rem;
+    }
+
+    .article img{
+
+        width: 35%;
+        height: 100%;
+
+    }
+
+    .article .notImg{
+
+        width: 62%;
+        height: 100%;
+        position: relative;
+    }
+
+    .article .type{
+
+        position: absolute;
+        width: 6px;
+        height: 80%;
+        top: 10%;
+        right: 7px;
+        background-color: red;
+        
+    
+    }
+
+    .type .little{
+
+        font-family: 'Exo 2', sans-serif;
+        font-style: italic;
+        display: block; 
+        transform: rotate(-90deg);
+        color: white;
+        font-size:  20px;
+        position: absolute;
+        top: 40%;
+        left: -55px;
+        width: 150px;
+        height: 40px;
+        opacity: 0;
+    }
+
+    .article:hover .type{
+
+        right: 0;
+        width: 26px;
+        height: 100%;
+        top: 0;
+        transition: .2s;
+    }
+
+
+    .article:hover .little{
+
+        transition-duration: .2s;
+        opacity: 1;
+    }
+
+    /* kierowcy f1 */
+
+    #alphabet{
+
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+
+    }
+
+    #variable{
+        height: 2px;
+    }
+
+    .container{
+
+        width: 45%;
+        margin: initial;
+        margin-bottom: .5rem;
+
+
+    }
+
+    .container .surnames{
+        display: block;
+    }
+
+    .container .fa-chevron-left{
+        display: none;
+        
+    }
+
+    .letter{
+        cursor: default;
+    }
+
+
+}
+

@@ -1,0 +1,112 @@
+#alphabet {
+    margin: 0 auto;
+    margin-bottom: 5rem;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    padding: .5rem;
+
+}
+
+#variable{
+
+    display: block;
+    height: 1px;
+    background-color: green;
+}
+
+.container{
+
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: .5rem;
+
+
+
+}
+
+.letter{
+
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 50% 50%;
+    grid-template-areas:
+    "p fas"
+    "redline redline";
+    padding: .2rem;
+    width: 100%;
+    background-color: #262626;
+    cursor: pointer;
+
+}
+
+.letter p{
+
+    width: 30px;
+    display: block;
+    color: white;
+    font-size: 1.5rem;
+    padding-left: .2rem;
+    font-family: 'Exo 2', sans-serif;
+    grid-area: p;
+
+}
+
+.redline{
+
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: red;
+    grid-area: redline;
+
+}
+
+.fa-chevron-left{
+
+    width: 30px;
+    font-size: 1.4rem;
+    color: white;
+    display: block;
+    grid-area: fas;
+    justify-self: end;
+    padding-top: 2px;
+    text-align: center;
+    transform: rotate(0deg);
+   
+
+}
+
+.surnames{
+
+    display: none;
+    width:  100%;
+    background-color: #16161d;
+
+
+}
+
+.surnames a{
+
+    display: block;
+    color: white;
+    width: 100%;
+    margin-bottom: 0.3rem;
+    font-size: 1.4rem;
+    padding-left: .5rem;
+    font-family: 'Mukta', sans-serif;
+    line-height: 1.6rem;
+    font-weight: 800;
+
+    text-decoration: none;
+
+}
+
+.surnames a:hover{
+    text-decoration: underline;
+}
+
+

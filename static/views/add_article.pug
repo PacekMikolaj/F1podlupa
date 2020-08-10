@@ -1,0 +1,55 @@
+extends layout
+
+block css
+    link(rel='stylesheet' href='/STYLE/add_article.css')
+
+block content
+  #main
+    form(method="POST", action="/articles/add", enctype="multipart/form-data") 
+        
+        label#title.label
+            p Title:
+            input.form-control(name="title", type="text")
+        
+        label#author.label
+            p Author:
+            input.form-control(name="author", type="text")
+        
+        label#short.label
+            p Short:
+            textarea.form-control(name="short")
+        
+        label#body.label 
+            p Body:
+            textarea.form-control(name="body")
+
+        label#file.label 
+            p File:
+            input(name="file",type="file")
+        label#radio.label
+            p Section:
+            input(type="radio", value="f1", name="section")
+            label(for="f1") Formuła 1
+            br
+            input(type="radio", value="f2", name="section")
+            label(for="f2") Formuła 2
+            br
+            input(type="radio", value="fe", name="section")
+            label(for="fe") Formuła E
+            br
+            input(type="radio", value="f1basics", name="section")
+            label(for="f1basics") Podstawy F1
+            br
+            input(type="radio", id="other" value="other", name="section")
+            label(for="other") Other
+                //- input(type="text" disabled)
+            //- select(name="select")
+            //-     option(value="f1") FORMULA 1
+            //-     option(value="f2") FORMULA 2
+            //-     option(value="fe") FORMULA E
+            //-     option(value="other") OTHER
+
+        button(value="Submit") Submit
+
+block scripts
+    script(src='/js/add_article.js')

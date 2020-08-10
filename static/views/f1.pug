@@ -1,0 +1,38 @@
+extends layout
+
+block css
+        link(rel='stylesheet' href='/STYLE/style_f1.css')
+
+
+block content
+    #main
+        #description
+            h1.title Formuła 1
+                .underline
+            .text W tym dziale znajdziesz najważniejsze i najnowsze wiadomości ze świata F1, mnóstwo artykułów, a także ciekawostki o królowej motorsportu.
+            ul#links
+                li
+                    a(href="#") Zespoły
+                li
+                    a(href="#") Kierowcy
+
+        #f1car
+            h1.title Samochody F1
+                .underline
+            .text Najszybsze. Najlepsze. Najbardziej wymagające.
+            img(src="/img/f1car.jpg" alt="f1car")
+            .text2 Chcesz dowiedzieć się o budowie tych cudów technologii? Jakie prędkości osiągają? Jakie przeciążenia towarzyszą kierowcy podczas pokonywania najbardziej wymagających zakrętów?
+            a(href="") Kliknij tutaj
+
+        
+        .articlesF1
+           .con-title Artykuły o F1
+        each val in [0,1,2]
+            a.square(href="/article/" + articles[val].ID)
+                img.img.cover(src='/upload/' + articles[val].ID + '/cover.png' alt='' onerror="standby(this)")
+                .notImg
+                    .title=  articles[val].title 
+                    .text= articles[val].short
+                    .next Czytaj dalej --> 
+
+

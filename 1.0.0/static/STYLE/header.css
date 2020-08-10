@@ -1,0 +1,123 @@
+#header{
+
+    width: 100%;
+    height: 150px;
+    display: flex;
+    background-color: black;
+    margin-bottom: 30px;
+    
+}
+
+#header #title{
+    height: 100%;
+    width: 40%;
+    margin-left: 0;
+    color: white;
+
+}
+
+#header .option_menu{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    margin: 0;
+    cursor: pointer;
+}
+
+.option_menu:hover{
+    background-color: white;
+    
+
+}
+
+.option_menu:hover p{
+    color: black;
+    
+
+}
+
+
+.option_menu p {
+    font-size: 40px;
+    flex: 0 0 100%;
+    text-align: center;
+    font-family: 'Lalezar', cursive;
+    color: white;
+}
+
+#menu_strona_glowna{
+    width: 250px;
+}
+
+#menu_f1{
+    width: 120px;
+
+}
+
+#menu_f2{
+    width: 120px;
+
+}
+
+#menu_fE{
+    width: 120px;
+
+}
+
+#menu_kierowcy_f1{
+    width: 200px;
+
+}
+
+
+
+#menu{
+    height: 100%;
+    width: 50%;
+    display: flex;
+}
+
+.option_menu{
+    background-color: black;
+    color: white;
+}
+
+#div_for_icons{
+
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+
+
+}
+
+#div_for_icons #fb{
+
+    background-image: url("img/facebook_logo.png");
+    margin-right: 10px;
+
+}
+
+#div_for_icons #tt{
+    background-image: url("img/twitter_logo.png");
+
+}
+
+#div_for_icons a{
+    margin: 0;
+    height: 40px;
+    background-size: 40px 40px;
+    display: inline-block;
+    flex: 0 0 40px;
+
+
+}
+
+
+
+
+
+

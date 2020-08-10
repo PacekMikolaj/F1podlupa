@@ -1,0 +1,57 @@
+doctype html
+html
+    head    
+        meta(charset='UTF-8')
+        meta(name='viewport' content='width=device-width, initial-scale=1.0')
+        link(rel='stylesheet' href='/STYLE/style_mobile.css')
+        link(rel='stylesheet' href='/STYLE/style_f1_drivers_mobile.css')
+        link(rel='stylesheet' href='/STYLE/style_min650.css')
+        link(rel='stylesheet' href='/STYLE/style_min800.css')
+        link(rel='stylesheet' href='/STYLE/style_min950.css')
+        link(rel='stylesheet' href='/STYLE/style_min1200.css')
+        link(rel='stylesheet' href='/STYLE/style_min1500.css')
+
+        block css
+
+        link(rel="stylesheet" href="/fonts/css/all.css")
+
+        link(rel='icon' type='image/jpeg' href='/img/ikonka.png')
+
+        link(href='https://fonts.googleapis.com/css2?family=Lalezar&display=swap' rel='stylesheet')
+        link(href='https://fonts.googleapis.com/css2?family=Exo+2:wght@900&display=swap' rel='stylesheet')
+        link(href='https://fonts.googleapis.com/css2?family=Lato&display=swap' rel='stylesheet')
+        link(href='https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@1,900&display=swap' rel='stylesheet')
+        link(href='https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@600;700;800;900&display=swap' rel='stylesheet')
+        link(href='https://fonts.googleapis.com/css2?family=Roboto:wght@700;800;900&display=swap' rel='stylesheet')
+        script(src='https://code.jquery.com/jquery-3.5.0.min.js')
+
+        title F1podlupa.pl
+    body
+        header
+            a#title(href="/") F1podlupą.pl
+            nav
+                h2#nav-h2 MENU
+                #nav_elements
+                    a#menu_strona_glowna.option_menu(href='/')
+                        p Strona główna
+                    a#menu_f1.option_menu(href='/f1')
+                        p F1
+                    a#menu_f2.option_menu(href='#')
+                        p F2
+                    a#menu_fE.option_menu(href='#')
+                        p FE
+                    a#menu_kierowcy_f1.option_menu(href='/kierowcy_f1')
+                        p Pozostałe artykuły
+                    #div_for_icons
+                        a#fb(href='#')
+                        a#tt(href='#')
+
+        block content
+
+
+        #footer
+            | footerek sebuś and mikuś spółka
+
+        block scripts
+        script(src='/js/menu.js')
+        script(src="/js/covers_alt.js")

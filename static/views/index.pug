@@ -1,0 +1,38 @@
+extends layout
+
+block content
+  #main
+    #articles
+      .con-title Najnowsze wiadomości
+      each val in [0,1,2,3]
+        a.article(href="/article/" + articles[val].ID)
+          img.img.cover(src='/upload/' + articles[val].ID + '/cover.png' alt='' onerror="standby(this)")
+          .notImg
+            .title= articles[val].title
+            .text= articles[val].short
+          
+          case articles[val].section
+            when "f1"
+              .type(style="background-color: red")
+                .little FORMUŁA 1
+            when "f2"
+              .type(style="background-color: #0a00ff")
+                .little FORMUŁA 2
+            when "fe"
+              .type(style="background-color: #00d3ff")
+                .little FORMUŁA E
+            when "f1basics"
+              .type(style="background-color: #f09537")
+                .little PODSTAWY F1
+    #news
+      .con-title Pozostałe wiadomości
+      each val in [4,5,6,7]
+        a.square(href="/article/" + articles[val].ID)
+          img.img.cover(src='/upload/' + articles[val].ID + '/cover.png' alt='' onerror="standby(this)")
+          .notImg
+            .title=  articles[val].title 
+            .text= articles[val].short
+            .next Czytaj dalej --> 
+block scripts
+  script(src='js/main_ui.js')
+  

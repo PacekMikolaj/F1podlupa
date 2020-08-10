@@ -1,0 +1,53 @@
+@media only screen and (min-width: 1200px){
+
+    nav .option_menu{
+
+        font-size: 2rem;
+    }
+    /* nav #menu_kierowcy_f1{
+        font-size: 1.8rem;
+    } */
+
+    .article .title{
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .article .text{
+        font-size: 1.5rem;
+    }
+
+    #news{
+
+        justify-content: space-between;
+    }
+
+    .square{
+
+        width: 340px;
+        height: 350px;
+
+    }
+
+    .article .triangle{
+
+        display: block;
+        position: absolute;
+        top: 0;
+        left: -100px;
+        z-index: 98;
+    
+    }
+
+    #variable{
+        height: 3px;
+    }
+
+    .container{
+
+        width: 30%;
+    }
+
+
+
+}

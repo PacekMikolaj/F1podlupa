@@ -1,0 +1,65 @@
+form{
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.label{
+    margin: 1rem auto;
+    width: 70%;
+}
+
+select{
+    width: 20%;
+    margin: 0 auto;
+    font-size: 1.5rem;
+}
+
+p{
+    font-size: 2rem;
+}
+
+#radio label , #radio input{
+    margin: 1rem auto;
+    font-size: 1.3rem;
+
+}
+
+
+#title input {
+
+    font-size: 2rem;
+    width: 100%;
+
+}
+
+#author input {
+
+    font-size: 2rem;
+    width: 100%;
+    
+}
+
+#short textarea {
+    font-size: 1.5rem;
+    font-family: "Times New Roman", Times, serif;
+    width: 100%;
+    height: 200px;
+}
+
+#body textarea {
+    font-size: 1.5rem;
+    font-family: "Times New Roman", Times, serif;
+    width: 100%;
+    height: 400px;
+
+}
+
+button{
+    width: 200px;
+    height: 50px;
+    margin: 30px auto;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
