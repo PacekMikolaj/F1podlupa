@@ -2,6 +2,9 @@ extends layout
 
 block css
         link(rel='stylesheet' href='/STYLE/style_f1.css')
+        link(rel='stylesheet' href='/slick/slick.css')
+        link(rel="stylesheet" type="text/css" href="slick/slick-theme.css")
+
 
 
 block content
@@ -33,6 +36,22 @@ block content
                 .notImg
                     .title=  articles[val].title 
                     .text= articles[val].short
-                    .next Czytaj dalej --> 
+                    .next Czytaj dalej -->
+        
+        .f1basics
+            h1.title Podstawy F1
+                .underline
+            .text Zaczynasz przygodę z Formułą 1? Tutaj znajdziesz artykuły, które pomogą Ci zrozumieć jak działa świat królowej wyścigów.
+        
+        .test
+            div.xd lol
+            div.xd lol
+            div.xd lol
+            div.xd lol
+
+    block scripts
+    script(src="/js/f1.js")
+        
+
 
 

@@ -116,6 +116,37 @@ ul li{
     font-family: 'Exo 2', sans-serif;
 }
 
+/* f1basics */
+
+.f1basics{
+    width: 90%;
+    margin: 0 auto;
+}
+
+.f1basics .title{
+    font-family: 'Exo 2', sans-serif;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 2.5rem;
+    width: 90%;
+    margin-bottom: .5rem;
+}
+
+.f1basics .text{
+    font-family: 'Exo 2', sans-serif;
+    font-size: 1.3rem;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.xd
+{
+    width: 200px;
+    height: 100px;
+}
+
 /* articlesF1 */
 
 .articlesF1{
