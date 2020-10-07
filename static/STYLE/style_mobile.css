@@ -273,6 +273,7 @@ nav #div_for_icons{
     width: 90%;
     height: 350px;
     position: relative;
+    display: block;
 
 }
 

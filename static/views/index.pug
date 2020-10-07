@@ -1,17 +1,20 @@
 extends layout
 
+block title
+  title F1podlupą.pl
+
 block content
   #main
     #articles
       .con-title Najnowsze wiadomości
-      each val in [0,1,2,3]
-        a.article(href="/article/" + articles[val].ID)
-          img.img.cover(src='/upload/' + articles[val].ID + '/cover.png' alt='' onerror="standby(this)")
+      each val in newest
+        a.article(href="/article/" + val.ID)
+          img.img.cover(src='/upload/' + val.ID + '/cover.webp' alt='')
           .notImg
-            .title= articles[val].title
-            .text= articles[val].short
+            .title= val.title
+            .text= val.short
           
-          case articles[val].section
+          case val.section
             when "f1"
               .type(style="background-color: red")
                 .little FORMUŁA 1
@@ -26,12 +29,12 @@ block content
                 .little PODSTAWY F1
     #news
       .con-title Pozostałe wiadomości
-      each val in [4,5,6,7]
-        a.square(href="/article/" + articles[val].ID)
-          img.img.cover(src='/upload/' + articles[val].ID + '/cover.png' alt='' onerror="standby(this)")
+      each val in articles
+        a.square(href="/article/" + val.ID)
+          img.img.cover(src='/upload/' + val.ID + '/cover.webp' alt='')
           .notImg
-            .title=  articles[val].title 
-            .text= articles[val].short
+            .title= val.title 
+            .text= val.short
             .next Czytaj dalej --> 
 block scripts
   script(src='js/main_ui.js')

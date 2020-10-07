@@ -4,10 +4,11 @@ const path = require("path")
 var fs = require('fs');
 const bodyParser = require("body-parser");
 var formidable = require('formidable');
+var sharp = require('sharp');
 
 var mongoose = require("mongoose");
 
-mongoose.connect("mongodb://localhost/nodekb");
+mongoose.connect("mongodb://localhost/F1podlupa");
 
 let db = mongoose.connection;
 
@@ -22,77 +23,44 @@ db.on("error", function (err) {
 let Article = require("./static/models/article");
 
 app.use(bodyParser.urlencoded({ extended: false }));
-
 app.use(bodyParser.json());
 
 
 app.use(express.static('static'))
-
 app.set("views", path.join(__dirname, "static/views"));
-
 app.set("view engine", "pug");
 
 
+app.get("/", async function (req, res) {
 
-app.get("/", function (req, res) {
+    let data = {};
+    let tmp = await Article.find({}).sort({ _id: -1 }).limit(10).exec();
+    data.newest = tmp.slice(0, 4);
+    data.articles = tmp.slice(4);
 
-    Article.find({}, function (err, articles) {
-        if (err) { console.log(err) } else {
-
-            let l = articles.length - 1;
-            let data = { articles: [ articles[l - 0], articles[l - 1], articles[l - 2], articles[l - 3], articles[l - 4], articles[l - 5], articles[l - 6], articles[l - 7] ] };
-           // console.log(data)
-
-            res.render("index", data);
-
-        }
-    });
-})
-
-
-app.get("/f1", function (req, res) {
-
-    Article.find({"section": "f1"}, function (err, articles) {
-        if (err) { console.log(err) } else {
-
-            let l = articles.length - 1;
-            let data = { articles: [ articles[l - 0], articles[l - 1], articles[l - 2] ] };
-           // console.log(data)
-
-            res.render("f1", data);
-
-        }
-    });
+    res.render("index", data);
 
 })
 
 
-app.get("/article/:ID", function (req, res) {
+app.get("/f1", async function (req, res) {
 
-    console.log(req.params)
+    let data = {}
+    data.articlesF1 = await Article.find({ "section": "f1" }).sort({ _id: -1 }).exec();
+    data.articlesF1basics = await Article.find({ "section": "f1basics" }).sort({ _id: -1 }).exec();
 
-    let data;
-
-    Article.find({ "ID": { $ne: req.params.ID }}, function (err, articles) {
-        if (err) { console.log(err) } else {
-
-            let l = articles.length - 1;
-            data = { articles: [ articles[l - 0], articles[l - 1], articles[l - 2], articles[l - 3] ] };
-
-        }
-    });
+    res.render("f1", data);
+})
 
 
-    Article.find({ "ID": req.params.ID }, function (err, articles) {
-        if (err) { console.log(err) } else {
+app.get("/article/:ID", async function (req, res) {
 
-            data.article = articles[0];
-            res.render("article", data);
+    let data = {};
+    data.articles = await Article.find({ "ID": { $ne: req.params.ID } }).limit(4).sort({ _id: -1 }).exec();
+    data.article = await Article.find({ "ID": req.params.ID }).sort({ _id: -1 }).exec();
+    data.article = data.article[0]; // changing from array to simple element
 
-        }
-
-    });
-
+    res.render("article", data);
 
 })
 
@@ -131,7 +99,7 @@ app.post("/articles/add", function (req, res) {
         article.body = fields.body;
         article.short = fields.short;
         article.section = fields.section;
-        article.date = date.getHours() + ":" + minuty + " " + date.getDate() + "." + date.getMonth() + "." + date.getFullYear();
+        article.date = date.getHours() + ":" + minuty + " " + date.getDate() + "." + (date.getMonth() + 1) % 12 + "." + date.getFullYear();
         article.ID = id;
 
         article.save(function (err) {
@@ -142,6 +110,7 @@ app.post("/articles/add", function (req, res) {
         })
 
         console.log(fields);
+
     });
 
     form.on('file', function (field, file) {
@@ -150,19 +119,24 @@ app.post("/articles/add", function (req, res) {
 
         fs.mkdirSync(form.uploadDir + `${id}/`);
 
-        let ext = file.name.split(".")[1];
+        let ext = file.name.split(".")[-1];
 
         fs.rename(file.path, form.uploadDir + `${id}/cover.${ext}`, function (err) {
             if (err) console.log(err)
+
+            sharp(form.uploadDir + id + `/cover.${ext}`)
+                .toFile(form.uploadDir + id + '/cover.webp')
+                .then(data =>
+                    fs.unlink(form.uploadDir + id + '/cover.undefined', (err) => {
+                        if (err) throw err;
+                    })
+                )
+                .catch(err => console.log(err))
         });
 
     });
-
     res.redirect("/add");
-
-
 })
-
 
 
 app.listen(3000, function () {

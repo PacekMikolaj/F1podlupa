@@ -3,7 +3,8 @@ extends layout
 block css
         link(rel='stylesheet' href='/STYLE/style_article.css')
 
-
+block title
+ title #{article.title} - F1podlupą.pl
 block content
     #main
         #article
@@ -14,17 +15,18 @@ block content
 
             p#short #{article.short}
 
-            img#cover.cover(src='/upload/' + article.ID + '/cover.png' onerror="standby(this)") 
+            img#cover.cover(src='/upload/' + article.ID + '/cover.webp') 
 
             p#text #{article.body}
         #seeAlso
             .con-title Zobacz także
-            each val in [0,1,2,3]
-                a.square(href="/article/" + articles[val].ID)
-                    img.img.cover(src='/upload/' + articles[val].ID + '/cover.png' alt='' onerror="standby(this)")
+            
+            each val in articles
+                a.square(href="/article/" + val.ID)
+                    img.img.cover(src='/upload/' +val.ID + '/cover.webp' alt='')
                     .notImg
-                        .title=  articles[val].title 
-                        .text= articles[val].short
+                        .title=  val.title 
+                        .text= val.short
                         .next Czytaj dalej -->
 
 

@@ -1,3 +1,11 @@
+#help{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
 #description{
     width: 90%;
     margin: 0 auto;
@@ -119,32 +127,78 @@ ul li{
 /* f1basics */
 
 .f1basics{
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
 }
 
-.f1basics .title{
+.f1basics > .title{
     font-family: 'Exo 2', sans-serif;
     margin: 0 auto;
     text-align: center;
     font-size: 2.5rem;
-    width: 90%;
+    width: 81%;
     margin-bottom: .5rem;
 }
 
-.f1basics .text{
+.f1basics > .text{
     font-family: 'Exo 2', sans-serif;
     font-size: 1.3rem;
-    width: 90%;
+    width: 81%;
     margin: 0 auto;
     text-align: center;
     margin-bottom: 1rem;
 }
 
-.xd
+:root {
+    --arrow-size: 1.7rem;
+}
+
+.slider
 {
-    width: 200px;
-    height: 100px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+
+}
+
+.slider .square{
+    width: 90%;
+}
+
+.slider .slick-arrow{
+    /* position: absolute; */
+    top: 40%;
+    z-index: 99;
+    width: var(--arrow-size);
+    height: var(--arrow-size);
+    font-size: 1.5rem;
+    /* color: white;
+    opacity: 0.7; */
+    /* cursor: pointer; */
+}
+
+.slick-prev:before,
+.slick-next:before
+{
+    font-size: 1.7rem;
+    color: grey;
+}
+
+.slider .slick-prev{
+    left: 7%;
+}
+
+.slider .slick-next{
+    right: 7%;
+}
+
+.slick-dots{
+    bottom: 10px;
+}
+
+.slider .slide{
+    display: flex !important;
+    justify-content: center !important; 
 }
 
 /* articlesF1 */
@@ -152,4 +206,125 @@ ul li{
 .articlesF1{
     margin: 0 auto;
     width: 90%;
+}
+
+@media only screen and (min-width: 650px){
+
+    .con-title{
+        font-size: 2.4rem;
+    }
+
+    #f1car .title{
+        font-size: 3rem;
+    }
+
+    #f1car .text{
+        font-size: 1.9rem;
+    }
+
+    #f1car .text2{
+        font-size: 1.4rem;
+    }
+
+    #f1car a{
+        font-size: 1.4rem;
+    }
+
+    .f1basics > .title {
+        font-size: 3rem;
+    }
+
+    .f1basics > .text{
+        font-size: 1.7rem;
+    }
+
+    
+}
+
+@media only screen and (min-width: 800px){
+
+
+    .slider{
+        width: 95%;
+    }
+
+    #description .title {
+        font-size: 3.7rem;
+    }
+
+    #description .text {
+        font-size: 1.7rem;
+    }
+
+    #description{
+        margin: 0;
+        margin-top: 5rem;
+        width: 45%;
+    }
+    
+    #f1car{
+        margin: 0;
+        margin-bottom: 2rem;
+        width: 45%;
+    }
+    
+    #help{
+        flex-direction: row;
+        width: 90%;
+        justify-content: space-between;
+    }
+
+    #f1car .title{
+        font-size: 2.3rem;
+    }
+
+    #f1car .text{
+        font-size: 1.5rem;
+    }
+
+    #f1car .text2{
+        font-size: 1.3rem;
+    }
+
+    #f1car a{
+        font-size: 1.3rem;
+    }
+
+    .articlesF1{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+}
+@media only screen and (min-width: 1200px){
+
+    .articlesF1{
+        justify-content: space-between;
+    }
+
+    .slider{
+        width: 100%;
+    }
+
+    #description{
+        width: 50%;
+    }
+
+}
+
+@media only screen and (min-width: 1500px){
+
+    .articlesF1{
+        width: 80%;
+    }
+
+    .f1basics{
+        width: 85%;
+    }
+
+    #help{
+        width: 80%;
+    }
+
 }

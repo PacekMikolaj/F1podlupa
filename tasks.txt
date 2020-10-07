@@ -1,0 +1,21 @@
+﻿f2 i fe podstronka
+linia w artykule
+podstrona w f1 o samochodach
+czytaj dalej -->
+paginacja
+Czcionki
+
+!!!PRIO zmienic wszystkie zdjecia na webp w bazie danych i ustawic w pugu
+
+
+
+[error dla wczytywania z bazy danych]
+[twittery na gmailu jak cos]
+[sesja dla uploadu]
+[wiecej zdjec w artyklue]
+[posty z instagrama]
+[wyszukiwarka]
+
+useful:
+
+word-wrap: break-word;
