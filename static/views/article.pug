@@ -10,6 +10,15 @@ block content
         #article
 
             h1#title #{article.title}
+                case article.section
+                    when "f1"
+                        .underline(style="background-color: red")
+                    when "f2"
+                        .underline(style="background-color: #0a00ff")
+                    when "fe"
+                        .underline(style="background-color: #00d3ff")
+                    when "f1basics"
+                        .underline(style="background-color: #f09537")
 
             p#author #{article.author}, #{article.date}
 
@@ -27,8 +36,10 @@ block content
                     .notImg
                         .title=  val.title 
                         .text= val.short
-                        .next Czytaj dalej -->
-
+                        .next 
+                            p(style="display: block; font-weight: bold") Czytaj dalej 
+                            div(style="display: block; position: relative; height: 100%; width: 25px;")
+                                i.fas.fa-arrow-right
 
 
 block scripts
