@@ -1,12 +1,11 @@
 ﻿f2 i fe podstronka
-linia w artykule
 podstrona w f1 o samochodach
-czytaj dalej -->
 paginacja
 Czcionki
-
-!!!PRIO zmienic wszystkie zdjecia na webp w bazie danych i ustawic w pugu
-
+zmiana body
+zmienic baze danych
+sesja przy dodawaniu
+ogarnac ten edytor lepszy
 
 
 [error dla wczytywania z bazy danych]

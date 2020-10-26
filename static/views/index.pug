@@ -35,7 +35,9 @@ block content
           .notImg
             .title= val.title 
             .text= val.short
-            .next Czytaj dalej --> 
-block scripts
+            .next 
+              p(style="display: block; font-weight: bold") Czytaj dalej 
+              div(style="display: block; position: relative; height: 100%; width: 25px;")
+                i.fas.fa-arrow-right
   script(src='js/main_ui.js')
   
