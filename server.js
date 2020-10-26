@@ -8,7 +8,7 @@ var sharp = require('sharp');
 
 var mongoose = require("mongoose");
 
-mongoose.connect("mongodb://localhost/F1podlupa");
+mongoose.connect("mongodb://localhost/admin");
 
 let db = mongoose.connection;
 
