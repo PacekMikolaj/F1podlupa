@@ -2,16 +2,14 @@
 podstrona w f1 o samochodach
 paginacja
 Czcionki
-zmiana body
 zmienic baze danych
 sesja przy dodawaniu
-ogarnac ten edytor lepszy
+żródła zdjęć
 
 
-[error dla wczytywania z bazy danych]
+
 [twittery na gmailu jak cos]
 [sesja dla uploadu]
-[wiecej zdjec w artyklue]
 [posty z instagrama]
 [wyszukiwarka]
 

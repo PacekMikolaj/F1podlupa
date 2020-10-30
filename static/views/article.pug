@@ -18,7 +18,10 @@ block content
                     when "fe"
                         .underline(style="background-color: #00d3ff")
                     when "f1basics"
-                        .underline(style="background-color: #f09537")
+                        .underline(style="background-color: rgb(136,0,21)")
+                    when "f1basics"
+                        .underline(style="background-color: #3BE307")
+                        
 
             p#author #{article.author}, #{article.date}
 
@@ -26,7 +29,8 @@ block content
 
             img#cover.cover(src='/upload/' + article.ID + '/cover.webp') 
 
-            p#text #{article.body}
+            p#text 
+
         #seeAlso
             .con-title Zobacz także
             
@@ -44,4 +48,3 @@ block content
 
 block scripts
     script(src='/js/artykul_text.js')
-

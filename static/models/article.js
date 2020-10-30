@@ -17,11 +17,6 @@ let articleSchema = mongoose.Schema({
         required: true
     },
 
-    body: {
-        type: String,
-        required: true
-    },
-
     date: {
         type: String,
         required: true

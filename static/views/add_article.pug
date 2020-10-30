@@ -3,45 +3,102 @@ extends layout
 block css
     link(rel='stylesheet' href='/STYLE/add_article.css')
 
+block title
+    title dodaj artykuł - F1podlupą.pl
+
 block content
   #main
     form(method="POST", action="/articles/add", enctype="multipart/form-data") 
+
+        .instrukcja
+            h1 INSTRUKCJA
+            p 
+                br
+                | Sebusiu. Maksymalna długość:
+                br
+                | Tytuł: 60 znaków
+                br
+                | Short: 220 znaków
+                br
+                br
+                | OGÓLNE ZASADY:
+                br
+                br
+                | Pamiętaj, żeby uzupełnić wszystkie pola, sprawdzić 3 razy czy nie ma błedu. Możesz sobie najpierw zrobić na dokuentach google, a potem przenieść to do formularza na stronie. Zdjęcie nagłówkowe dodajesz w polu Cover, nie tam gdzie pozostałe zdjęcia.
+                br
+                | Co więcej, jak wygląda dodawanie zdjęć INNYCH niż cover na dzień 30.10.2020r. :
+                br
+                br
+                | DODAWANIE ZDJĘĆ:
+                br
+                br
+                | Jeśli robiłeś na dokumentach google to:
+                br
+                br
+                | Wklejasz tekst do momentu jakiegoś zdjęcia, gdy chcesz dodać zdjęcie to w tekście robisz przerwę enterem, potem w zakładce photos klikasz "Add photo", potem "przeglądaj", wybierasz zdjęcie ze swojego dysku (więć musisz pobrać to zdjęcie z neta), potwierdzasz. Wyskakuje Ci miniaturka zdjęcia, LINK i delete przycisk. Bierzesz KOPIUJESZ tego linka (cały ten tekst który ci się tam wyświetlił np.: img src=cośtam.pngLINK [nic nie zmieniaj w tym linku!]) i Wklejasz go w miejsce gdzie ma być zdjęcie, znowu klikasz enter, gotowe zdjęcie dodane.
+                br
+                br
+                | Jeśli robisz w tym formularzu:
+                br
+                br
+                | Masz tam w tym edytorze znaczek zdjęcia, jak na niego klikniesz to prosi Cię o dodanie linka URL, czyli linka do zdjęcia na internecie, możesz sobie ustawić wysokość i szerokość jakaś żeby mieć jakiś pogląd. Pobierasz sobie to zdjęcie na swój dysk. Gdy napiszesz już artykuł to USUWASZ TE ZDJĘCIA. A w ich miejsce robisz to co w przypadku jakbyś robił w dokumentach google :).
+                br
+                br
+                | Jeśli Ci się rozwidzi jakieś zdjęcie, to USUWASZ LINKA Z TEKSTU i USUWASZ GO Z DODANYCH ZDJĘĆ PRZYCISKIEM DELETE. Musisz pamiętać o obu.
+                br
+                br
+                | Jeśli chcesz dodać artykuł do strony klikasz Submit.
+                br
+                br
+                | Szanuj swoją prace i moją! Nie staraj się czegoś psuć na siłe! Nie umiem wszystkiego więc jak są jakieś propozycje, pytania lub coś nie działa -> wiesz gdzie mnie szukać.
+
+            
         
         label#title.label
-            p Title:
-            input.form-control(name="title", type="text")
+            p.Names Title:
+            input.form-control(name="title", type="text" maxlength="60" required)
         
         label#author.label
-            p Author:
-            input.form-control(name="author", type="text")
+            p.Names Author:
+            input.form-control(name="author", type="text" required)
         
         label#short.label
-            p Short:
-            textarea.form-control(name="short")
+            p.Names Short:
+            textarea.form-control(name="short" maxlength="220" required)
         
+        .label#labelForInputImg
+            p.Names Photos:
+
         label#body.label 
-            p Body:
-            textarea.form-control(name="body")
+            p.Names Body:
+            textarea.form-control(name="body" id="ckeditor")
+
 
         label#file.label 
-            p File:
-            input(name="file",type="file")
+            p.Names Cover:
+            input(name="cover",type="file" required)
+
         label#radio.label
-            p Section:
-            input(type="radio", value="f1", name="section")
-            label(for="f1") Formuła 1
+            p.Names Section:
+            label.radio
+                input(type="radio", value="f1", name="section" required)
+                p Formuła 1
             br
-            input(type="radio", value="f2", name="section")
-            label(for="f2") Formuła 2
+            label.radio
+                input(type="radio", value="f2", name="section")
+                p Formuła 2
             br
-            input(type="radio", value="fe", name="section")
-            label(for="fe") Formuła E
+            label.radio
+                input(type="radio", value="fe", name="section")
+                p Formuła E
             br
-            input(type="radio", value="f1basics", name="section")
-            label(for="f1basics") Podstawy F1
+            label.radio
+                input(type="radio", value="f1basics", name="section")
+                p Podstawy F1
             br
-            input(type="radio", id="other" value="other", name="section")
-            label(for="other") Other
+            label.radio
+                input(type="radio" value="other", name="section")
+                p Other
                 //- input(type="text" disabled)
             //- select(name="select")
             //-     option(value="f1") FORMULA 1
@@ -49,7 +106,10 @@ block content
             //-     option(value="fe") FORMULA E
             //-     option(value="other") OTHER
 
-        button(value="Submit") Submit
+        button(value="Submit" class="submit") Submit
 
 block scripts
+    script(src='/ckeditor/ckeditor/ckeditor.js')
     script(src='/js/add_article.js')
+    script. 
+        CKEDITOR.replace('ckeditor');

@@ -1,24 +1,16 @@
 const express = require("express")
 const app = express();
 const path = require("path")
-var fs = require('fs');
+const fs = require('fs');
 const bodyParser = require("body-parser");
-var formidable = require('formidable');
-var sharp = require('sharp');
+const formidable = require('formidable');
+const sharp = require('sharp');
+const connectDB = require('./DB/connection');
+require('dotenv').config();
 
-var mongoose = require("mongoose");
+const port = process.env.PORT || 3000;
 
-mongoose.connect("mongodb://localhost/admin");
-
-let db = mongoose.connection;
-
-db.once("open", function () {
-    console.log("connected to database.");
-});
-
-db.on("error", function (err) {
-    console.log(err);
-});
+connectDB();
 
 let Article = require("./static/models/article");
 
@@ -88,15 +80,21 @@ app.post("/articles/add", function (req, res) {
 
     form.uploadDir = __dirname + '/static/upload/';
 
+    fs.mkdirSync(form.uploadDir + `${id}/`);
+
+    //FORM PARSE
     form.parse(req, function (err, fields, files) {
 
         console.log('PARSE')
 
         let article = new Article();
 
+        let html = changePathWithRegex(fields.body, id);
+
+        fs.writeFileSync(`${form.uploadDir}/${id}/body.html`, html, (error) => { console.log(error) })
+
         article.title = fields.title;
         article.author = fields.author;
-        article.body = fields.body;
         article.short = fields.short;
         article.section = fields.section;
         article.date = date.getHours() + ":" + minuty + " " + date.getDate() + "." + (date.getMonth() + 1) % 12 + "." + date.getFullYear();
@@ -113,32 +111,83 @@ app.post("/articles/add", function (req, res) {
 
     });
 
+    //FORM ON FILE
     form.on('file', function (field, file) {
 
-        console.log("FILE")
+        console.log("FIELD:")
+        console.log(field)
 
-        fs.mkdirSync(form.uploadDir + `${id}/`);
+        addFile(file, field, id, form.uploadDir);
 
-        let ext = file.name.split(".")[-1];
-
-        fs.rename(file.path, form.uploadDir + `${id}/cover.${ext}`, function (err) {
-            if (err) console.log(err)
-
-            sharp(form.uploadDir + id + `/cover.${ext}`)
-                .toFile(form.uploadDir + id + '/cover.webp')
-                .then(data =>
-                    fs.unlink(form.uploadDir + id + '/cover.undefined', (err) => {
-                        if (err) throw err;
-                    })
-                )
-                .catch(err => console.log(err))
-        });
 
     });
+
     res.redirect("/add");
 })
 
 
-app.listen(3000, function () {
+app.listen(port, function () {
     console.log("f1")
 })
+
+
+
+
+
+let changePathWithRegex = (body, id) => {
+    console.log("changebody")
+
+    let regex = /(img src=(.*)LINK)/gm;
+
+    let array = body.matchAll(regex);
+
+    console.log("BODY:");
+    console.log(body);
+
+    array = Array.from(array);
+
+    console.log('Array:');
+    console.log(array);
+
+    array.forEach(elem => {
+        let name = elem[2].split('.')[0];
+        body = body.replace(elem[1], `<img alt='photo'src='/upload/${id}/${name}.webp'>`);
+    });
+
+    return body;
+}
+
+
+
+
+
+
+let addFile = (file, field, id, uploadDir) => {
+
+    let name;
+
+    if (field == 'cover')
+        name = 'cover';
+    else{
+        name = file.name.split('.')[0];
+    }
+
+    console.log('NAME:' + name)
+
+    let ext = name.split(".")[-1];
+
+    fs.rename(file.path, uploadDir + `${id}/${name}.${ext}`, function (err) {
+        if (err) console.log(err)
+
+        sharp(uploadDir + id + `/${name}.${ext}`)
+            .toFile(uploadDir + id + `/${name}.webp`)
+            .then(data => {
+                fs.unlink(uploadDir + id + `/${name}.undefined`, (err) => {
+                    if (err) throw err;
+                })
+            }
+            )
+            .catch(err => console.log(err))
+    });
+
+}
