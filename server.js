@@ -4,8 +4,10 @@ const path = require("path")
 const fs = require('fs');
 const bodyParser = require("body-parser");
 const formidable = require('formidable');
-const sharp = require('sharp');
 const connectDB = require('./DB/connection');
+const imagemin = require("imagemin");
+const imageminWebp = require("imagemin-webp");
+
 require('dotenv').config();
 
 const port = process.env.PORT || 3000;
@@ -168,7 +170,7 @@ let addFile = (file, field, id, uploadDir) => {
 
     if (field == 'cover')
         name = 'cover';
-    else{
+    else {
         name = file.name.split('.')[0];
     }
 
@@ -179,15 +181,32 @@ let addFile = (file, field, id, uploadDir) => {
     fs.rename(file.path, uploadDir + `${id}/${name}.${ext}`, function (err) {
         if (err) console.log(err)
 
-        sharp(uploadDir + id + `/${name}.${ext}`)
-            .toFile(uploadDir + id + `/${name}.webp`)
-            .then(data => {
-                fs.unlink(uploadDir + id + `/${name}.undefined`, (err) => {
-                    if (err) throw err;
+        // sharp(uploadDir + id + `/${name}.${ext}`)
+        //     .toFile(uploadDir + id + `/${name}.webp`)
+        //     .then(data => {
+        //         fs.unlink(uploadDir + id + `/${name}.undefined`, (err) => {
+        //             if (err) throw err;
+        //         })
+        //     }
+        //     )
+        //     .catch(err => console.log(err))
+        imagemin([`./static/upload/${id}/${name}.${ext}`], {
+            destination: `./static/upload/${id}/`,
+            plugins: [
+                imageminWebp({
+                    quality: 90,
+                    resize: {
+                        width: 1000,
+                        height: 0
+                    }
                 })
-            }
-            )
-            .catch(err => console.log(err))
+            ]
+        }).then(() => {
+            console.log('Images optimized');
+            fs.unlink(uploadDir + id + `/${name}.undefined`, (err) => {
+                if (err) throw err;
+            })
+        });
     });
 
 }
