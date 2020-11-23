@@ -13,7 +13,7 @@
 
         margin: 0;
         margin-bottom: 2rem;
-        width: 340px;
+        width: 400px;
         height: 350px;
 
     }
@@ -45,7 +45,6 @@
         font-size: 1.3rem;
         display: block;
         position: absolute;
-        top: -0.1rem;
         right: 0;
 
     }

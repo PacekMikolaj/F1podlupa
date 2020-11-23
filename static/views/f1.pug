@@ -33,14 +33,14 @@ block content
         .f1basics
             h1.title Podstawy F1
                 .underline
-            .text Zaczynasz przygodę z Formułą 1? Tutaj znajdziesz artykuły, które pomogą Ci zrozumieć jak działa świat królowej wyścigów.
+            .text Zaczynasz przygodę z Formułą 1? Tutaj znajdziesz artykuły, które pomogą Ci zrozumieć jak działa świat królowej motorsportu.
 
 
             .slider
                 each val in articlesF1basics
                     .slide
                         a.square(href="/article/" + val.ID)
-                            img.img.cover(src='/upload/' + val.ID + '/cover.webp' alt='' onerror="standby(this)")
+                            img.img.cover(src='/upload/' + val.ID + '/cover.webp' alt='cover')
                             .notImg
                                 .title= val.title 
                                 .text= val.short
@@ -49,11 +49,11 @@ block content
                                     div(style="display: block; position: relative; height: 100%; width: 25px;")
                                         i.fas.fa-arrow-right
         
-        .con-title Artykuły o F1
+        .con-title Artykuły F1
         .articlesF1
             each val in articlesF1
                 a.square(href="/article/" + val.ID)
-                    img.img.cover(src='/upload/' + val.ID + '/cover.webp' alt='' onerror="standby(this)")
+                    img.img.cover(src='/upload/' + val.ID + '/cover.webp' alt='cover')
                     .notImg
                         .title= val.title 
                         .text= val.short

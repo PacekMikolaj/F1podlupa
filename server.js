@@ -1,18 +1,22 @@
 const express = require("express")
 const app = express();
 const path = require("path")
-const fs = require('fs');
 const bodyParser = require("body-parser");
-const formidable = require('formidable');
-const connectDB = require('./DB/connection');
-const imagemin = require("imagemin");
-const imageminWebp = require("imagemin-webp");
+const connectDB = require('./connection');
+
 
 require('dotenv').config();
 
 const port = process.env.PORT || 3000;
 
 connectDB();
+
+//Import Routes
+const admin = require('./routes/admin');
+
+//Route Middleware
+app.use('/admin' , admin);
+
 
 let Article = require("./static/models/article");
 
@@ -58,155 +62,8 @@ app.get("/article/:ID", async function (req, res) {
 
 })
 
-app.get("/add", function (req, res) {
-
-    res.render("add_article");
-})
-
-
-app.post("/articles/add", function (req, res) {
-
-    var form = new formidable.IncomingForm();
-
-    let id = Date.now();
-
-    let date = new Date();
-
-    let minuty;
-
-    if (date.getMinutes() < 10) {
-        minuty = "0" + date.getMinutes();
-    } else { minuty = date.getMinutes(); }
-
-    form.keepExtensions = true;
-
-    form.uploadDir = __dirname + '/static/upload/';
-
-    fs.mkdirSync(form.uploadDir + `${id}/`);
-
-    //FORM PARSE
-    form.parse(req, function (err, fields, files) {
-
-        console.log('PARSE')
-
-        let article = new Article();
-
-        let html = changePathWithRegex(fields.body, id);
-
-        fs.writeFileSync(`${form.uploadDir}/${id}/body.html`, html, (error) => { console.log(error) })
-
-        article.title = fields.title;
-        article.author = fields.author;
-        article.short = fields.short;
-        article.section = fields.section;
-        article.date = date.getHours() + ":" + minuty + " " + date.getDate() + "." + (date.getMonth() + 1) % 12 + "." + date.getFullYear();
-        article.ID = id;
-
-        article.save(function (err) {
-            if (err) {
-                console.log(err);
-                return;
-            }
-        })
-
-        console.log(fields);
-
-    });
-
-    //FORM ON FILE
-    form.on('file', function (field, file) {
-
-        console.log("FIELD:")
-        console.log(field)
-
-        addFile(file, field, id, form.uploadDir);
-
-
-    });
-
-    res.redirect("/add");
-})
-
 
 app.listen(port, function () {
-    console.log("f1")
+    console.log("f1podlupa startuje na porcie " + port);
 })
 
-
-
-
-
-let changePathWithRegex = (body, id) => {
-    console.log("changebody")
-
-    let regex = /(img src=(.*)LINK)/gm;
-
-    let array = body.matchAll(regex);
-
-    console.log("BODY:");
-    console.log(body);
-
-    array = Array.from(array);
-
-    console.log('Array:');
-    console.log(array);
-
-    array.forEach(elem => {
-        let name = elem[2].split('.')[0];
-        body = body.replace(elem[1], `<img alt='photo'src='/upload/${id}/${name}.webp'>`);
-    });
-
-    return body;
-}
-
-
-
-
-
-
-let addFile = (file, field, id, uploadDir) => {
-
-    let name;
-
-    if (field == 'cover')
-        name = 'cover';
-    else {
-        name = file.name.split('.')[0];
-    }
-
-    console.log('NAME:' + name)
-
-    let ext = name.split(".")[-1];
-
-    fs.rename(file.path, uploadDir + `${id}/${name}.${ext}`, function (err) {
-        if (err) console.log(err)
-
-        // sharp(uploadDir + id + `/${name}.${ext}`)
-        //     .toFile(uploadDir + id + `/${name}.webp`)
-        //     .then(data => {
-        //         fs.unlink(uploadDir + id + `/${name}.undefined`, (err) => {
-        //             if (err) throw err;
-        //         })
-        //     }
-        //     )
-        //     .catch(err => console.log(err))
-        imagemin([`./static/upload/${id}/${name}.${ext}`], {
-            destination: `./static/upload/${id}/`,
-            plugins: [
-                imageminWebp({
-                    quality: 90,
-                    resize: {
-                        width: 1000,
-                        height: 0
-                    }
-                })
-            ]
-        }).then(() => {
-            console.log('Images optimized');
-            fs.unlink(uploadDir + id + `/${name}.undefined`, (err) => {
-                if (err) throw err;
-            })
-        });
-    });
-
-}

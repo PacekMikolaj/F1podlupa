@@ -19,7 +19,7 @@ block content
                         .underline(style="background-color: #00d3ff")
                     when "f1basics"
                         .underline(style="background-color: rgb(136,0,21)")
-                    when "f1basics"
+                    when "other"
                         .underline(style="background-color: #3BE307")
                         
 
@@ -27,7 +27,7 @@ block content
 
             p#short #{article.short}
 
-            img#cover.cover(src='/upload/' + article.ID + '/cover.webp') 
+            img#cover.cover(src='/upload/' + article.ID + '/cover.webp' alt='cover') 
 
             p#text 
 
@@ -36,7 +36,7 @@ block content
             
             each val in articles
                 a.square(href="/article/" + val.ID)
-                    img.img.cover(src='/upload/' +val.ID + '/cover.webp' alt='')
+                    img.img.cover(src='/upload/' +val.ID + '/cover.webp' alt='cover')
                     .notImg
                         .title=  val.title 
                         .text= val.short

@@ -1,5 +1,5 @@
 #main{
-    white-space: break-spaces;
+    white-space: pre-line;
     display: flex;
     flex-direction: column;
 
@@ -67,6 +67,19 @@
 
 }
 
+
+#text img{
+    max-width: 100%;
+    margin: 0 auto;
+    display: block;
+}
+
+#text p {
+    margin-top: -3rem;
+    overflow-wrap: break-word;
+}
+
+
 @media only screen and (min-width: 650px){
 
     #article #title {
@@ -80,17 +93,28 @@
 @media only screen and (min-width: 800px){
     #article{
         width: 80%;
+        /* padding: 2rem; */
+        /* background: white; */
+        margin-bottom: 2rem;
+        /* border-radius: 3rem; */
         
     }
 
     #article #text, #article #short {
         font-size: 1.5rem;
-
+        line-height: 2.2rem;
+        /* letter-spacing: .01rem; */
     }
+
+
 
     #article .cover {
         max-width: 1000px;
 
+    }
+
+    #text h1 {
+        line-height: 3.5rem;
     }
 
     #seeAlso{
@@ -126,6 +150,7 @@
     #article {
         width: 50%;
         margin: unset;
+        margin-bottom: 2rem;
     }
 
     #seeAlso{
