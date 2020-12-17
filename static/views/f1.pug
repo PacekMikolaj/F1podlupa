@@ -3,8 +3,8 @@ extends layout
 
 block css
         link(rel='stylesheet' href='/slick/slick.css')
-        link(rel="stylesheet" type="text/css" href="slick/slick-theme.css")
-        link(rel='stylesheet' href='/STYLE/style_f1.css')
+        link(rel="stylesheet" href="slick/slick-theme.css")
+        link(rel='stylesheet' href='/css/f1.css')
 
 block title
     title F1 - F1podlupą.pl
@@ -15,12 +15,14 @@ block content
             #description
                 h1.title Formuła 1
                     .underline
-                .text W tym dziale znajdziesz najważniejsze i najnowsze wiadomości ze świata F1, mnóstwo artykułów, a także ciekawostki o królowej motorsportu.
+                .text W tym dziale znajdziesz najważniejsze i najnowsze wiadomości ze świata F1, a także mnóstwo artykułów i ciekawostek o królowej motorsportu.
                 ul#links
                     li
                         a(href="#") Zespoły
                     li
                         a(href="#") Kierowcy
+                    li
+                        a(href="#") Tory Formuły 1
 
             #f1car
                 h1.title Samochody F1
@@ -39,28 +41,13 @@ block content
             .slider
                 each val in articlesF1basics
                     .slide
-                        a.square(href="/article/" + val.ID)
-                            img.img.cover(src='/upload/' + val.ID + '/cover.webp' alt='cover')
-                            .notImg
-                                .title= val.title 
-                                .text= val.short
-                                .next 
-                                    p(style="display: block; font-weight: bold") Czytaj dalej 
-                                    div(style="display: block; position: relative; height: 100%; width: 25px;")
-                                        i.fas.fa-arrow-right
+                        +small_article(val)
         
-        .con-title Artykuły F1
-        .articlesF1
-            each val in articlesF1
-                a.square(href="/article/" + val.ID)
-                    img.img.cover(src='/upload/' + val.ID + '/cover.webp' alt='cover')
-                    .notImg
-                        .title= val.title 
-                        .text= val.short
-                        .next 
-                            p(style="display: block; font-weight: bold") Czytaj dalej 
-                            div(style="display: block; position: relative; height: 100%; width: 25px;")
-                                i.fas.fa-arrow-right
+        .articles
+            .con-title Artykuły F1
+            .squares
+                each val in articlesF1
+                    +small_article(val)
         
 
 

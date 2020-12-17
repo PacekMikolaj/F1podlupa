@@ -3,12 +3,14 @@ html
     head    
         meta(charset='UTF-8')
         meta(name='viewport' content='width=device-width, initial-scale=1.0')
-        link(rel='stylesheet' href='/STYLE/style_mobile.css')
-        link(rel='stylesheet' href='/STYLE/style_min650.css')
-        link(rel='stylesheet' href='/STYLE/style_min800.css')
-        link(rel='stylesheet' href='/STYLE/style_min950.css')
-        link(rel='stylesheet' href='/STYLE/style_min1200.css')
-        link(rel='stylesheet' href='/STYLE/style_min1500.css')
+        link(rel='stylesheet' href='/css/base.css')
+        link(rel='stylesheet' href='/css/new_article.css')
+        link(rel='stylesheet' href='/css/small_article.css')
+        //- link(rel='stylesheet' href='/STYLE/style_min650.css')
+        //- link(rel='stylesheet' href='/STYLE/style_min800.css')
+        //- link(rel='stylesheet' href='/STYLE/style_min950.css')
+        //- link(rel='stylesheet' href='/STYLE/style_min1200.css')
+        //- link(rel='stylesheet' href='/STYLE/style_min1500.css')
 
         block css
 
@@ -29,26 +31,45 @@ html
 
         block title
     body
+        include views_components/new_article.pug
+        include views_components/small_article.pug
+        include views_components/pagination.pug
+
         header
+            h2#nav-h2
+                <i class="fas fa-bars"></i>
             a#title(href="/") F1podlupą.pl
-            nav
+            nav   
+                
+                a#menu_strona_glowna.option_menu(href='/')
+                    p Strona główna
+                a#menu_f1.option_menu(href='/f1')
+                    p F1
+                a#menu_f2.option_menu(href='#')
+                    p F2
+                a#menu_fE.option_menu(href='#')
+                    p FE
+                a#menu_kierowcy_f1.option_menu(href='#')
+                    p Pozostałe artykuły
+            #div_for_icons
+                    a#fb(href='#')
+                    a#tt(href='https://twitter.com/Sebastian_Kiec')
+            //- nav
                 //- h2#nav-h2 MENU
-                h2#nav-h2
-                    <i class="fas fa-bars"></i>
-                #nav_elements
-                    a#menu_strona_glowna.option_menu(href='/')
-                        p Strona główna
-                    a#menu_f1.option_menu(href='/f1')
-                        p F1
-                    a#menu_f2.option_menu(href='#')
-                        p F2
-                    a#menu_fE.option_menu(href='#')
-                        p FE
-                    a#menu_kierowcy_f1.option_menu(href='#')
-                        p Pozostałe artykuły
-                    #div_for_icons
-                        a#fb(href='#')
-                        a#tt(href='https://twitter.com/Sebastian_Kiec')
+               
+                //- #nav_elements
+                //-     a#menu_strona_glowna.option_menu(href='/')
+                //-         p Strona główna
+                //-     a#menu_f1.option_menu(href='/f1')
+                //-         p F1
+                //-     a#menu_f2.option_menu(href='#')
+                //-         p F2
+                //-     a#menu_fE.option_menu(href='#')
+                //-         p FE
+                //-     a#menu_kierowcy_f1.option_menu(href='#')
+                //-         p Pozostałe artykuły
+        
+                
 
         block content
 

@@ -1,0 +1,213 @@
+.square {
+  margin: 0 auto;
+  margin-bottom: 2rem;
+  width: 90%;
+  height: 450px;
+  position: relative;
+  display: block;
+}
+
+.square .img {
+  margin: 0 auto;
+  height: 100%;
+  max-height: 350px;
+  width: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: 50% 0;
+  object-position: 50% 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.square .notImg {
+  position: absolute;
+  width: 100%;
+  background-color: black;
+  color: white;
+  padding: 0.7rem;
+  bottom: 0;
+  left: 0;
+}
+
+.square .title {
+  font-size: 1.4rem;
+  padding-bottom: 0.3rem;
+  font-weight: bold;
+  font-family: "Exo 2", sans-serif;
+}
+
+.square .text {
+  font-size: 1rem;
+  display: block;
+  padding: 0.5rem 0;
+  font-family: "Lato", sans-serif;
+}
+
+.square .next {
+  display: none;
+  font-size: 0.7rem;
+  width: 100%;
+  height: 20px;
+  text-align: center;
+  font-family: "Lato", sans-serif;
+}
+
+.square:hover {
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 650px) {
+  .square .text {
+    display: block;
+  }
+  .square .next {
+    padding-bottom: 0;
+    line-height: 100%;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .square {
+    margin: 0;
+    margin-bottom: 2rem;
+    width: 45%;
+    height: 350px;
+    overflow: hidden;
+    -webkit-transition: 0.1s;
+    transition: 0.1s;
+  }
+  .square .text {
+    font-size: 0rem;
+    display: block;
+    height: 0px;
+    overflow: hidden;
+    word-wrap: break-word;
+  }
+  .square .next {
+    -webkit-transition: 0.1s;
+    transition: 0.1s;
+    width: 94%;
+    margin: 0 auto;
+    position: absolute;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    bottom: 1.3rem;
+    font-size: 1.2rem;
+    opacity: 0;
+    text-transform: uppercase;
+  }
+  .square .next .fa-arrow-right {
+    font-size: 1.3rem;
+    display: block;
+    position: absolute;
+    right: 0;
+  }
+  .square .title {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 25%;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .square .img {
+    max-height: unset;
+    height: 100%;
+    width: 100%;
+  }
+  .square .notImg {
+    padding: 3%;
+    height: 100%;
+    -webkit-transform: translateY(250px);
+            transform: translateY(250px);
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+  }
+  .square .text {
+    height: initial;
+    -webkit-transition: 0.25s;
+    transition: 0.25s;
+    font-size: 1.3rem;
+  }
+  .square:hover .notImg {
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+  }
+  .square:hover .next {
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    -webkit-transition-delay: 0.1s;
+            transition-delay: 0.1s;
+    opacity: 1;
+  }
+}
+
+@media only screen and (min-width: 950px) {
+  .square {
+    width: 47%;
+    height: 400px;
+  }
+  .square .notImg {
+    -webkit-transform: translateY(290px);
+            transform: translateY(290px);
+  }
+  .square .title {
+    font-size: 1.6rem;
+    height: 25%;
+  }
+  .square .text {
+    padding: 1rem 0;
+    font-size: 1.5rem;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .square {
+    width: 31%;
+    height: 350px;
+  }
+  .square .notImg {
+    -webkit-transform: translateY(250px);
+            transform: translateY(250px);
+  }
+  .square .title {
+    height: 25%;
+    font-size: 1.6rem;
+  }
+  .square .text {
+    padding: 1rem 0;
+    font-size: 1.2rem;
+  }
+}
+
+@media only screen and (min-width: 1500px) {
+  .square {
+    width: 32%;
+    height: 400px;
+  }
+  .square .notImg {
+    -webkit-transform: translateY(285px);
+            transform: translateY(285px);
+  }
+  .square .title {
+    font-size: 1.6rem;
+    height: 25%;
+  }
+  .square .text {
+    padding: 1rem 0;
+    font-size: 1.4rem;
+  }
+}

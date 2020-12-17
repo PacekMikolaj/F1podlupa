@@ -40,7 +40,7 @@ router.get('/logout', (req, res) => {
     if (req.session.user && req.cookies.user_sid) {
         res.clearCookie('user_sid');
         req.session.destroy();
-        res.redirect('/login');
+        res.redirect('/admin/login');
     } else {
         res.redirect('/admin');
     }

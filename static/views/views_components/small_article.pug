@@ -1,0 +1,11 @@
+mixin small_article(val)
+    a.square(href="/article/" + val.ID)
+          img.img.cover(src='/upload/' + val.ID + '/cover.webp' alt='')
+          .notImg
+            .title
+              p= val.title 
+            .text= val.short
+            .next 
+              p(style="display: block; font-weight: bold") Czytaj dalej 
+              div(style="display: block; position: relative; height: 100%; width: 25px;")
+                i.fas.fa-arrow-right

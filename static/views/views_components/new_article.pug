@@ -1,0 +1,23 @@
+mixin new_article(val)
+  a.article(href="/article/" + val.ID)
+            img.img.cover(src='/upload/' + val.ID + '/cover.webp' alt='')
+            .notImg
+              .title= val.title
+              .text= val.short
+            
+            case val.section
+              when "f1"
+                .type(style="background-color: red")
+                  .little FORMUŁA 1
+              when "f2"
+                .type(style="background-color: #0a00ff")
+                  .little FORMUŁA 2
+              when "fe"
+                .type(style="background-color: #00d3ff")
+                  .little FORMUŁA E
+              when "f1basics"
+                .type(style="background-color: rgb(136,0,21)")
+                  .little PODSTAWY F1
+              when "others"
+                .type(style="background-color: #3BE307")
+                  .little POZOSTAŁE ARTYKUŁY

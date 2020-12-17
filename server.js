@@ -1,13 +1,18 @@
-const express = require("express")
+const express = require("express");
 const app = express();
-const path = require("path")
+const path = require("path");
 const bodyParser = require("body-parser");
 const connectDB = require('./connection');
+const { paginatedResults } = require('./middleware/paginatedResults');
+
+
+const port = process.env.PORT || 3000;
+
+let Article = require("./static/models/article");
 
 
 require('dotenv').config();
 
-const port = process.env.PORT || 3000;
 
 connectDB();
 
@@ -15,26 +20,27 @@ connectDB();
 const admin = require('./routes/admin');
 
 //Route Middleware
-app.use('/admin' , admin);
+app.use('/admin', admin);
 
-
-let Article = require("./static/models/article");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
-
-app.use(express.static('static'))
+app.use(express.static('static'));
 app.set("views", path.join(__dirname, "static/views"));
 app.set("view engine", "pug");
 
+let limit = 6;
 
-app.get("/", async function (req, res) {
+let newest = 3;
+
+app.get("/", paginatedResults(Article, limit, newest), async function (req, res) {
 
     let data = {};
-    let tmp = await Article.find({}).sort({ _id: -1 }).limit(10).exec();
-    data.newest = tmp.slice(0, 4);
-    data.articles = tmp.slice(4);
+
+    data.articles = res.paginatedModels;
+    data.newest = await Article.find().sort({ _id: -1 }).limit(newest).exec();
+    data.paginationInfo = res.paginationInfo;
+
 
     res.render("index", data);
 
@@ -66,4 +72,3 @@ app.get("/article/:ID", async function (req, res) {
 app.listen(port, function () {
     console.log("f1podlupa startuje na porcie " + port);
 })
-

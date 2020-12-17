@@ -8,10 +8,10 @@ $(document).ready(function () {
 
     $("#nav-h2").on("click", (e) => {
 
-        if ($("#nav_elements").css("display") != "flex")
-            $("#nav_elements").css("display", "flex");
+        if ($("nav").css("display") != "flex")
+            $("nav").css("display", "flex");
         else
-            $("#nav_elements").css("display", "none");
+            $("nav").css("display", "none");
 
     })
 
