@@ -36,13 +36,13 @@
 
 #article #title {
   font-family: "Exo 2", sans-serif;
-  font-size: 2.2rem;
+  font-size: 2.1rem;
   text-align: center;
   margin-bottom: 1rem;
 }
 
 #article #author {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   margin-bottom: 0.5rem;
 }
 
@@ -55,19 +55,33 @@
 #article #short {
   font-family: "Lato", sans-serif;
   color: black;
-  font-size: 1.3rem;
   margin-bottom: 2rem;
+}
+
+#article #short {
+  font-size: 1.4rem;
+  line-height: 1.7rem;
 }
 
 #article #text img {
   max-width: 100%;
-  margin: 0 auto;
+  margin: 1rem auto;
   display: block;
 }
 
 #article #text p {
+  font-size: 1.3rem;
   margin-top: -3rem;
+  line-height: 2rem;
   overflow-wrap: break-word;
+}
+
+#article #text h1 {
+  margin-bottom: 1.5rem;
+}
+
+#article #text a {
+  color: red;
 }
 
 #seeAlso {
@@ -81,6 +95,12 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+@media only screen and (max-width: 800px) {
+  .square {
+    width: 100%;
+  }
 }
 
 @media only screen and (min-width: 650px) {
@@ -98,10 +118,12 @@
     /* border-radius: 3rem; */
   }
   #article #text,
-  #article #short {
+  #article #short, #article #text p {
     font-size: 1.5rem;
     line-height: 2.2rem;
-    /* letter-spacing: .01rem; */
+  }
+  #article p {
+    letter-spacing: .02rem;
   }
   #article .cover {
     max-width: 1000px;
@@ -111,7 +133,7 @@
     margin-bottom: 1.5rem;
   }
   #seeAlso {
-    width: 80%;
+    width: 90%;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
@@ -135,7 +157,7 @@
             justify-content: center;
   }
   #article {
-    width: 45%;
+    width: 50%;
     margin: unset;
     margin-bottom: 2rem;
   }
@@ -143,7 +165,7 @@
     font-size: 3rem;
   }
   #seeAlso {
-    width: 25%;
+    width: 30%;
     margin: unset;
     margin-left: 5%;
     -webkit-box-orient: vertical;
@@ -165,5 +187,8 @@
 @media only screen and (min-width: 1500px) {
   #article {
     width: 45%;
+  }
+  #seeAlso {
+    width: 25%;
   }
 }

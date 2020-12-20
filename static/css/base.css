@@ -95,18 +95,19 @@ header #div_for_icons {
   grid-area: icons;
 }
 
-header #div_for_icons a {
+header #div_for_icons a.icons {
   height: 40px;
   width: 40px;
   background-size: 40px 40px;
   display: block;
 }
 
-header #div_for_icons #fb {
+/* ICONS */
+#fb {
   background-image: url("../img/facebook_logo.png");
 }
 
-header #div_for_icons #tt {
+#tt {
   background-image: url("../img/twitter_logo.png");
 }
 
@@ -157,6 +158,18 @@ nav .option_menu p {
           flex: 0 0 100%;
 }
 
+nav #f1:hover p {
+  color: red;
+}
+
+nav #f2:hover p {
+  color: #0a00ff;
+}
+
+nav #fE:hover p {
+  color: #00d3ff;
+}
+
 /*   MAIN    */
 #main {
   width: 100%;
@@ -180,13 +193,225 @@ nav .option_menu p {
   font-family: "Lalezar", cursive;
 }
 
+/* PAGINATION */
+.pagination {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.pagination * {
+  font-size: 1.3rem;
+  font-weight: bold;
+  font-family: "Exo 2", sans-serif;
+}
+
+.pagination .number,
+.pagination .arrow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0 0.5rem;
+  margin: 0 0.1rem;
+  min-width: 25px;
+  height: 30px;
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+}
+
+.pagination .number i,
+.pagination .arrow i {
+  display: block;
+  font-size: 1.1rem;
+  margin-top: 0.3rem;
+}
+
+.pagination .number:hover,
+.pagination .arrow:hover {
+  background-color: black;
+  color: white;
+}
+
+.pagination .thisPage {
+  color: red;
+  text-decoration: underline;
+  cursor: default;
+}
+
 /*   FOOTER    */
 #footer {
-  height: 100px;
+  font-family: "Lato", sans-serif;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   background-color: black;
   color: lightgrey;
-  text-align: center;
   width: 100%;
+  font-size: 0.8rem;
+  padding: 1rem;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 50% 50%;
+      grid-template-columns: 50% 50%;
+  -ms-grid-rows: auto;
+      grid-template-rows: auto;
+      grid-template-areas: "copyright copyright" "info info" "minimenu minimenu" "kontakt info2" "creators creators";
+}
+
+#footer .copyright {
+  display: block;
+  text-align: center;
+  font-size: 1.1em;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: copyright;
+}
+
+#footer .info {
+  text-align: center;
+  margin-bottom: 0.5rem;
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: info;
+}
+
+#footer .info2 {
+  -ms-grid-row: 4;
+  -ms-grid-column: 2;
+  grid-area: info2;
+}
+
+#footer #kontakt {
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-grid-row: 4;
+  -ms-grid-column: 1;
+  grid-area: kontakt;
+}
+
+#footer #kontakt #div_for_icons {
+  margin-left: 0;
+  width: 70%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 30px;
+}
+
+#footer #kontakt #div_for_icons a.icons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 30px;
+  width: 30px;
+  background-size: 30px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#footer #kontakt h1 {
+  display: block;
+  font-size: 1.5em;
+}
+
+#footer #kontakt #email {
+  display: block;
+}
+
+#footer .creators {
+  text-align: center;
+  margin-top: 0.2rem;
+  -ms-grid-row: 5;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: creators;
+}
+
+#footer .minimenu {
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  height: 30px;
+  width: 100%;
+  margin: 0.5rem 0 0.7rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: minimenu;
+}
+
+#footer .minimenu a {
+  text-decoration: none;
+  color: white;
+}
+
+#footer .minimenu a p {
+  width: 100%;
+  text-align: center;
+}
+
+#footer h1,
+#footer #email,
+#footer .copyright,
+#footer #kontakt,
+#footer .creators,
+#footer .info2 {
+  width: 100%;
+  margin-bottom: 0.3rem;
 }
 
 @media only screen and (min-width: 650px) {
@@ -198,10 +423,10 @@ nav .option_menu p {
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
-    height: 100px;
+    height: 80px;
   }
   header #title {
-    padding-left: .5rem;
+    padding-left: 0.5rem;
     height: 100%;
     width: 30%;
     font-size: 1.8rem;
@@ -217,7 +442,7 @@ nav .option_menu p {
         -ms-flex-pack: space-evenly;
             justify-content: space-evenly;
   }
-  #div_for_icons a {
+  #div_for_icons a.icons {
     height: 30px;
     width: 30px;
     background-size: 30px 30px;
@@ -254,87 +479,72 @@ nav .option_menu p {
             align-items: center;
     cursor: pointer;
   }
-  nav #menu_strona_glowna {
+  nav #strona_glowna {
     width: 30%;
   }
-  nav #menu_f1,
-  nav #menu_f2,
-  nav #menu_fE {
+  nav #f1,
+  nav #f2,
+  nav #fE {
     width: 13%;
   }
-  nav #menu_kierowcy_f1 {
-    /* font-size: 1.3rem; */
+  nav #pozostale {
     width: 31%;
+  }
+  #footer {
+    font-size: 0.9rem;
+  }
+  #footer #kontakt #div_for_icons {
+    width: 60%;
   }
 }
 
-/* PAGINATION */
-.pagination {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-bottom: 1.5rem;
-}
-
-.pagination * {
-  font-size: 1.3rem;
-  font-weight: bold;
-  font-family: "Exo 2", sans-serif;
-}
-
-.pagination .number, .pagination .arrow {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding: 0 .5rem;
-  margin: 0 .1rem;
-  min-width: 25px;
-  height: 30px;
-  text-align: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  cursor: pointer;
-  text-decoration: none;
-  color: black;
-}
-
-.pagination .number i, .pagination .arrow i {
-  display: block;
-  font-size: 1.1rem;
-  margin-top: .3rem;
-}
-
-.pagination .number:hover, .pagination .arrow:hover {
-  background-color: black;
-  color: white;
-}
-
-.pagination .thisPage {
-  color: red;
-  text-decoration: underline;
-  cursor: default;
+@media only screen and (min-width: 800px) {
+  header nav #f1,
+  header nav #f2,
+  header nav #fE {
+    -webkit-transition: 0.1s;
+    transition: 0.1s;
+  }
+  header nav #f1:hover p,
+  header nav #f2:hover p,
+  header nav #fE:hover p {
+    -webkit-transition: 0.1s;
+    transition: 0.1s;
+    -webkit-transform: scale(150%);
+            transform: scale(150%);
+  }
+  #footer {
+    font-size: 1rem;
+    -ms-grid-columns: 30% 70%;
+        grid-template-columns: 30% 70%;
+        grid-template-areas: "copyright copyright" "info info" "kontakt minimenu" "info2 info2" "creators creators";
+  }
+  #footer .minimenu {
+    margin-top: 1em;
+    font-size: 1.1em;
+    height: 55px;
+  }
+  #footer .info2 {
+    text-align: center;
+  }
+  #footer h1,
+  #footer #email,
+  #footer .copyright,
+  #footer #kontakt,
+  #footer .creators,
+  #footer .info2 {
+    margin-bottom: 0.5em;
+  }
 }
 
 @media only screen and (min-width: 950px) {
-  nav #div_for_icons a {
+  nav #div_for_icons a.icons {
     height: 40px;
     width: 40px;
     background-size: 40px 40px;
+  }
+  header {
+    height: 100px;
   }
   header #title {
     padding-left: 0;
@@ -349,9 +559,6 @@ nav .option_menu p {
   nav .option_menu {
     font-size: 2rem;
   }
-  /* nav #menu_kierowcy_f1{ 
-      font-size: 1.8rem;
-  } */
 }
 
 /* ARTICLES */

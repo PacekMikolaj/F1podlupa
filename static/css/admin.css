@@ -1,0 +1,120 @@
+#main {
+  height: 500px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.desktop {
+  width: 90%;
+  border-radius: 2rem;
+  background-color: white;
+  padding: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.desktop a {
+  width: 100%;
+  color: black;
+  text-decoration: none;
+  margin: 1rem;
+  font-family: "Lalezar", cursive;
+  font-size: 1.5rem;
+  display: block;
+  text-align: center;
+}
+
+.desktop a:hover {
+  color: white;
+  background-color: black;
+}
+
+.desktop h1 {
+  font-family: "Exo 2", sans-serif;
+  font-size: 2rem;
+  border-bottom: 2px solid red;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.desktop .loginForm {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.desktop label {
+  width: 260px;
+  margin: 1px;
+  font-family: "Lalezar", cursive;
+  font-size: 1.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin-bottom: 0.6rem;
+}
+
+.desktop label input {
+  font-size: 1rem;
+  width: 60%;
+}
+
+.desktop input[type="submit"] {
+  width: 120px;
+  height: 30px;
+  font-size: 1.2rem;
+  font-family: "Lalezar", cursive;
+  border: 2px solid black;
+  border-radius: 0.6rem;
+  background-color: lightgrey;
+  text-align: center;
+}
+
+@media only screen and (min-width: 650px) {
+  .desktop {
+    width: 70%;
+  }
+  .desktop input {
+    margin-right: 10%;
+  }
+  .desktop label {
+    width: 300px;
+  }
+}

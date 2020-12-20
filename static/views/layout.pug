@@ -41,33 +41,19 @@ html
             a#title(href="/") F1podlupą.pl
             nav   
                 
-                a#menu_strona_glowna.option_menu(href='/')
+                a#strona_glowna.option_menu(href='/')
                     p Strona główna
-                a#menu_f1.option_menu(href='/f1')
+                a#f1.option_menu(href='/f1')
                     p F1
-                a#menu_f2.option_menu(href='#')
+                a#f2.option_menu(href='#')
                     p F2
-                a#menu_fE.option_menu(href='#')
+                a#fE.option_menu(href='#')
                     p FE
-                a#menu_kierowcy_f1.option_menu(href='#')
+                a#pozostale.option_menu(href='#')
                     p Pozostałe artykuły
             #div_for_icons
-                    a#fb(href='#')
-                    a#tt(href='https://twitter.com/Sebastian_Kiec')
-            //- nav
-                //- h2#nav-h2 MENU
-               
-                //- #nav_elements
-                //-     a#menu_strona_glowna.option_menu(href='/')
-                //-         p Strona główna
-                //-     a#menu_f1.option_menu(href='/f1')
-                //-         p F1
-                //-     a#menu_f2.option_menu(href='#')
-                //-         p F2
-                //-     a#menu_fE.option_menu(href='#')
-                //-         p FE
-                //-     a#menu_kierowcy_f1.option_menu(href='#')
-                //-         p Pozostałe artykuły
+                    a#fb.icons(href='#')
+                    a#tt.icons(href='https://twitter.com/Sebastian_Kiec')
         
                 
 
@@ -75,7 +61,35 @@ html
 
 
         #footer
-            | footerek sebuś and mikuś spółka
+            p.copyright © F1podlupą.pl | Wszelkie prawa Zastrzeżone.
+            p.info Nasza strona skupia się na tematach powiązanych ze sportem motorowym, kładąc szczególny nacisk na „Formułę 1” oraz „Formułę 2”. Jesteśmy otwarci na różnorodne propozycję współpracy.
+            .minimenu
+                    a#strona_glowna.option_menu(href='/')
+                        p Strona główna
+                    a#f1.option_menu(href='/f1')
+                        p F1
+                    a#f2.option_menu(href='#')
+                        p F2
+                    a#fE.option_menu(href='#')
+                        p FE
+                    a#pozostale.option_menu(href='#')
+                        p Pozostałe artykuły
+
+            #kontakt
+                h1 Kontakt:
+                a#email email@gmail.com
+                #div_for_icons
+                    a#fb.icons(href='#')
+                    a#tt.icons(href='https://twitter.com/Sebastian_Kiec')
+            p.info2
+                | W razie sugestii, pytań lub propozycji zachęcamy do kontaktu poprzez podany adres email lub media społecznościowe (Facebook lub Twitter).
+            p.creators Twórcy: Mikołaj Pacek & Sebastian Kieć 
 
         block scripts
         script(src='/js/menu.js')
+
+        //-             
+
+//- W tej sprawie zachęcamy do kontaktu poprzez adres e-mail: „[nazwa maila]” lub poprzez kontakt w wiadomości prywatnej za pośrednictwem naszych kont w  mediach społecznościowych (Facebook oraz Twitter). [najlepiej jakby to fb i tt było odnośnikiem na nasze konto]
+
+//- 

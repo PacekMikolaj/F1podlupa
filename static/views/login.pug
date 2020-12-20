@@ -1,0 +1,22 @@
+extends layout
+
+block css
+    link(rel='stylesheet' href="/css/admin.css")
+
+
+block title
+    title Logowanie - F1podlupą.pl
+
+block content
+
+    #main
+        .desktop
+            h1 LOGOWANIE
+            form.loginForm(action="/admin/login" method="POST")
+                label#login 
+                    p login:
+                    input(type="text" name="login")
+                label#password
+                    p hasło:
+                    input(type="password" name="password")
+                input(type="submit" value="ZALOGUJ")

@@ -52,17 +52,17 @@ router
     .route('/')
     .get(redirectLogin, (req, res) => {
 
-        console.log('get admin');
-
-        res.sendFile(path.resolve(__dirname + "/../static/views/" + 'admin.html'));
-
+       // res.sendFile(path.resolve(__dirname + "/../static/views/" + 'admin.html'));
+        res.render("admin");
     })
 
 router
     .route('/login')
     .get(redirectAdmin, (req, res) => {
         console.log('get login');
-        res.sendFile(path.resolve(__dirname + "/../static/views/" + 'login.html'));
+      //  res.sendFile(path.resolve(__dirname + "/../static/views/" + 'login.html'));
+      res.render("login");
+
     })
     .post(async (req, res) => {
 
