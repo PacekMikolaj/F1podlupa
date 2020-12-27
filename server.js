@@ -37,8 +37,12 @@ app.get("/", paginatedResults(Article, limit, newest), async function (req, res)
 
     let data = {};
 
+    if(res.paginationInfo.page == 1)
+    {
+        data.newest = await Article.find().sort({ _id: -1 }).limit(newest).exec();
+    }
+
     data.articles = res.paginatedModels;
-    data.newest = await Article.find().sort({ _id: -1 }).limit(newest).exec();
     data.paginationInfo = res.paginationInfo;
 
 

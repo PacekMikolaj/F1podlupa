@@ -1,3 +1,23 @@
+#f1 {
+  background-color: #e10600;
+}
+
+#f2 {
+  background-color: #0090D0;
+}
+
+#fE {
+  background-color: #50CEF7;
+}
+
+#f1Basics {
+  background-color: #F7360C;
+}
+
+#other {
+  background-color: #3BE307;
+}
+
 #main {
   height: 500px;
   -webkit-box-pack: center;
@@ -37,6 +57,8 @@
   font-size: 1.5rem;
   display: block;
   text-align: center;
+  overflow: hidden;
+  border-radius: 0.5rem;
 }
 
 .desktop a:hover {
@@ -47,7 +69,8 @@
 .desktop h1 {
   font-family: "Exo 2", sans-serif;
   font-size: 2rem;
-  border-bottom: 2px solid red;
+  border-bottom: 3px solid red;
+  padding: 0.2rem;
   width: 100%;
   text-align: center;
   margin-bottom: 1rem;
@@ -91,28 +114,40 @@
   margin-bottom: 0.6rem;
 }
 
-.desktop label input {
+.desktop label input[type="text"],
+.desktop label input[type="password"] {
   font-size: 1rem;
   width: 60%;
 }
 
 .desktop input[type="submit"] {
-  width: 120px;
-  height: 30px;
+  padding: 0.3rem 1.5rem;
   font-size: 1.2rem;
   font-family: "Lalezar", cursive;
   border: 2px solid black;
   border-radius: 0.6rem;
   background-color: lightgrey;
   text-align: center;
+  cursor: pointer;
 }
 
 @media only screen and (min-width: 650px) {
   .desktop {
     width: 70%;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
-  .desktop input {
+  .desktop input[type="text"],
+  .desktop input[type="password"] {
     margin-right: 10%;
+  }
+  .desktop a {
+    width: 40%;
+    min-width: 200px;
+    padding: 0.7rem;
+    font-size: 1.8rem;
+    border-radius: 0.8rem;
   }
   .desktop label {
     width: 300px;

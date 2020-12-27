@@ -10,13 +10,17 @@ block title
 
 block content
   #main
-    .newest-articles
-      .con-title Najnowsze wiadomości
-      each val in newest
-        +new_article(val)
+    if paginationInfo.page == 1
+      .newest-articles
+        .con-title Najnowsze wiadomości
+        each val in newest
+          +new_article(val)
+      
         
     .articles
       .con-title Artykuły
+      if paginationInfo.page != 1
+        +pagination(paginationInfo)
       .squares
         each val in articles
           +small_article(val)

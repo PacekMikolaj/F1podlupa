@@ -1,3 +1,23 @@
+#f1 {
+  background-color: #e10600;
+}
+
+#f2 {
+  background-color: #0090D0;
+}
+
+#fE {
+  background-color: #50CEF7;
+}
+
+#f1Basics {
+  background-color: #F7360C;
+}
+
+#other {
+  background-color: #3BE307;
+}
+
 #main {
   white-space: pre-line;
   display: -webkit-box;
@@ -7,6 +27,9 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
 #article {
@@ -24,26 +47,30 @@
 #article .underline {
   width: 100%;
   height: 4px;
-  margin-top: 1rem;
+  margin: .5rem 0 .3rem;
+}
+
+#article .bottomUnderline {
+  margin: 0 0 0.3rem;
 }
 
 #article .cover {
   display: block;
   width: 100%;
   margin: 0 auto;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
 }
 
 #article #title {
   font-family: "Exo 2", sans-serif;
   font-size: 2.1rem;
   text-align: center;
-  margin-bottom: 1rem;
 }
 
-#article #author {
+#article .author {
   font-family: "Open Sans", sans-serif;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  color: #353535;
 }
 
 #article .highlight {
@@ -51,16 +78,17 @@
   font-size: 2rem;
 }
 
-#article #text,
 #article #short {
   font-family: "Lato", sans-serif;
   color: black;
   margin-bottom: 2rem;
-}
-
-#article #short {
   font-size: 1.4rem;
   line-height: 1.7rem;
+}
+
+#article #text {
+  font-family: "Lato", sans-serif;
+  color: black;
 }
 
 #article #text img {
@@ -70,14 +98,20 @@
 }
 
 #article #text p {
-  font-size: 1.3rem;
-  margin-top: -3rem;
+  font-size: 1.1rem;
+  margin-top: -2.2rem;
   line-height: 2rem;
+  color: #353535;
   overflow-wrap: break-word;
 }
 
+#article #text p br {
+  line-height: 0;
+}
+
 #article #text h1 {
-  margin-bottom: 1.5rem;
+  font-size: 1.6rem;
+  margin-bottom: 1.3rem;
 }
 
 #article #text a {
@@ -107,6 +141,12 @@
   #article #title {
     font-size: 2.5rem;
   }
+  #article #text p {
+    font-size: 1.3rem;
+  }
+  #article #text h1 {
+    font-size: 2rem;
+  }
 }
 
 @media only screen and (min-width: 800px) {
@@ -117,18 +157,17 @@
     margin-bottom: 2rem;
     /* border-radius: 3rem; */
   }
-  #article #text,
-  #article #short, #article #text p {
-    font-size: 1.5rem;
-    line-height: 2.2rem;
+  #article #short {
+    margin: 0.5rem 0 2rem 0;
   }
   #article p {
-    letter-spacing: .02rem;
+    letter-spacing: 0.02rem;
   }
   #article .cover {
     max-width: 1000px;
   }
   #article #text h1 {
+    font-size: 2.5rem;
     line-height: 3.5rem;
     margin-bottom: 1.5rem;
   }

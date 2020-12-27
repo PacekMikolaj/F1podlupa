@@ -4,7 +4,6 @@ block css
         link(rel='stylesheet' href='/css/article_site.css')
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"> 
-
 block title
  title #{article.title} - F1podlupą.pl
 block content
@@ -12,40 +11,45 @@ block content
         #article
 
             h1#title #{article.title}
-                case article.section
-                    when "f1"
-                        .underline(style="background-color: red")
-                    when "f2"
-                        .underline(style="background-color: #0a00ff")
-                    when "fe"
-                        .underline(style="background-color: #00d3ff")
-                    when "f1basics"
-                        .underline(style="background-color: rgb(136,0,21)")
-                    when "other"
-                        .underline(style="background-color: #3BE307")
+            case article.section
+                when "f1"
+                    .underline#f1
+                when "f2"
+                    .underline#f2
+                when "fe"
+                    .underline#fE
+                when "f1basics"
+                    .underline#f1Basics
+                when "other"
+                    .underline#other
                         
 
-            p#author #{article.author}, #{article.date}
+            p.author #{article.author}, #{article.date}
 
             p#short #{article.short}
 
             img#cover.cover(src='/upload/' + article.ID + '/cover.webp' alt='cover') 
 
-            p#text 
+            div#text
+
+            case article.section
+                    when "f1"
+                        .underline#f1.bottomUnderline
+                    when "f2"
+                        .underline#f2.bottomUnderline
+                    when "fe"
+                        .underline#fE.bottomUnderline
+                    when "f1basics"
+                        .underline#f1Basics.bottomUnderline
+                    when "other"
+                        .underline#other.bottomUnderline
+            p.author#bottomAuthor(style="text-align: end;") Autor: #{article.author}
 
         #seeAlso
             .con-title Zobacz także
             
             each val in articles
-                a.square(href="/article/" + val.ID)
-                    img.img.cover(src='/upload/' +val.ID + '/cover.webp' alt='cover')
-                    .notImg
-                        .title=  val.title 
-                        .text= val.short
-                        .next 
-                            p(style="display: block; font-weight: bold") Czytaj dalej 
-                            div(style="display: block; position: relative; height: 100%; width: 25px;")
-                                i.fas.fa-arrow-right
+                +small_article(val)
 
 
 block scripts

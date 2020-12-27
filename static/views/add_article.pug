@@ -4,13 +4,11 @@ block css
     link(rel='stylesheet' href='/css/add_article.css')
 
 block title
-    title dodaj artykuł - F1podlupą.pl
+    title Dodaj artykuł - F1podlupą.pl
 
 block content
   #main
-    form(method="POST", action="/admin/add", enctype="multipart/form-data") 
-
-        .instrukcja
+    .instrukcja
             h1 INSTRUKCJA
             p
              
@@ -54,8 +52,25 @@ block content
                 br
                 | Szanuj swoją prace i moją! Nie staraj się czegoś psuć na siłe! Nie umiem wszystkiego więc jak są jakieś propozycje, pytania lub coś nie działa -> wiesz gdzie mnie szukać.
 
-            
-        
+    if code
+        .edit_warning
+            div(style="margin-bottom: 2rem")
+                h2 Pamiętaj, edytujesz artykuł o kodzie:
+                p= code 
+            div
+                h2 Z datą: 
+                p= date
+    form(method="POST", action="/admin/add", enctype="multipart/form-data")  
+
+        if code
+            input(type="hidden" name="date" value=date)
+            input(type="hidden" name="code" value=code)
+
+        if code
+            label#saveData.label
+                p.Names Zachować starą datę?
+                input(type="checkbox" name="old_data")
+
         label#title.label
             p.Names Title:
             input.form-control(name="title", type="text" maxlength="60" required)
@@ -109,6 +124,17 @@ block content
             //-     option(value="other") OTHER
 
         button(value="Submit" class="submit") Submit
+
+    .instrukcja
+            h1 Upewnij się, że:
+            br
+            p Dodałeś wszystkie zdjęcia i w poprawny sposób dodałeś je do artykułu,
+            br
+            p W poprawny sposób oznaczyłeś podtytuły (nagłówek 1), cytaty, linki i zwykłe paragrafy w tekście,
+            br
+            p Nie ma za dużo/ za mało enterów ( raz enter przed i po podtytułem, jesli chcesz zeby teskt ci w artykule przeszedl do nastepnej linijki- 1 enter, jesli chcesz zrobic przerwe - 2 entery, nie używaj shift+enter XD),
+            br
+            p Sprawdź, czy nie ma żadych enterów pustych na końcu artykułu.
 
 block scripts
     script(src='/ckeditor/ckeditor/ckeditor.js')

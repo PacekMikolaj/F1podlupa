@@ -1,23 +1,24 @@
 mixin new_article(val)
   a.article(href="/article/" + val.ID)
             img.img.cover(src='/upload/' + val.ID + '/cover.webp' alt='')
+            case val.section
+              when "f1"
+                .type#f1
+                  .little FORMUŁA 1
+              when "f2"
+                .type#f2
+                  .little FORMUŁA 2
+              when "fe"
+                .type#fE
+                  .little FORMUŁA E
+              when "f1basics"
+                .type#f1Basics
+                  .little PODSTAWY F1
+              when "other"
+                .type#other
+                  .little POZOSTAŁE ARTYKUŁY
             .notImg
               .title= val.title
               .text= val.short
             
-            case val.section
-              when "f1"
-                .type(style="background-color: red")
-                  .little FORMUŁA 1
-              when "f2"
-                .type(style="background-color: #0a00ff")
-                  .little FORMUŁA 2
-              when "fe"
-                .type(style="background-color: #00d3ff")
-                  .little FORMUŁA E
-              when "f1basics"
-                .type(style="background-color: rgb(136,0,21)")
-                  .little PODSTAWY F1
-              when "others"
-                .type(style="background-color: #3BE307")
-                  .little POZOSTAŁE ARTYKUŁY
+            

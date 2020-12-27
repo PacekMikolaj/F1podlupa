@@ -18,8 +18,7 @@
   background-color: #3BE307;
 }
 
-/* ARTICLES */
-.newest-articles {
+#main {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -28,4 +27,25 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.instrukcja {
+  width: 70%;
+  background-color: black;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.instrukcja p {
+  color: white;
+  font-size: 1.3rem;
+  line-height: 1.8rem;
+}
+
+.instrukcja h1 {
+  color: white;
+  font-size: 2rem;
 }

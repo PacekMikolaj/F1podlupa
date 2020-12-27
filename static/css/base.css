@@ -1,3 +1,23 @@
+#f1 {
+  background-color: #e10600;
+}
+
+#f2 {
+  background-color: #0090D0;
+}
+
+#fE {
+  background-color: #50CEF7;
+}
+
+#f1Basics {
+  background-color: #F7360C;
+}
+
+#other {
+  background-color: #3BE307;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -22,7 +42,7 @@ header {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   display: -ms-grid;
   display: grid;
   -webkit-box-align: center;
@@ -133,11 +153,12 @@ nav {
   -ms-grid-column: 1;
   -ms-grid-column-span: 3;
   grid-area: navbar;
+  font-size: 1.4rem;
 }
 
 nav .option_menu {
   background-color: black;
-  font-size: 1.4rem;
+  font-size: 1em;
   padding: 0.2rem;
   display: block;
   text-decoration: none;
@@ -158,16 +179,16 @@ nav .option_menu p {
           flex: 0 0 100%;
 }
 
-nav #f1:hover p {
-  color: red;
+nav #f1Menu:hover p {
+  color: #e10600;
 }
 
-nav #f2:hover p {
-  color: #0a00ff;
+nav #f2Menu:hover p {
+  color: #0090D0;
 }
 
-nav #fE:hover p {
-  color: #00d3ff;
+nav #fEMenu:hover p {
+  color: #50CEF7;
 }
 
 /*   MAIN    */
@@ -180,11 +201,17 @@ nav #fE:hover p {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .con-title {
   line-height: 2rem;
-  margin: 0 auto 2rem;
+  margin: 0 auto 1rem;
   width: 80%;
   font-size: 2rem;
   text-align: center;
@@ -479,15 +506,19 @@ nav #fE:hover p {
             align-items: center;
     cursor: pointer;
   }
-  nav #strona_glowna {
+  nav #strona_glownaMenu {
     width: 30%;
   }
-  nav #f1,
-  nav #f2,
-  nav #fE {
+  nav #f1Menu,
+  nav #f2Menu,
+  nav #fEMenu {
     width: 13%;
+    font-size: 1.3em;
   }
-  nav #pozostale {
+  nav .lol {
+    padding: 0;
+  }
+  nav #pozostaleMenu {
     width: 31%;
   }
   #footer {
@@ -499,19 +530,17 @@ nav #fE:hover p {
 }
 
 @media only screen and (min-width: 800px) {
-  header nav #f1,
-  header nav #f2,
-  header nav #fE {
-    -webkit-transition: 0.1s;
-    transition: 0.1s;
+  .con-title {
+    margin: 0 auto 2rem;
   }
-  header nav #f1:hover p,
-  header nav #f2:hover p,
-  header nav #fE:hover p {
+  header {
+    margin-bottom: 3rem;
+  }
+  header nav #f1Menu,
+  header nav #f2Menu,
+  header nav #fEMenu {
     -webkit-transition: 0.1s;
     transition: 0.1s;
-    -webkit-transform: scale(150%);
-            transform: scale(150%);
   }
   #footer {
     font-size: 1rem;
@@ -556,7 +585,7 @@ nav #fE:hover p {
 }
 
 @media only screen and (min-width: 1200px) {
-  nav .option_menu {
+  nav {
     font-size: 2rem;
   }
 }

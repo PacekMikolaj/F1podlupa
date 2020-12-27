@@ -22,12 +22,6 @@ router.route('/')
 
         let date = new Date();
 
-        let minuty;
-
-        if (date.getMinutes() < 10) {
-            minuty = "0" + date.getMinutes();
-        } else { minuty = date.getMinutes(); }
-
         form.keepExtensions = true;
 
         form.uploadDir = __dirname + '/../static/upload/';
@@ -35,9 +29,36 @@ router.route('/')
         fs.mkdirSync(form.uploadDir + `${id}/`);
 
         //FORM PARSE
-        form.parse(req, function (err, fields, files) {
+        form.parse(req, async function (err, fields, files) {
 
             console.log('PARSE')
+
+            if (fields.code) {
+                console.log('edycja!');
+
+                fs.rmdirSync(`${form.uploadDir}/${fields.code}`, { recursive: true }, (error) => { console.log('error przy usuwaniu folderu'); console.log(error) });
+
+                await Article.deleteOne({ "ID": fields.code });
+
+            } else {
+                console.log('nowy');
+            }
+
+            if (fields.old_data) {
+                console.log('z zachowaniem starej daty.');
+
+                date = fields.date;
+
+            } else {
+
+                let minuty;
+
+                if (date.getMinutes() < 10) {
+                    minuty = "0" + date.getMinutes();
+                } else { minuty = date.getMinutes(); }
+
+                date = date.getHours() + ":" + minuty + " " + date.getDate() + "." + (parseInt(date.getMonth() % 12) + 1) + "." + date.getFullYear();
+            }
 
             let article = new Article();
 
@@ -49,7 +70,7 @@ router.route('/')
             article.author = fields.author;
             article.short = fields.short;
             article.section = fields.section;
-            article.date = date.getHours() + ":" + minuty + " " + date.getDate() + "." + (date.getMonth() + 1) % 12 + "." + date.getFullYear();
+            article.date = date;
             article.ID = id;
 
             article.save(function (err) {
@@ -81,7 +102,7 @@ router.route('/')
 
 
 
-    
+
 
 
 let changePathWithRegex = (body, id) => {
@@ -130,10 +151,6 @@ let addFile = (file, field, id, uploadDir) => {
     fs.rename(file.path, uploadDir + `${id}/${name}.${ext}`, function (err) {
 
         if (err) console.log(err);
-
-        console.log('path: ' + file.path);
-        console.log('path2: ' + `./../static/upload/${id}/${name}.${ext}`);
-        console.log('path3 : ' + uploadDir + `${id}/${name}.${ext}`);
 
         sharp(uploadDir + id + `/${name}.${ext}`)
             .resize({ width: 1000 })

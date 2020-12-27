@@ -2,7 +2,7 @@ $(document).ready(function () {
 
     $(window).on("resize", (e) => {
         if ($(window).width() > 630)
-            $("#nav_elements").css("display", "flex");
+            $("nav").css("display", "flex");
 
     })
 

@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const Admin = require('../static/models/admin');
+const Article = require('../static/models/article');
 const bcrypt = require('bcryptjs');
 const path = require('path');
 const bodyParser = require("body-parser");
@@ -52,7 +53,7 @@ router
     .route('/')
     .get(redirectLogin, (req, res) => {
 
-       // res.sendFile(path.resolve(__dirname + "/../static/views/" + 'admin.html'));
+        // res.sendFile(path.resolve(__dirname + "/../static/views/" + 'admin.html'));
         res.render("admin");
     })
 
@@ -60,8 +61,8 @@ router
     .route('/login')
     .get(redirectAdmin, (req, res) => {
         console.log('get login');
-      //  res.sendFile(path.resolve(__dirname + "/../static/views/" + 'login.html'));
-      res.render("login");
+        //  res.sendFile(path.resolve(__dirname + "/../static/views/" + 'login.html'));
+        res.render("login");
 
     })
     .post(async (req, res) => {
@@ -83,6 +84,45 @@ router
             res.redirect('/admin');
 
         } catch (e) { console.log(e); }
+    })
+
+router
+    .route('/edit')
+    .get(redirectLogin, (req, res) => {
+        res.render('edit_article');
+    })
+    .post(redirectLogin, async (req, res) => {
+        console.log('KOD: ' + req.body.code);
+        let data = { code: req.body.code };
+
+        try {
+
+            data.date = await Article.findOne({ "ID": req.body.code });
+
+            data.date = data.date.date;
+
+            console.log('data.date: ');
+            console.log(data.date);
+
+            if (isNaN(data.code)) {//nie koniecznie musi byc
+                data = { error: 'IC' };
+                res.render('edit_article', data);
+            } else
+                res.render('add_article', data);
+
+
+        } catch (err) {
+            console.log('nie znaleziono artykulu...');
+            console.log(err);
+
+            data.error = 'FNE';
+            res.render('edit_article', data);
+        }
+
+
+
+
+
     })
 
 

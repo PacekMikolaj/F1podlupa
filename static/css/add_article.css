@@ -1,3 +1,23 @@
+#f1 {
+  background-color: #e10600;
+}
+
+#f2 {
+  background-color: #0090D0;
+}
+
+#fE {
+  background-color: #50CEF7;
+}
+
+#f1Basics {
+  background-color: #F7360C;
+}
+
+#other {
+  background-color: #3BE307;
+}
+
 form {
   width: 80%;
   margin: 0 auto;
@@ -8,6 +28,55 @@ form {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+.edit {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.edit .img_guide {
+  width: 50%;
+  margin-top: 3rem;
+}
+
+input[type="text"] {
+  font-size: 2rem;
+  width: 100%;
+}
+
+#saveData {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+#saveData p {
+  display: block;
+  width: 45%;
+}
+
+#saveData input {
+  display: block;
+  -webkit-transform: scale(2);
+          transform: scale(2);
+  height: 30px;
+  margin-top: 1rem;
 }
 
 .label {
@@ -21,18 +90,8 @@ select {
   font-size: 1.5rem;
 }
 
-p {
+form p {
   font-size: 2rem;
-}
-
-#title input {
-  font-size: 2rem;
-  width: 100%;
-}
-
-#author input {
-  font-size: 2rem;
-  width: 100%;
 }
 
 .Names {
@@ -54,6 +113,57 @@ p {
   font-family: "Times New Roman", Times, serif;
   width: 100%;
   height: 400px;
+}
+
+.edit_warning {
+  width: 60%;
+  background-color: red;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 2rem;
+  padding: 0.5rem;
+}
+
+.edit_warning div {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.edit_warning h2,
+.edit_warning p {
+  color: white;
+  font-size: 2rem;
+}
+
+.edit_warning h2 {
+  width: 70%;
+}
+
+.edit_warning p {
+  width: 30%;
 }
 
 .submit {
@@ -93,7 +203,7 @@ p {
 .instrukcja {
   width: 70%;
   background-color: black;
-  margin: 0 auto;
+  margin: 1rem auto 2rem;
   padding: 1rem;
 }
 
@@ -123,4 +233,5 @@ p {
 
 .radio p {
   margin-left: 1rem;
+  font-size: 2rem;
 }
