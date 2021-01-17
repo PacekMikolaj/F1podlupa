@@ -1,0 +1,59 @@
+extends layout
+
+block css
+    link(rel='stylesheet' href="/css/f2.css")
+    link(rel='stylesheet' href="/css/car_display.css")
+
+
+block title
+    title F2 - F1podlupą.pl
+
+block content
+    include views_components/car_display.pug
+
+    #main
+        #introduction
+            .description
+                //- .leftD
+                //- .titleOnClickD Formuła 2
+                    .underline
+                //- .centerD
+                h1.title Formuła 2
+                    .underline
+                .text To tutaj młody kierowca zmienia się w mistrza wyścigów. Tylko najlepsi dostają się do Formuły 1. Jeśli chcesz zobaczyć szczegóły wędrówki kierowców do królowej motorsportu, to dobrze trafiłeś.
+            +car_display("/img/f2car_1.jpg")
+            
+        .shifter
+        .newest-articles
+            .con-title Najnowsze wiadomości - Formuła 2
+            each val in newest
+                +new_article(val)
+
+        .achievements
+            .title Osiągnięcia byłych kierowców F2
+                .underline
+            .text Dowiedz się wiecej o kierowcach którzy zaczynali swoją karierę w F2.
+            #links  
+                    a(href="#")#first
+                        p GP2 2005-2010
+                        .bg
+                        img.img(src="/img/gp2_2006.jpg" alt="gp2_2006")
+                    a(href="#")#second
+                        p GP2 2011-2016
+                        .bg
+                        img.img(src="/img/gp2_2011.jpg" alt="gp2_2011")
+                    a(href="#")#third
+                        p F2 2017-2020
+                        .bg
+                        img.img(src="/img/f2_2017.jpg" alt="f2_2017")
+
+
+
+        .articles
+            .con-title Artykuły - Formuła 2
+            .squares
+                each val in articlesF2
+                    +small_article(val)
+
+        block scripts
+        script(src='/js/car_display.js')

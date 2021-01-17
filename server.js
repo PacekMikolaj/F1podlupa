@@ -18,9 +18,12 @@ connectDB();
 
 //Import Routes
 const admin = require('./routes/admin');
+const f1Route = require('./routes/f1Route');
+
 
 //Route Middleware
 app.use('/admin', admin);
+app.use('/f1', f1Route);
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -60,6 +63,17 @@ app.get("/f1", async function (req, res) {
     res.render("f1", data);
 })
 
+app.get("/f2", paginatedResults(Article, limit, newest, "f2"), async function (req, res) {
+
+    let data = {};
+    data.newest = await Article.find({ "section": "f2" }).sort({ _id: -1 }).limit(newest).exec();
+    data.articlesF2 = res.paginatedModels;
+    //data.newest = await Article.find().sort({ _id: -1 }).limit(newest).exec();
+    //data.articlesF2 = await Article.find({ "section": "f2" }).sort({ _id: -1 }).exec();
+    //data.articlesF1basics = await Article.find({ "section": "f1basics" }).sort({ _id: -1 }).exec();
+
+    res.render("f2", data);
+})
 
 app.get("/article/:ID", async function (req, res) {
 

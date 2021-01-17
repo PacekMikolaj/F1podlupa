@@ -27,19 +27,3 @@ mixin small_article(val)
                 p(style="display: block; font-weight: bold") Czytaj dalej 
                 div(style="display: block; position: relative; height: 100%; width: 25px;")
                   i.fas.fa-arrow-right
-            case val.section
-              when "f1"
-                .type.bottom#f1
-                  .little FORMUŁA 1
-              when "f2"
-                .type.bottom#f2
-                  .little FORMUŁA 2
-              when "fe"
-                .type.bottom#fE
-                  .little FORMUŁA E
-              when "f1basics"
-                .type.bottom#f1Basics
-                  .little PODSTAWY F1
-              when "other"
-                .type.bottom#other
-                  .little POZOSTAŁE ARTYKUŁY

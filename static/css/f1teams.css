@@ -1,0 +1,138 @@
+#f1 {
+  background-color: #e10600;
+}
+
+#f2 {
+  background-color: #0090D0;
+}
+
+#fE {
+  background-color: #50CEF7;
+}
+
+#f1Basics {
+  background-color: #F7360C;
+}
+
+#other {
+  background-color: #3BE307;
+}
+
+h3 {
+  color: #3d3d3d;
+  font-family: "Lato", sans-serif;
+  font-size: .9rem;
+  font-style: italic;
+  width: 100%;
+  text-align: right;
+  margin-top: .2rem;
+}
+
+.underline {
+  width: 100%;
+  height: 3px;
+  background-color: #e10600;
+  margin-top: 3px;
+}
+
+#introduction {
+  width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 2rem;
+}
+
+#introduction .title {
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+  font-family: "Exo 2", sans-serif;
+  font-style: italic;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+#introduction .text {
+  font-family: "Exo 2", sans-serif;
+  font-size: 1.5rem;
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+}
+
+#content {
+  width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#content .team {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#content .team .underline {
+  height: 4px;
+}
+
+#content .team .name {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  font-family: "Exo 2", sans-serif;
+  font-style: italic;
+  font-size: 2rem;
+  margin-bottom: 1.3rem;
+}
+
+#content .team img {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+#content .info {
+  font-family: "Lato", sans-serif;
+  font-size: 1.2rem;
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  color: #353535;
+}
+
+#content .info > div {
+  margin: 1rem 0 1rem;
+}

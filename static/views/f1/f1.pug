@@ -1,4 +1,4 @@
-extends layout
+extends ../layout
 
 
 block css
@@ -16,13 +16,19 @@ block content
                 h1.title Formuła 1
                     .underline
                 .text W tym dziale znajdziesz najważniejsze i najnowsze wiadomości ze świata F1, a także mnóstwo artykułów i ciekawostek o królowej motorsportu.
-                ul#links
-                    li
-                        a(href="#") Zespoły
-                    li
-                        a(href="#") Kierowcy
-                    li
-                        a(href="#") Tory Formuły 1
+                #links
+                    a(href="#")
+                        p Kierowcy
+                        img(src="/img/driver.png" alt="driver").icon
+                        img.img(src="/img/f1driver.jpg" alt="driver")
+                    a(href="/f1/teams")
+                        p Zespoły
+                        img(src="/img/group.png" alt="team").icon
+                        img.img(src="/img/f1team.jpg" alt="team")
+                    a(href="#")
+                        p Tory Formuły 1
+                        img(src="/img/track.png" alt='track').icon
+                        img.img(src="/img/f1circuit.jpg" alt="track")
 
             #f1car
                 h1.title Samochody F1

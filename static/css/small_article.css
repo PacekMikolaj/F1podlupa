@@ -18,22 +18,44 @@
   background-color: #3BE307;
 }
 
+h3 {
+  color: #3d3d3d;
+  font-family: "Lato", sans-serif;
+  font-size: .9rem;
+  font-style: italic;
+  width: 100%;
+  text-align: right;
+  margin-top: .2rem;
+}
+
 .square {
-  margin: 0 auto;
+  margin: 0;
   margin-bottom: 2rem;
-  width: 90%;
-  height: 450px;
+  width: 47%;
+  height: 250px;
   position: relative;
-  display: block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: hidden;
 }
 
 .square .img {
   margin: 0 auto;
-  height: 100%;
-  max-height: 350px;
+  min-height: 130px;
   width: 100%;
-  -o-object-position: 50% -20px;
-     object-position: 50% -20px;
+  -o-object-position: 50% 0;
+     object-position: 50% 0;
   -o-object-fit: cover;
      object-fit: cover;
   position: absolute;
@@ -44,6 +66,7 @@
 .square .notImg {
   position: absolute;
   width: 100%;
+  height: 140px;
   background-color: black;
   color: white;
   bottom: 0;
@@ -52,8 +75,18 @@
 }
 
 .square .notImg .content {
-  padding: 0.7rem;
-  padding-top: 0.5rem;
+  --height: 100%;
+  padding: 0 0.7rem 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: calc(var(--height) - 22px);
 }
 
 .square .notImg .type {
@@ -82,8 +115,7 @@
 }
 
 .square .notImg .title {
-  font-size: 1.4rem;
-  padding-bottom: 0.3rem;
+  font-size: 1rem;
   font-weight: bold;
   font-family: "Exo 2", sans-serif;
 }
@@ -91,6 +123,7 @@
 .square .notImg .text {
   font-size: 1rem;
   display: block;
+  display: none;
   padding: 0.5rem 0;
   font-family: "Lato", sans-serif;
 }
@@ -109,10 +142,35 @@
 }
 
 @media only screen and (min-width: 650px) {
-  .square .text {
-    display: block;
+  .square {
+    height: 360px;
   }
-  .square .next {
+  .square .img {
+    min-height: 150px;
+  }
+  .square .notImg {
+    height: 210px;
+  }
+  .square .notImg .content {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    padding: .7rem;
+    -webkit-box-pack: unset;
+        -ms-flex-pack: unset;
+            justify-content: unset;
+  }
+  .square .notImg .text {
+    display: block;
+    padding: 0;
+    font-size: .9rem;
+  }
+  .square .notImg .title {
+    font-size: .95rem;
+    margin-bottom: .2rem;
+  }
+  .square .notImg .next {
     padding-bottom: 0;
     line-height: 100%;
   }
@@ -126,20 +184,11 @@
   .square {
     margin: 0;
     margin-bottom: 2rem;
-    width: 45%;
+    width: 46%;
     height: var(--heightSquare);
     overflow: hidden;
     -webkit-transition: 0.1s;
     transition: 0.1s;
-  }
-  .square .title {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    height: 80px;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
   }
   .square .img {
     -o-object-position: 50% -20px;
@@ -149,16 +198,26 @@
     width: 100%;
   }
   .square .notImg {
-    height: calc(var(--heightSquare) + 22px);
+    height: var(--heightSquare);
     width: 100%;
-    -webkit-transform: translateY(calc(var(--heightSquare) - 70px - 22px));
-            transform: translateY(calc(var(--heightSquare) - 70px - 22px));
+    -webkit-transform: translateY(calc(var(--heightSquare) - 70px - 44px));
+            transform: translateY(calc(var(--heightSquare) - 70px - 44px));
     -webkit-transition: 0.2s;
     transition: 0.2s;
     padding: 0;
   }
+  .square .notImg .title {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 80px;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    font-size: 1.3rem;
+  }
   .square .notImg .content {
-    padding-bottom: 0.5rem;
+    padding: .3rem .7rem .5rem;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -166,9 +225,6 @@
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
@@ -183,7 +239,7 @@
     height: initial;
     -webkit-transition: 0.25s;
     transition: 0.25s;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
   .square .notImg .next {
     width: 94%;
@@ -198,7 +254,7 @@
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-    bottom: 2rem;
+    bottom: 1rem;
     font-size: 1.2rem;
     opacity: 1;
     text-transform: uppercase;
@@ -226,8 +282,8 @@
     height: var(--heightSquare);
   }
   .square .notImg {
-    -webkit-transform: translateY(calc(var(--heightSquare) - 85px - 22px));
-            transform: translateY(calc(var(--heightSquare) - 85px - 22px));
+    -webkit-transform: translateY(calc(var(--heightSquare) - 85px - 44px));
+            transform: translateY(calc(var(--heightSquare) - 85px - 44px));
   }
   .square .notImg .text {
     padding: 1rem 0;
@@ -248,8 +304,8 @@
     height: var(--heightSquare);
   }
   .square .notImg {
-    -webkit-transform: translateY(calc(var(--heightSquare) - 70px - 22px));
-            transform: translateY(calc(var(--heightSquare) - 70px - 22px));
+    -webkit-transform: translateY(calc(var(--heightSquare) - 70px - 44px));
+            transform: translateY(calc(var(--heightSquare) - 70px - 44px));
   }
   .square .notImg .text {
     padding: 1rem 0;
@@ -270,8 +326,8 @@
     height: var(--heightSquare);
   }
   .square .notImg {
-    -webkit-transform: translateY(calc(var(--heightSquare) - 85px - 22px));
-            transform: translateY(calc(var(--heightSquare) - 85px - 22px));
+    -webkit-transform: translateY(calc(var(--heightSquare) - 85px - 44px));
+            transform: translateY(calc(var(--heightSquare) - 85px - 44px));
   }
   .square .notImg .text {
     padding: 1rem 0;

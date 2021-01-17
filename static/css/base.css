@@ -18,6 +18,16 @@
   background-color: #3BE307;
 }
 
+h3 {
+  color: #3d3d3d;
+  font-family: "Lato", sans-serif;
+  font-size: .9rem;
+  font-style: italic;
+  width: 100%;
+  text-align: right;
+  margin-top: .2rem;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -43,6 +53,10 @@ header {
   height: -moz-fit-content;
   height: fit-content;
   margin-bottom: 2rem;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 99;
   display: -ms-grid;
   display: grid;
   -webkit-box-align: center;
@@ -213,7 +227,7 @@ nav #fEMenu:hover p {
   line-height: 2rem;
   margin: 0 auto 1rem;
   width: 80%;
-  font-size: 2rem;
+  font-size: 1.6rem;
   text-align: center;
   border-bottom: 2px solid grey;
   color: grey;
@@ -451,6 +465,7 @@ nav #fEMenu:hover p {
         -ms-flex-direction: row;
             flex-direction: row;
     height: 80px;
+    position: unset;
   }
   header #title {
     padding-left: 0.5rem;
@@ -531,6 +546,7 @@ nav #fEMenu:hover p {
 
 @media only screen and (min-width: 800px) {
   .con-title {
+    font-size: 2rem;
     margin: 0 auto 2rem;
   }
   header {
@@ -572,9 +588,6 @@ nav #fEMenu:hover p {
     width: 40px;
     background-size: 40px 40px;
   }
-  header {
-    height: 100px;
-  }
   header #title {
     padding-left: 0;
     font-size: 2.3rem;
@@ -586,7 +599,7 @@ nav #fEMenu:hover p {
 
 @media only screen and (min-width: 1200px) {
   nav {
-    font-size: 2rem;
+    font-size: 1.6rem;
   }
 }
 
@@ -603,16 +616,21 @@ nav #fEMenu:hover p {
           flex-direction: column;
 }
 
-.articles .squares {
-  width: 100%;
+.squares {
+  width: 90%;
   margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 @media only screen and (min-width: 800px) {

@@ -18,6 +18,16 @@
   background-color: #3BE307;
 }
 
+h3 {
+  color: #3d3d3d;
+  font-family: "Lato", sans-serif;
+  font-size: .9rem;
+  font-style: italic;
+  width: 100%;
+  text-align: right;
+  margin-top: .2rem;
+}
+
 #help {
   width: 100%;
   display: -webkit-box;
@@ -36,14 +46,14 @@
 .underline {
   width: 100%;
   height: 3px;
-  background-color: red;
+  background-color: #e10600;
   margin-top: 3px;
 }
 
 /*   DESCRIPTION   */
 #description {
   width: 90%;
-  margin: 0 auto;
+  margin: 0 auto 2rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -60,36 +70,90 @@
   font-family: "Exo 2", sans-serif;
   font-style: italic;
   font-size: 3.6rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 #description .text {
   font-family: "Exo 2", sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   width: 90%;
   margin: 0 auto;
   margin-bottom: 1rem;
+  text-align: center;
 }
 
-#description ul {
+#description #links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 90%;
   margin: 0 auto;
-  margin-bottom: 3rem;
-  list-style-position: inside;
 }
 
-#description ul a {
+#description #links a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  border-radius: 1rem;
+  background-color: #16161d;
   text-decoration: none;
-  color: black;
+  position: relative;
+  height: 60px;
+  padding: .5rem;
+  margin-bottom: 0.5rem;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+#description #links a p {
+  margin-left: 1rem;
+  color: white;
   font-family: "Exo 2", italic;
   font-style: italic;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
+  width: 100%;
 }
 
-#description ul li {
-  color: red;
-  margin-bottom: 0.5rem;
-  padding-left: 0.5rem;
+#description #links a .icon {
+  position: absolute;
+  right: 1.5rem;
+  width: 37px;
+  height: 37px;
+  -webkit-filter: invert(1);
+          filter: invert(1);
+}
+
+#description #links a .img {
+  display: none;
+}
+
+#description #links a:hover {
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  background-color: #e9e9e2;
+}
+
+#description #links a:hover p {
+  color: black;
+}
+
+#description #links a:hover .icon {
+  -webkit-filter: invert(0);
+          filter: invert(0);
 }
 
 /*    F1CAR    */
@@ -182,13 +246,13 @@
 }
 
 .slider .square {
-  width: 90%;
+  width: 80%;
 }
 
 .slider .slick-arrow {
   /* position: absolute; */
-  top: 40%;
-  z-index: 99;
+  top: 50%;
+  z-index: 4;
   width: 2.5rem;
   height: 2.5rem;
   /* color: white;
@@ -261,31 +325,101 @@
   .slider {
     width: 95%;
   }
+  .slider .square {
+    width: 90%;
+  }
   .slider .slick-dots {
     bottom: -10px;
   }
   #description {
     margin: 0;
-    width: 45%;
+    width: 47%;
     border-radius: 2rem;
     background-color: white;
     padding: 1.4rem;
+  }
+  #description #links {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  #description #links a {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 100%;
+    border-radius: 1rem;
+    background-color: #16161d;
+    text-decoration: none;
+    position: relative;
+    height: 75px;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+  }
+  #description #links a p {
+    margin-left: 1rem;
+    color: white;
+    font-family: "Exo 2", italic;
+    font-style: italic;
+    font-size: 1.4rem;
+    width: 100%;
+  }
+  #description #links a .icon {
+    position: absolute;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    -webkit-filter: invert(1);
+            filter: invert(1);
+  }
+  #description #links a .img {
+    display: none;
+  }
+  #description #links a:hover {
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    background-color: #e9e9e2;
+  }
+  #description #links a:hover p {
+    color: black;
+  }
+  #description #links a:hover .icon {
+    -webkit-filter: invert(0);
+            filter: invert(0);
   }
   #description .title {
     font-size: 2.9rem;
     margin: 0 0 2rem 0;
     line-height: 2.7rem;
   }
-  #description #links, #description .title, #description .text {
+  #description .title,
+  #description .text,
+  #description #links {
     width: 100%;
   }
   #description .text {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     margin-bottom: 2rem;
+    text-align: center;
   }
   #f1car {
     margin: 0;
-    width: 45%;
+    width: 47%;
     border-radius: 2rem;
   }
   #f1car .title {
@@ -299,7 +433,7 @@
   }
   #f1car a {
     font-size: 1.1rem;
-    margin-top: .2rem;
+    margin-top: 0.2rem;
   }
   #help {
     -webkit-box-orient: horizontal;
@@ -327,6 +461,29 @@
   }
 }
 
+@media only screen and (min-width: 950px) {
+  #description .text {
+    font-size: 1.4rem;
+    margin-bottom: 3rem;
+  }
+  #description .title {
+    margin-bottom: 3rem;
+  }
+  #description #links {
+    margin-top: 3rem;
+  }
+  #description #links a {
+    height: 80px;
+  }
+  #description #links a p {
+    font-size: 1.6rem;
+  }
+  #description #links a .icon {
+    width: 50px;
+    height: 50px;
+  }
+}
+
 @media only screen and (min-width: 1200px) {
   .articlesF1 {
     -webkit-box-pack: justify;
@@ -341,19 +498,134 @@
   #description {
     width: 50%;
   }
+  #description .title {
+    margin-bottom: 3rem;
+  }
+  #description .text {
+    font-size: 1.6rem;
+  }
+  #description #links {
+    margin-top: 4rem;
+  }
+  #description #links a {
+    height: 80px;
+  }
+  #description #links a p {
+    font-size: 1.6rem;
+  }
+  #description #links a .icon {
+    width: 50px;
+    height: 50px;
+  }
 }
 
 @media only screen and (min-width: 1500px) {
   .articlesF1 {
     width: 80%;
   }
+  #f1car {
+    width: 35%;
+  }
+  #f1car .title {
+    font-size: 3rem;
+  }
+  #f1car .text {
+    font-size: 1.6rem;
+  }
+  #f1car .text2 {
+    font-size: 1.2rem;
+  }
+  #f1car a {
+    font-size: 1.4rem;
+  }
+  #description {
+    width: 60%;
+  }
+  #description .title {
+    margin-bottom: 1rem;
+    font-size: 4rem;
+    line-height: 3.5rem;
+  }
+  #description .text {
+    margin: 0;
+  }
+  #description #links {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  #description #links a {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: unset;
+        -ms-flex-align: unset;
+            align-items: unset;
+    width: 32%;
+    height: 350px;
+    overflow: hidden;
+  }
+  #description #links a .icon {
+    display: none;
+  }
+  #description #links a p {
+    font-size: 1.55rem;
+    -webkit-transition: .2s;
+    transition: .2s;
+    text-align: center;
+    margin: 1rem auto;
+  }
+  #description #links a .img {
+    -webkit-transition: .2s;
+    transition: .2s;
+    margin: 0 auto;
+    display: block;
+    height: 200px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: 50% 0;
+       object-position: 50% 0;
+    position: absolute;
+    bottom: 3rem;
+  }
+  #description #links a:hover p {
+    -webkit-transition: .2s;
+    transition: .2s;
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+  #description #links a:hover .img {
+    -webkit-transition: .2s;
+    transition: .2s;
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
   .f1basics {
     width: 80%;
+  }
+  .f1basics > .title {
+    font-size: 3rem;
+  }
+  .f1basics > .text {
+    font-size: 1.7rem;
   }
   #help {
     width: 80%;
   }
   .slider {
     width: 100%;
+  }
+  .lol {
+    width: 50px;
   }
 }

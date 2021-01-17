@@ -4,68 +4,40 @@ $(document).ready(function () {
 
     for (let i = 0; i < articles.length; i++) {
 
-
         ///canvas
-        //  console.log($(articles[i].children[1]));
+          //console.log($(articles[i].children[2]));
+        $(articles[i].children[2].children[1]).append(createTriangle(300, "triangle"));
+        
 
-        let canvas = document.createElement("canvas");
-        canvas.classList.add("triangle");
-        canvas.width = "100";
-        canvas.height = "300";
+    }
 
-        $(articles[i].children[1]).append(canvas);
+    
+})
+
+let createTriangle = (height, className) => {
+    let canvas = document.createElement("canvas");
+
+        canvas.classList.add(className);
+
+
+        canvas.width = (height/2).toString();
+        canvas.height = (height).toString();
 
         let context = canvas.getContext("2d");
 
         context.beginPath();
-        context.moveTo(0, 300);
-        context.lineTo(100, 300);
-        context.lineTo(100, 0);
+        context.moveTo(0, height);
+        context.lineTo(height/3, height);
+        context.lineTo(height/3, 0);
 
         context.closePath();
 
         context.fillStyle = "#FFFFFF";
         context.fill();
 
-    }
+        return canvas;
+}
 
-    // $(window).bind("load", function () {
-
-    //     gsap.registerPlugin(CSSRulePlugin);
-        
-    //     let notImg = document.querySelectorAll(".notImg");
-
-    //     gsap.to(notImg, {stagger: .1});
-    //     console.log(notImg)
-        
-    //     let ruleNotImgBefore = CSSRulePlugin.getRule('.notImg::before');
-        
-    //     console.log(ruleNotImgBefore);
-        
-    //     let ruleNotImgAfter = CSSRulePlugin.getRule('.notImg::after');
-        
-    //     let tl = gsap.timeline({ defaults: { ease: ' Power2.easeOut' } })
-        
-    //     tl.to(ruleNotImgBefore, {
-    //         height: '100%',
-    //     })
-    //     tl.pause();
-        
-    //     console.log('ekhem')
-        
-    //     notImg.forEach(div => {
-        
-    //         div.addEventListener('mouseenter', () => {
-    //             console.log('lol')
-    //             tl.play();
-    //         })
-        
-    //    });
-
-
-
-    // });
-})
 
 
 
