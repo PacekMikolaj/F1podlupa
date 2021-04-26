@@ -1,0 +1,30 @@
+extends ../layout
+
+block css
+    link(rel='stylesheet' href='/css/add_article.css')
+
+block title
+    title Usuń artykuł - F1podlupą.pl
+
+block content
+    #main
+
+        if error == 'IC'
+            .warning
+                h2 Podany kod nie był numerem.
+        if error == 'FNE'
+            .warning
+                h2 Podany artykuł nie istnieje.
+
+        .instrukcja.edit
+            h1 INSTRUKCJA
+            p Chcesz usunąć artykuł? Wejdź na stronie na ten artykuł, a następnie z jego adresu internetowego skopiuj jego KOD, i wklej go w poniższe pole opisane: TU WPISZ KOD.
+            br
+            img.img_guide(src="/img/guide_edit_article.png" alt="guide_edit_article")
+
+        form(method="POST" action='/admin/delete')
+            label#code.label
+                p.Names TU WPISZ KOD:
+                input(type="text" name="code" minlength="13" required)
+
+            button(value="Submit" class="submit") Dalej

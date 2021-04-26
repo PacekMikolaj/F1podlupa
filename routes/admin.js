@@ -7,6 +7,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const morgan = require('morgan');
+const fs = require('fs');
 const { redirectAdmin, redirectLogin } = require('../middleware/authorization');
 
 
@@ -23,9 +24,7 @@ router.use(
         secret: process.env.SECRET_CODE,
         resave: true,
         saveUninitialized: false,
-        cookie: {
-            maxAge: 7200000
-        }
+        cookie: { httpOnly: true }
     })
 )
 
@@ -54,7 +53,7 @@ router
     .get(redirectLogin, (req, res) => {
 
         // res.sendFile(path.resolve(__dirname + "/../static/views/" + 'admin.html'));
-        res.render("admin");
+        res.render("admin/admin");
     })
 
 router
@@ -62,7 +61,7 @@ router
     .get(redirectAdmin, (req, res) => {
         console.log('get login');
         //  res.sendFile(path.resolve(__dirname + "/../static/views/" + 'login.html'));
-        res.render("login");
+        res.render("admin/login");
 
     })
     .post(async (req, res) => {
@@ -89,7 +88,7 @@ router
 router
     .route('/edit')
     .get(redirectLogin, (req, res) => {
-        res.render('edit_article');
+        res.render('admin/edit_article');
     })
     .post(redirectLogin, async (req, res) => {
         console.log('KOD: ' + req.body.code);
@@ -97,18 +96,18 @@ router
 
         try {
 
-            data.date = await Article.findOne({ "ID": req.body.code });
+            data.article = await Article.findOne({ "ID": req.body.code });
 
-            data.date = data.date.date;
+            data.date = data.article.date;
 
             console.log('data.date: ');
             console.log(data.date);
 
             if (isNaN(data.code)) {//nie koniecznie musi byc
                 data = { error: 'IC' };
-                res.render('edit_article', data);
+                res.render('admin/edit_article', data);
             } else
-                res.render('add_article', data);
+                res.render('admin/add_article', data);
 
 
         } catch (err) {
@@ -116,14 +115,97 @@ router
             console.log(err);
 
             data.error = 'FNE';
-            res.render('edit_article', data);
+            res.render('admin/edit_article', data);
+        }
+
+    })
+
+router.post('/edit/confirmation', redirectLogin, async (req, res) => {
+
+    let value = req.body.submit;
+    let oldID = req.body.oldID;
+    let newID = req.body.newID;
+
+
+    console.log("value: " + value);
+
+    if (value == "TAK") {
+
+        fs.rmdirSync('__dirname' + '/../static/upload/' + oldID, { recursive: true }, (error) => { console.log('error przy usuwaniu folderu'); console.log(error) });
+
+        await Article.deleteOne({ "ID": oldID });
+
+        fs.renameSync('__dirname' + '/../static/upload/' + newID, '__dirname' + '/../static/upload/' + oldID, function (err) {
+            console.log(err)
+        });
+
+        await Article.updateOne({ "ID": newID }, { $set: { "ID": oldID } });
+
+        res.redirect("/admin/add/confirmation");
+
+    } else {
+
+        fs.rmdirSync('__dirname' + '/../static/upload/' + newID, { recursive: true }, (error) => { console.log('error przy usuwaniu folderu'); console.log(error) });
+
+        await Article.deleteOne({ "ID": newID });
+
+        res.send('cofnięto usuwanie artykułu. Tak samemu se wejdz na strone glowna, nie chcialo mi sie juz tego robic xD');
+    }
+})
+
+router
+    .route('/delete')
+    .get(redirectLogin, (req, res) => {
+        res.render('admin/delete_article');
+    })
+    .post(redirectLogin, async (req, res) => {
+        console.log('KOD: ' + req.body.code);
+        let data = { code: req.body.code };
+
+        try {
+
+            data.article = await Article.findOne({ "ID": req.body.code });
+
+            data.date = data.article.date;
+
+            console.log('data.date: ');
+            console.log(data.date);
+
+            if (isNaN(data.code)) {//nie koniecznie musi byc
+                data = { error: 'IC' };
+                res.render('admin/delete_article', data);
+            } else
+                res.render('admin/deleting_confirm', data);
+
+
+        } catch (err) {
+            console.log('nie znaleziono artykulu...');
+            console.log(err);
+
+            data.error = 'FNE';
+            res.render('admin/delete_article', data);
         }
 
 
-
-
-
     })
+
+router.post('/delete/confirmation', redirectLogin, async (req, res) => {
+    let value = req.body.submit;
+    let ID = req.body.ID;
+
+    console.log("value: " + value);
+
+    if (value == "TAK") {
+        fs.rmdirSync('__dirname' + '/../static/upload/' + ID, { recursive: true }, (error) => { console.log('error przy usuwaniu folderu'); console.log(error) });
+
+        await Article.deleteOne({ "ID": ID });
+
+        res.redirect('/admin')
+
+    } else {
+        res.redirect('/admin');
+    }
+})
 
 
 module.exports = router;
@@ -132,7 +214,7 @@ module.exports = router;
 
 
 // router.get('/register', (req, res) => {
-//     res.sendFile(path.resolve(__dirname + "/../static/views/" + 'register.html'));
+//     res.sendFile(path.resolve(__dirname + "/../static/views/" + 'admin/register.html'));
 // })
 
 // router.post('/register', async (req, res) => {

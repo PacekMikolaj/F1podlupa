@@ -18,21 +18,10 @@
   background-color: #3BE307;
 }
 
-h3 {
-  color: #3d3d3d;
-  font-family: "Lato", sans-serif;
-  font-size: .9rem;
-  font-style: italic;
-  width: 100%;
-  text-align: right;
-  margin-top: .2rem;
-}
-
 .square {
   margin: 0;
   margin-bottom: 2rem;
   width: 47%;
-  height: 250px;
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -41,42 +30,32 @@ h3 {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   overflow: hidden;
+  text-decoration: none;
+  background-color: black;
 }
 
 .square .img {
-  margin: 0 auto;
-  min-height: 130px;
-  width: 100%;
+  margin: 0;
+  height: 30vw;
   -o-object-position: 50% 0;
      object-position: 50% 0;
   -o-object-fit: cover;
      object-fit: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
 }
 
 .square .notImg {
-  position: absolute;
   width: 100%;
-  height: 140px;
   background-color: black;
   color: white;
-  bottom: 0;
-  left: 0;
   z-index: 2;
 }
 
 .square .notImg .content {
-  --height: 100%;
-  padding: 0 0.7rem 0;
+  padding: 0.6rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -86,13 +65,12 @@ h3 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: calc(var(--height) - 22px);
 }
 
 .square .notImg .type {
-  font-size: 1.3rem;
+  font-size: 1rem;
   width: 100%;
-  height: 22px;
+  height: 1rem;
 }
 
 .square .notImg .type .little {
@@ -115,7 +93,7 @@ h3 {
 }
 
 .square .notImg .title {
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: bold;
   font-family: "Exo 2", sans-serif;
 }
@@ -142,21 +120,12 @@ h3 {
 }
 
 @media only screen and (min-width: 650px) {
-  .square {
-    height: 360px;
-  }
-  .square .img {
-    min-height: 150px;
-  }
-  .square .notImg {
-    height: 210px;
-  }
   .square .notImg .content {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    padding: .7rem;
+    padding: 0.7rem;
     -webkit-box-pack: unset;
         -ms-flex-pack: unset;
             justify-content: unset;
@@ -164,11 +133,12 @@ h3 {
   .square .notImg .text {
     display: block;
     padding: 0;
-    font-size: .9rem;
+    font-size: 2vw;
+    line-height: 2.7vw;
   }
   .square .notImg .title {
-    font-size: .95rem;
-    margin-bottom: .2rem;
+    font-size: 2.5vw;
+    margin-bottom: 0.4rem;
   }
   .square .notImg .next {
     padding-bottom: 0;
@@ -177,10 +147,10 @@ h3 {
 }
 
 :root {
-  --heightSquare: 350px;
+  --heightSquare: 300px;
 }
 
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 768px) {
   .square {
     margin: 0;
     margin-bottom: 2rem;
@@ -191,17 +161,19 @@ h3 {
     transition: 0.1s;
   }
   .square .img {
-    -o-object-position: 50% -20px;
-       object-position: 50% -20px;
     max-height: unset;
-    height: 100%;
+    height: 70%;
     width: 100%;
+    margin: 0 auto;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
   .square .notImg {
     height: var(--heightSquare);
     width: 100%;
-    -webkit-transform: translateY(calc(var(--heightSquare) - 70px - 44px));
-            transform: translateY(calc(var(--heightSquare) - 70px - 44px));
+    -webkit-transform: translateY(calc(var(--heightSquare) - 60px - 44px));
+            transform: translateY(calc(var(--heightSquare) - 60px - 44px));
     -webkit-transition: 0.2s;
     transition: 0.2s;
     padding: 0;
@@ -210,14 +182,15 @@ h3 {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    height: 80px;
+    height: 70px;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
     font-size: 1.3rem;
+    margin-bottom: 0.2rem;
   }
   .square .notImg .content {
-    padding: .3rem .7rem .5rem;
+    padding: 0.3rem 0.7rem 0.5rem;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -239,7 +212,8 @@ h3 {
     height: initial;
     -webkit-transition: 0.25s;
     transition: 0.25s;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    line-height: 1.4rem;
   }
   .square .notImg .next {
     width: 94%;
@@ -265,6 +239,11 @@ h3 {
     position: absolute;
     right: 0;
   }
+  .square .notImg .type {
+    font-size: 1.3rem;
+    width: 100%;
+    height: 22px;
+  }
   .square:hover .notImg {
     -webkit-transition: 0.2s;
     transition: 0.2s;
@@ -275,11 +254,14 @@ h3 {
 
 @media only screen and (min-width: 950px) {
   :root {
-    --heightSquare: 400px;
+    --heightSquare: 360px;
   }
   .square {
-    width: 47%;
+    width: 46%;
     height: var(--heightSquare);
+  }
+  .square .img {
+    height: 66%;
   }
   .square .notImg {
     -webkit-transform: translateY(calc(var(--heightSquare) - 85px - 44px));
@@ -287,29 +269,34 @@ h3 {
   }
   .square .notImg .text {
     padding: 1rem 0;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    line-height: 1.6rem;
   }
   .square .notImg .title {
     font-size: 1.6rem;
-    height: 85px;
+    height: 90px;
   }
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1224px) {
   :root {
-    --heightSquare: 350px;
+    --heightSquare: 300px;
   }
   .square {
     width: 31%;
     height: var(--heightSquare);
+  }
+  .square .img {
+    height: 67%;
   }
   .square .notImg {
     -webkit-transform: translateY(calc(var(--heightSquare) - 70px - 44px));
             transform: translateY(calc(var(--heightSquare) - 70px - 44px));
   }
   .square .notImg .text {
-    padding: 1rem 0;
-    font-size: 1.2rem;
+    padding: 0;
+    font-size: 1.1rem;
+    line-height: 1.4rem;
   }
   .square .notImg .title {
     height: 80px;
@@ -325,6 +312,9 @@ h3 {
     width: 32%;
     height: var(--heightSquare);
   }
+  .square .img {
+    height: 68%;
+  }
   .square .notImg {
     -webkit-transform: translateY(calc(var(--heightSquare) - 85px - 44px));
             transform: translateY(calc(var(--heightSquare) - 85px - 44px));
@@ -332,6 +322,7 @@ h3 {
   .square .notImg .text {
     padding: 1rem 0;
     font-size: 1.4rem;
+    line-height: 1.7rem;
   }
   .square .notImg .title {
     font-size: 1.6rem;

@@ -31,6 +31,8 @@ class Div_imageView {
             fileReader.onload = (event) => {
                 $(this.img).attr('src', event.target.result);
 
+                console.log(event.target.result);
+
                 this.createView();
 
             }
@@ -76,11 +78,41 @@ class Div_imageView {
         $(this.div).remove();
         $(this.input).remove();
 
-        }
-
     }
 
+}
+
 $(document).ready(() => {
+
+    // setTimeout(() => {
+
+    //     let editor = document.getElementById("cke_ckeditor");
+    
+    //     console.log(editor);
+    
+    //     //ckeditor tab handling
+    //     //const editor = this.editor;
+    //     const view = editor.editing.view;
+    //     const viewDocument = view.document;
+    
+    //     viewDocument.on('keydown', (evt, data) => {
+    
+    //         if ((data.keyCode == keyCodes.tab) && viewDocument.isFocused) {
+    
+    //             // with white space setting to pre  
+    //             editor.execute('input', { text: "\t" });
+    //             // editor.execute( 'input', { text: "     " } );
+    
+    //             evt.stop(); // Prevent executing the default handler.
+    //             data.preventDefault();
+    //             view.scrollToTheSelection();
+    //         }
+    
+    //     });
+
+
+    // },1000)
+
 
 
 
@@ -103,6 +135,20 @@ $(document).ready(() => {
     let tabOfImg = [];
 
     createAddButton();
+
+    $('.coverInput').on('change', function (event) {
+
+        let img = new Image();
+        img.src = window.URL.createObjectURL(event.target.files[0]);
+        img.onload = () => {
+
+            ///zdjecie musi byc 185.5:132 -> 1.41
+            console.log("width: " + img.width + ", height: " + img.height)
+            if (img.width / img.height < 1.41 || img.height > img.width)
+                alert("Zdjęcie nie spełnia wymagań dotyczących wymiarów. Zmień jego wymiary lub wybierz inne zdjęcie.");
+        }
+
+    })
 
 
 })

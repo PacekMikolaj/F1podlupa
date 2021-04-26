@@ -1,0 +1,7 @@
+mixin tile_introduction(link , text , iconSrc , imgSrc , alt)
+    a.tile_introduction(href=link)
+        p #{text}
+        img(src=iconSrc alt=alt).icon
+        img.img(src=imgSrc alt=alt)
+
+        //- remeber than parent must be #links

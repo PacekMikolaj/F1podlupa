@@ -27,11 +27,15 @@ let articleSchema = mongoose.Schema({
         required: true
     },
 
+    moreSections: {
+        type: [String],
+        required: false
+    },
+
     ID: {
         type: String,
         required: true
     }
-
 });
 
 module.exports = mongoose.model("Article", articleSchema );

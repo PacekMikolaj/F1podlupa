@@ -1,0 +1,24 @@
+mixin f2driver(name,age,team,nation,achievements,photo,src)
+    .team
+        .name #{name}
+        .img
+            img(src="/img/f2drivers/" + photo , alt="photo")
+            h3 #{src}
+        table.info 
+            tr
+                td Wiek:
+                td 
+                    b #{age}
+            tr 
+                td Zespół: 
+                td  
+                    b #{team}
+            tr 
+                td Kraj:
+                td 
+                     b #{nation}
+            tr 
+                td Osiągnięcia: 
+                td  
+                    b #{achievements}
+            

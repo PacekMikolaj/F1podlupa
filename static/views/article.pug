@@ -6,7 +6,11 @@ block css
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"> 
 block title
  title #{article.title} - F1podlupą.pl
+
 block content
+    include views_components/see_more
+
+
     #main
         #article
 
@@ -22,7 +26,7 @@ block content
                     .underline#f1Basics
                 when "other"
                     .underline#other
-                        
+         
 
             p.author #{article.author}, #{article.date}
 
@@ -31,7 +35,7 @@ block content
             img#cover.cover(src='/upload/' + article.ID + '/cover.webp' alt='cover') 
 
             div#text
-
+                 
             case article.section
                     when "f1"
                         .underline#f1.bottomUnderline
@@ -43,7 +47,13 @@ block content
                         .underline#f1Basics.bottomUnderline
                     when "other"
                         .underline#other.bottomUnderline
+                        
             p.author#bottomAuthor(style="text-align: end;") Autor: #{article.author}
+            .navAfterArticle
+                a(href="/")
+                    i.fas.fa-chevron-left
+                    p Strona główna
+                +see_more(article.section)
 
         #seeAlso
             .con-title Zobacz także

@@ -18,16 +18,6 @@
   background-color: #3BE307;
 }
 
-h3 {
-  color: #3d3d3d;
-  font-family: "Lato", sans-serif;
-  font-size: .9rem;
-  font-style: italic;
-  width: 100%;
-  text-align: right;
-  margin-top: .2rem;
-}
-
 #main {
   white-space: pre-line;
   display: -webkit-box;
@@ -68,18 +58,18 @@ h3 {
   display: block;
   width: 100%;
   margin: 0 auto;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
 }
 
 #article #title {
   font-family: "Exo 2", sans-serif;
-  font-size: 2.1rem;
+  font-size: 1.5rem;
   text-align: center;
 }
 
 #article .author {
   font-family: "Open Sans", sans-serif;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
   color: #353535;
 }
 
@@ -91,9 +81,9 @@ h3 {
 #article #short {
   font-family: "Lato", sans-serif;
   color: black;
-  margin-bottom: 2rem;
-  font-size: 1.4rem;
-  line-height: 1.7rem;
+  margin: 0 0 1rem;
+  font-size: 1.2rem;
+  line-height: 1.7em;
   text-align: center;
 }
 
@@ -122,24 +112,11 @@ h3 {
 
 #article #text h1 {
   font-size: 1.6rem;
-  margin-bottom: 1.3rem;
+  margin-bottom: 1.6rem;
 }
 
 #article #text a {
   color: red;
-}
-
-#seeAlso {
-  width: 100%;
-  margin: 0 auto;
-  margin-bottom: 1rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
 }
 
 @media only screen and (min-width: 650px) {
@@ -154,7 +131,7 @@ h3 {
   }
 }
 
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 768px) {
   #article {
     width: 80%;
     /* padding: 2rem; */
@@ -177,21 +154,9 @@ h3 {
     line-height: 3.5rem;
     margin-bottom: 1.5rem;
   }
-  #seeAlso {
-    width: 90%;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-pack: space-evenly;
-        -ms-flex-pack: space-evenly;
-            justify-content: space-evenly;
-  }
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1224px) {
   #main {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
@@ -208,24 +173,6 @@ h3 {
   }
   #article #title {
     font-size: 3rem;
-  }
-  #seeAlso {
-    width: 30%;
-    margin: unset;
-    margin-left: 5%;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-pack: unset;
-        -ms-flex-pack: unset;
-            justify-content: unset;
-    -webkit-box-align: end;
-        -ms-flex-align: end;
-            align-items: flex-end;
-  }
-  .square {
-    width: 100%;
   }
 }
 

@@ -1,0 +1,42 @@
+extends ../layout
+
+block css
+    link(rel='stylesheet' href="/css/f1teams.css")
+    link(rel='stylesheet' href="/css/f2teams.css")
+
+
+block title
+    title Zespoły F2 - F1podlupą.pl
+
+block content
+    include ../views_components/team
+    include ../views_components/see_more
+
+    #main
+        #introduction
+            .title Zespoły F2
+                .underline#f2
+        
+        #content
+            #list
+                +team('Prema Racing "Prema"',"Włochy","jedno mistrzostwo F2 (2020) i GP2 (2016)", "prema.png", "F2")
+                +team('UNI-Virtuosi Racing “UNI-Virtuosi”',"Wielka Brytania","dwa wicemistrzostwa (2019 i 2020)", "virtuosi.png", "F2")
+                +team('Carlin Motorsport “Carlin”',"Wielka Brytania","jedno mistrzostwo (2018)", "carlin.png", "F2")
+                +team('Hitech Grand Prix “Hitech”',"Wielka Brytania","jedno czwarte miejsce (2020)", "hitech.png", "F2")
+                +team('ART Grand Prix “ART”',"Francja","jedno wicemistrzostwo F2 (2018), cztery mistrzostwa GP2 (2005, 2006, 2009 i 2015)", "art.png", "F2")
+                +team('MP Motorsport',"Holandia","dwa razy szóste miejsce (2017 i 2020)", "mp.png", "F2")
+                +team('Charouz Racing System “Charouz”',"Czechy","dwa razy szóste miejsce (2018 i 2019)", "charouz.png", "F2")
+                +team('DAMS',"Francja","jedno mistrzostwo F2 (2019) i dwa mistrzostwa GP2 ( 2012 i 2014)", "dams.png", "F2")
+                +team('Campos Racing “Campos”',"Hiszpania","piąte miejsce F2 (2018) i jedno mistrzostwo GP2 (2008)", "campos.png", "F2")
+                +team('HWA RACELAB “HWA”',"Niemcy","jedno dziesiąte miejsce (2020)", "hwa.png", "F2")
+                +team('Trident Racing “Trident”',"Włochy","trzy razy dziesiąte miejsce (2017, 2018 i 2019)", "trident.png", "F2")
+                .navAfterArticle
+                        a(href="/")
+                            i.fas.fa-chevron-left
+                            p Strona główna
+                        +see_more("f2")
+            #seeAlso
+                .con-title Zobacz także
+                .squares
+                    each val in articles
+                        +small_article(val)

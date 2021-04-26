@@ -1,26 +1,29 @@
 const router = require('express').Router();
 const fs = require('fs');
 const formidable = require('formidable');
-const bodyParser = require("body-parser");
+//const bodyParser = require("body-parser");
+const express = require("express");
 const Article = require('./../static/models/article');
 const { redirectAdmin, redirectLogin } = require('../middleware/authorization');
 const sharp = require('sharp');
 
 
-router.use(bodyParser.urlencoded({ extended: false }));
-router.use(bodyParser.json());
+router.use(express.urlencoded({ extended: true }));
+router.use(express.json());
+
+const sections = [ "f1","f2","fe","f1basics","rallycross","other"];
 
 router.route('/')
     .get(redirectLogin, (req, res) => {
-        res.render("add_article");
+        let data = {};
+        data.sections = sections;
+        res.render('admin/add_article', data);
     })
     .post(redirectLogin, function (req, res) {
 
         var form = new formidable.IncomingForm();
 
         let id = Date.now();
-
-        let date = new Date();
 
         form.keepExtensions = true;
 
@@ -33,43 +36,33 @@ router.route('/')
 
             console.log('PARSE')
 
+            let date;
+            let html;
+
             if (fields.code) {
                 console.log('edycja!');
 
-                fs.rmdirSync(`${form.uploadDir}/${fields.code}`, { recursive: true }, (error) => { console.log('error przy usuwaniu folderu'); console.log(error) });
+                let old_id = fields.code;
 
-                await Article.deleteOne({ "ID": fields.code });
-
+                date = setDate(old_id);
+                html = changePathWithRegex(fields.body, old_id);
             } else {
-                console.log('nowy');
-            }
-
-            if (fields.old_data) {
-                console.log('z zachowaniem starej daty.');
-
-                date = fields.date;
-
-            } else {
-
-                let minuty;
-
-                if (date.getMinutes() < 10) {
-                    minuty = "0" + date.getMinutes();
-                } else { minuty = date.getMinutes(); }
-
-                date = date.getHours() + ":" + minuty + " " + date.getDate() + "." + (parseInt(date.getMonth() % 12) + 1) + "." + date.getFullYear();
+                date = setDate(id);
+                html = changePathWithRegex(fields.body, id);
             }
 
             let article = new Article();
 
-            let html = changePathWithRegex(fields.body, id);
-
             fs.writeFileSync(`${form.uploadDir}/${id}/body.html`, html, (error) => { console.log(error) })
+
+            console.log('moresections:');
+            console.log(fields.moreSections);
 
             article.title = fields.title;
             article.author = fields.author;
             article.short = fields.short;
             article.section = fields.section;
+            article.moreSections = fields.moreSections;
             article.date = date;
             article.ID = id;
 
@@ -80,8 +73,16 @@ router.route('/')
                     return;
                 }
             })
-
             console.log(fields);
+
+
+            if (fields.code) {
+                let data = { old_ID: fields.code, new_ID: id, title: fields.title };
+                res.render('admin/edit_C', data);
+            } else {
+                res.render('admin/add_C');
+            }
+
 
         });
 
@@ -93,14 +94,13 @@ router.route('/')
 
             addFile(file, field, id, form.uploadDir);
 
-
         });
 
-        res.redirect("/admin/add");
     })
 
-
-
+router.get('/confirmation', redirectLogin, (req, res) => {
+    res.render('admin/add_C');
+})
 
 
 
@@ -164,6 +164,28 @@ let addFile = (file, field, id, uploadDir) => {
             )
             .catch(err => console.log(err))
     });
+
+}
+
+let setDate = (id) => {
+
+    let date = new Date( parseInt(id) );
+
+    let minuty;
+
+    if (date.getMinutes() < 10) {
+        minuty = "0" + date.getMinutes();
+    } else minuty = date.getMinutes();
+
+    let month;
+
+    if ((parseInt(date.getMonth() % 12) + 1) < 10) {
+        month = "0" + (parseInt(date.getMonth() % 12) + 1);
+    } else month = (parseInt(date.getMonth() % 12) + 1);
+
+    date = date.getHours() + ":" + minuty + " " + date.getDate() + "." + month + "." + date.getFullYear();
+
+    return date;
 
 }
 

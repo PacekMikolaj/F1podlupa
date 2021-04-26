@@ -1,15 +1,19 @@
-extends layout
+extends ../layout
 
 block css
+    link(rel='stylesheet' href='/css/tile_introduction.css')
     link(rel='stylesheet' href="/css/f2.css")
     link(rel='stylesheet' href="/css/car_display.css")
+
 
 
 block title
     title F2 - F1podlupą.pl
 
 block content
-    include views_components/car_display.pug
+    include ../views_components/car_display.pug
+    include ../views_components/tile_introduction.pug
+
 
     #main
         #introduction
@@ -21,29 +25,34 @@ block content
                 h1.title Formuła 2
                     .underline
                 .text To tutaj młody kierowca zmienia się w mistrza wyścigów. Tylko najlepsi dostają się do Formuły 1. Jeśli chcesz zobaczyć szczegóły wędrówki kierowców do królowej motorsportu, to dobrze trafiłeś.
+                #links_introduction
+                    +tile_introduction("/f2/drivers", "Kierowcy F2", "/img/driver.png", "/img/f1driver.jpg", "driver")
+                    +tile_introduction("/f2/teams", "Zespoły F2","/img/group.png", "/img/f1team.jpg", "team")
+
             +car_display("/img/f2car_1.jpg")
             
         .shifter
-        .newest-articles
-            .con-title Najnowsze wiadomości - Formuła 2
-            each val in newest
-                +new_article(val)
+        if paginationInfo.page == 1
+            .newest-articles
+                .con-title Najnowsze wiadomości - Formuła 2
+                each val in newest
+                    +new_article(val)
 
         .achievements
             .title Osiągnięcia byłych kierowców F2
                 .underline
             .text Dowiedz się wiecej o kierowcach którzy zaczynali swoją karierę w F2.
             #links  
-                    a(href="#")#first
-                        p GP2 2005-2010
+                    a(href="/article/1616360348165")#first
+                        p#first GP2 2005-2010
                         .bg
                         img.img(src="/img/gp2_2006.jpg" alt="gp2_2006")
-                    a(href="#")#second
-                        p GP2 2011-2016
+                    a(href="/article/1616359199869")#second
+                        p#second GP2 2011-2016
                         .bg
                         img.img(src="/img/gp2_2011.jpg" alt="gp2_2011")
-                    a(href="#")#third
-                        p F2 2017-2020
+                    a(href="/article/1616357365111")#third
+                        p#third F2 2017-2020
                         .bg
                         img.img(src="/img/f2_2017.jpg" alt="f2_2017")
 
@@ -54,6 +63,7 @@ block content
             .squares
                 each val in articlesF2
                     +small_article(val)
+        +pagination(paginationInfo)
 
         block scripts
         script(src='/js/car_display.js')

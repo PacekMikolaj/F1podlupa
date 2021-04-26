@@ -9,7 +9,7 @@ mixin pagination(paginationInfo)
           p ...
         each val in paginationInfo.tabOfNumbers
           if paginationInfo.page == val
-            p.number.thisPage= val++
+            p.number#thisPage= val++
           else
             a.number(href='/?page=' + val)= val++
         if paginationInfo.more

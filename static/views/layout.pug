@@ -6,18 +6,16 @@ html
         link(rel='stylesheet' href='/css/base.css')
         link(rel='stylesheet' href='/css/new_article.css')
         link(rel='stylesheet' href='/css/small_article.css')
-        //- link(rel='stylesheet' href='/STYLE/style_min650.css')
-        //- link(rel='stylesheet' href='/STYLE/style_min800.css')
-        //- link(rel='stylesheet' href='/STYLE/style_min950.css')
-        //- link(rel='stylesheet' href='/STYLE/style_min1200.css')
-        //- link(rel='stylesheet' href='/STYLE/style_min1500.css')
+        link(rel='stylesheet' href='/css/toolsUsedInArticle.css')
+
+
 
         block css
 
         //-  link(rel="stylesheet" href="/fonts/css/all.css")
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
 
-        link(rel='icon' type='image/jpeg' href='/img/ikonka2.png')
+        link(rel='icon' type='image/jpeg' href='/img/favicon.png')
 
         link(href='https://fonts.googleapis.com/css2?family=Lalezar&display=swap' rel='stylesheet')
         link(href='https://fonts.googleapis.com/css2?family=Exo+2:wght@900&display=swap' rel='stylesheet')
@@ -38,22 +36,31 @@ html
         header
             h2#nav-h2
                 <i class="fas fa-bars"></i>
-            a#title(href="/") F1podlupą.pl
+            a#logo(href="/")
+                img(src="/img/f1kolorlogo.png" alt="logo")
             nav#navElements   
                 
-                a#strona_glownaMenu.option_menu(href='/')
-                    p Strona główna
+                //- a#strona_glownaMenu.option_menu(href='/')
+                //-     p Strona główna
                 a#f1Menu.option_menu(href='/f1')
                     p F1
                 a#f2Menu.option_menu(href='/f2')
                     p F2
-                a#fEMenu.option_menu(href='#')
-                    p FE
-                a#pozostaleMenu.option_menu(href='#')
-                    p Pozostałe artykuły
+                div#otherSeries.option_menu
+                    p Inne Serie Wyścigowe
+                        i.fas.fa-chevron-up#crossForMenu
+                    ul.submenuOS
+                        li
+                            a.option_menu(href="/fE") 
+                                p FE
+                        li 
+                            a.option_menu(href="/rallycross") 
+                                p Rallycross
+                a#about.option_menu(href='/aboutUs')
+                    p O Nas
             #div_for_icons
-                    a#fb.icons(href='#')
-                    a#tt.icons(href='https://twitter.com/Sebastian_Kiec')
+                    a#fb.icons(href='#' target="_blank")
+                    a#tt.icons(href='https://twitter.com/Sebastian_Kiec' target="_blank")
         
                 
 
@@ -62,18 +69,17 @@ html
 
         #footer
             p.copyright © F1podlupą.pl | Wszelkie prawa Zastrzeżone.
-            p.info Nasza strona skupia się na tematach powiązanych ze sportem motorowym, kładąc szczególny nacisk na „Formułę 1” oraz „Formułę 2”. Jesteśmy otwarci na różne propozycję współpracy.
             .minimenu
-                    a#strona_glownaMenu.option_menu(href='/')
-                        p Strona główna
-                    a#f1Menu.option_menu(href='/f1')
-                        p F1
-                    a#f2Menu.option_menu(href='/f2')
-                        p F2
-                    a#fEMenu.option_menu(href='#')
-                        p FE
-                    a#pozostaleMenu.option_menu(href='#')
-                        p Pozostałe artykuły
+                a#strona_glownaMenu.option_menu(href='/')
+                    p Strona główna
+                a#f1Menu.option_menu(href='/f1')
+                    p F1
+                a#f2Menu.option_menu(href='/f2')
+                    p F2
+                a#otherSeries.option_menu(href="/otherSeries")
+                    p Inne Serie Wyścigowe
+                a#about.option_menu(href='/aboutUs')
+                    p O Nas
 
             #kontakt
                 h1 Kontakt:
@@ -81,8 +87,6 @@ html
                 #div_for_icons
                     a#fb.icons(href='#')
                     a#tt.icons(href='https://twitter.com/Sebastian_Kiec')
-            p.info2
-                | W razie sugestii, pytań lub propozycji zachęcamy do kontaktu poprzez podany adres email lub media społecznościowe (Facebook lub Twitter).
             p.creators Twórcy: Mikołaj Pacek & Sebastian Kieć 
 
         block scripts

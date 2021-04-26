@@ -1,0 +1,22 @@
+extends ../layout
+
+block css
+    link(rel='stylesheet' href='/css/add_article.css')
+    link(rel='stylesheet' href='/css/admin.css')
+
+
+block title
+    title Usuń artykuł - potwierdzenie - F1podlupą.pl
+
+block content
+    #main
+
+       
+    .desktop.DC
+        form(method="POST" action='/admin/edit/confirmation')
+                p.Names Czy na pewno chcesz edytować artykuł:
+                p.title #{title}
+                input(type="hidden" value=old_ID name="oldID")
+                input(type="hidden" value=new_ID name="newID")
+                input(type="submit" value="TAK" name="submit").yes
+                input(type="submit" value="NIE" name="submit").no

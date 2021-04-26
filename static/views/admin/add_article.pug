@@ -1,4 +1,4 @@
-extends layout
+extends ../layout
 
 block css
     link(rel='stylesheet' href='/css/add_article.css')
@@ -55,8 +55,8 @@ block content
     if code
         .edit_warning
             div(style="margin-bottom: 2rem")
-                h2 Pamiętaj, edytujesz artykuł o kodzie:
-                p= code 
+                h2 Edytujesz artykuł o tytule:
+                p= article.title
             div
                 h2 Z datą: 
                 p= date
@@ -66,10 +66,10 @@ block content
             input(type="hidden" name="date" value=date)
             input(type="hidden" name="code" value=code)
 
-        if code
-            label#saveData.label
-                p.Names Zachować starą datę?
-                input(type="checkbox" name="old_data")
+        //- if code
+        //-     label#saveData.label
+        //-         p.Names Zachować starą datę?
+        //-         input(type="checkbox" name="old_data")
 
         label#title.label
             p.Names Title:
@@ -88,40 +88,27 @@ block content
 
         label#body.label 
             p.Names Body:
-            textarea.form-control(name="body" id="ckeditor")
+            textarea.form-control(name="body" id="ckeditor" tabindex="-1")
 
 
         label#file.label 
             p.Names Cover:
-            input(name="cover",type="file" required)
+            input(name="cover" type="file" class="coverInput" required)
+
+        label#select.label
+            select(name="section" required)
+                for val in sections 
+                    option(value=val) #{val}
 
         label#radio.label
             p.Names Section:
-            label.radio
-                input(type="radio", value="f1", name="section" required)
-                p Formuła 1
-            br
-            label.radio
-                input(type="radio", value="f2", name="section")
-                p Formuła 2
-            br
-            label.radio
-                input(type="radio", value="fe", name="section")
-                p Formuła E
-            br
-            label.radio
-                input(type="radio", value="f1basics", name="section")
-                p Podstawy F1
-            br
-            label.radio
-                input(type="radio" value="other", name="section")
-                p Other
-                //- input(type="text" disabled)
-            //- select(name="select")
-            //-     option(value="f1") FORMULA 1
-            //-     option(value="f2") FORMULA 2
-            //-     option(value="fe") FORMULA E
-            //-     option(value="other") OTHER
+            
+            each val , index in sections
+                label.radio
+                    input(type="checkbox" value=val, name="moreSections[" + index + "]")
+                    p(style="text-transform: uppercase;") #{val}
+                    br
+              
 
         button(value="Submit" class="submit") Submit
 

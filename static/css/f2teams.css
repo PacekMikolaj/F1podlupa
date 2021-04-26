@@ -1,3 +1,72 @@
 p {
   width: 100%;
 }
+
+#f1 {
+  background-color: #e10600;
+}
+
+#f2 {
+  background-color: #0090D0;
+}
+
+#fE {
+  background-color: #50CEF7;
+}
+
+#f1Basics {
+  background-color: #F7360C;
+}
+
+#other {
+  background-color: #3BE307;
+}
+
+#content {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media only screen and (min-width: 768px) {
+  #left {
+    width: 80%;
+    margin-bottom: 2rem;
+  }
+}
+
+@media only screen and (min-width: 1224px) {
+  #content {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    white-space: pre-line;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    width: 100%;
+    margin: unset;
+    margin-bottom: 2rem;
+  }
+  #list {
+    width: 50%;
+  }
+}

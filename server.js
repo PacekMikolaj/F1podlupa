@@ -19,11 +19,15 @@ connectDB();
 //Import Routes
 const admin = require('./routes/admin');
 const f1Route = require('./routes/f1Route');
+const f2Route = require('./routes/f2Route');
+
 
 
 //Route Middleware
 app.use('/admin', admin);
 app.use('/f1', f1Route);
+app.use('/f2', f2Route);
+
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -42,7 +46,7 @@ app.get("/", paginatedResults(Article, limit, newest), async function (req, res)
 
     if(res.paginationInfo.page == 1)
     {
-        data.newest = await Article.find().sort({ _id: -1 }).limit(newest).exec();
+        data.newest = await Article.find().sort({ ID: -1 }).limit(newest).exec();
     }
 
     data.articles = res.paginatedModels;
@@ -54,36 +58,52 @@ app.get("/", paginatedResults(Article, limit, newest), async function (req, res)
 })
 
 
-app.get("/f1", async function (req, res) {
+// app.get("/f1", async function (req, res) {
 
-    let data = {}
-    data.articlesF1 = await Article.find({ "section": "f1" }).sort({ _id: -1 }).exec();
-    data.articlesF1basics = await Article.find({ "section": "f1basics" }).sort({ _id: -1 }).exec();
+//     let data = {}
+//     data.articlesF1 = await Article.find({ "section": "f1" }).sort({ ID: -1 }).exec();
+//     data.articlesF1basics = await Article.find({ "section": "f1basics" }).sort({ ID: -1 }).exec();
 
-    res.render("f1", data);
-})
+//     res.render("f1", data);
+// })
 
-app.get("/f2", paginatedResults(Article, limit, newest, "f2"), async function (req, res) {
+// app.get("/f2", paginatedResults(Article, limit, newest, "f2"), async function (req, res) {
 
-    let data = {};
-    data.newest = await Article.find({ "section": "f2" }).sort({ _id: -1 }).limit(newest).exec();
-    data.articlesF2 = res.paginatedModels;
-    //data.newest = await Article.find().sort({ _id: -1 }).limit(newest).exec();
-    //data.articlesF2 = await Article.find({ "section": "f2" }).sort({ _id: -1 }).exec();
-    //data.articlesF1basics = await Article.find({ "section": "f1basics" }).sort({ _id: -1 }).exec();
+//     let data = {};
+//     data.newest = await Article.find({ "section": "f2" }).sort({ ID: -1 }).limit(newest).exec();
+//     data.articlesF2 = res.paginatedModels;
+//     //data.newest = await Article.find().sort({ ID: -1 }).limit(newest).exec();
+//     //data.articlesF2 = await Article.find({ "section": "f2" }).sort({ ID: -1 }).exec();
+//     //data.articlesF1basics = await Article.find({ "section": "f1basics" }).sort({ ID: -1 }).exec();
 
-    res.render("f2", data);
-})
+//     res.render("f2/f2", data);
+// })
 
 app.get("/article/:ID", async function (req, res) {
 
     let data = {};
-    data.articles = await Article.find({ "ID": { $ne: req.params.ID } }).limit(4).sort({ _id: -1 }).exec();
-    data.article = await Article.find({ "ID": req.params.ID }).sort({ _id: -1 }).exec();
+    data.articles = await Article.find({ "ID": { $ne: req.params.ID } }).limit(4).sort({ ID: -1 }).exec();
+    data.article = await Article.find({ "ID": req.params.ID }).sort({ ID: -1 }).exec();
     data.article = data.article[0]; // changing from array to simple element
 
     res.render("article", data);
 
+})
+
+app.get('/aboutUs', async (req,res) => {
+    res.render('aboutUs');
+} )
+
+app.get('/fE', async (req,res) => {
+    res.render('fE');
+} )
+
+app.get('/rallycross', async (req,res) => {
+    res.render('rallycross');
+} )
+
+app.get('/otherSeries', async (req,res) => {
+    res.render('otherSeries');
 })
 
 

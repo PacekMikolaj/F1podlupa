@@ -18,16 +18,6 @@
   background-color: #3BE307;
 }
 
-h3 {
-  color: #3d3d3d;
-  font-family: "Lato", sans-serif;
-  font-size: .9rem;
-  font-style: italic;
-  width: 100%;
-  text-align: right;
-  margin-top: .2rem;
-}
-
 form {
   width: 80%;
   margin: 0 auto;
@@ -38,27 +28,6 @@ form {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-}
-
-.edit {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.edit .img_guide {
-  width: 50%;
-  margin-top: 3rem;
 }
 
 input[type="text"] {
@@ -125,7 +94,7 @@ form p {
   height: 400px;
 }
 
-.edit_warning {
+.warning {
   width: 60%;
   background-color: red;
   display: -webkit-box;
@@ -145,7 +114,7 @@ form p {
   padding: 0.5rem;
 }
 
-.edit_warning div {
+.warning div {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -162,17 +131,17 @@ form p {
           align-items: center;
 }
 
-.edit_warning h2,
-.edit_warning p {
+.warning h2,
+.warning p {
   color: white;
   font-size: 2rem;
 }
 
-.edit_warning h2 {
+.warning h2 {
   width: 70%;
 }
 
-.edit_warning p {
+.warning p {
   width: 30%;
 }
 

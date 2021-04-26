@@ -1,0 +1,21 @@
+extends ../layout
+
+block css
+    link(rel='stylesheet' href='/css/add_article.css')
+    link(rel='stylesheet' href='/css/admin.css')
+
+
+block title
+    title Usuń artykuł - potwierdzenie - F1podlupą.pl
+
+block content
+    #main
+
+       
+    .desktop.DC
+        form(method="POST" action='/admin/delete/confirmation')
+                p.Names Czy na pewno chesz usunąć artykuł:
+                p.title #{article.title}
+                input(type="hidden" value=article.ID name="ID")
+                input(type="submit" value="TAK" name="submit").yes
+                input(type="submit" value="NIE" name="submit").no

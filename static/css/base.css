@@ -18,16 +18,6 @@
   background-color: #3BE307;
 }
 
-h3 {
-  color: #3d3d3d;
-  font-family: "Lato", sans-serif;
-  font-size: .9rem;
-  font-style: italic;
-  width: 100%;
-  text-align: right;
-  margin-top: .2rem;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -37,6 +27,20 @@ h3 {
 
 *:focus {
   outline: none;
+}
+
+h3 {
+  color: #3d3d3d;
+  font-family: "Lato", sans-serif;
+  font-size: 0.9rem;
+  font-style: italic;
+  width: 100%;
+  text-align: right;
+  margin-top: 0.2rem;
+}
+
+h3::before {
+  content: "Fot: ";
 }
 
 body {
@@ -72,9 +76,9 @@ header {
   text-align: center;
 }
 
-header #title {
+header #logo {
   height: 100%;
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   font-family: "Roboto Slab", serif;
   font-weight: 800;
   font-style: italic;
@@ -94,6 +98,10 @@ header #title {
   grid-area: title;
 }
 
+header #logo img {
+  height: 90%;
+}
+
 header h2 {
   height: 100%;
   display: -webkit-box;
@@ -107,7 +115,7 @@ header h2 {
       -ms-flex-align: center;
           align-items: center;
   cursor: pointer;
-  font-size: 2.4rem;
+  font-size: 2.3rem;
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: h2;
@@ -173,18 +181,10 @@ nav {
 nav .option_menu {
   background-color: black;
   font-size: 1em;
-  padding: 0.2rem;
+  padding: 0.4rem 0 0;
   display: block;
   text-decoration: none;
   color: white;
-}
-
-nav .option_menu:hover {
-  background-color: white;
-}
-
-nav .option_menu:hover p {
-  color: black;
 }
 
 nav .option_menu p {
@@ -193,16 +193,36 @@ nav .option_menu p {
           flex: 0 0 100%;
 }
 
-nav #f1Menu:hover p {
-  color: #e10600;
+nav #otherSeries {
+  cursor: pointer;
+  position: relative;
 }
 
-nav #f2Menu:hover p {
-  color: #0090D0;
+nav #otherSeries i {
+  position: absolute;
+  top: .8rem;
+  right: 8%;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
 }
 
-nav #fEMenu:hover p {
-  color: #50CEF7;
+nav #otherSeries .submenuOS {
+  width: 100%;
+  display: none;
+}
+
+nav #otherSeries .submenuOS li:first-child {
+  border-top: 1px solid white;
+}
+
+nav #otherSeries .submenuOS li {
+  border-bottom: 1px solid white;
+}
+
+nav #otherSeries .submenuOS li a {
+  width: 100%;
 }
 
 /*   MAIN    */
@@ -293,10 +313,17 @@ nav #fEMenu:hover p {
   color: white;
 }
 
-.pagination .thisPage {
-  color: red;
+.pagination #thisPage {
   text-decoration: underline;
   cursor: default;
+}
+
+#thisPage {
+  color: #e10600;
+}
+
+#thisPage:hover {
+  color: white;
 }
 
 /*   FOOTER    */
@@ -310,42 +337,6 @@ nav #fEMenu:hover p {
   width: 100%;
   font-size: 0.8rem;
   padding: 1rem;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 50% 50%;
-      grid-template-columns: 50% 50%;
-  -ms-grid-rows: auto;
-      grid-template-rows: auto;
-      grid-template-areas: "copyright copyright" "info info" "minimenu minimenu" "kontakt info2" "creators creators";
-}
-
-#footer .copyright {
-  display: block;
-  text-align: center;
-  font-size: 1.1em;
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 2;
-  grid-area: copyright;
-}
-
-#footer .info {
-  text-align: center;
-  margin-bottom: 0.5rem;
-  -ms-grid-row: 2;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 2;
-  grid-area: info;
-}
-
-#footer .info2 {
-  -ms-grid-row: 4;
-  -ms-grid-column: 2;
-  grid-area: info2;
-}
-
-#footer #kontakt {
-  width: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -353,14 +344,43 @@ nav #fEMenu:hover p {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -ms-grid-row: 4;
-  -ms-grid-column: 1;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#footer .copyright {
+  display: block;
+  text-align: center;
+  font-size: 1.1em;
+  grid-area: copyright;
+}
+
+#footer .info {
+  text-align: center;
+  margin-bottom: 0.5rem;
+  grid-area: info;
+}
+
+#footer .info2 {
+  grid-area: info2;
+}
+
+#footer #kontakt {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   grid-area: kontakt;
 }
 
 #footer #kontakt #div_for_icons {
   margin-left: 0;
-  width: 70%;
+  width: 35%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -393,20 +413,34 @@ nav #fEMenu:hover p {
 }
 
 #footer #kontakt h1 {
-  display: block;
-  font-size: 1.5em;
+  font-size: 1.3em;
+  width: 27%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 #footer #kontakt #email {
   display: block;
+  font-size: 1.1em;
+  width: 48%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 #footer .creators {
   text-align: center;
   margin-top: 0.2rem;
-  -ms-grid-row: 5;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 2;
   grid-area: creators;
 }
 
@@ -429,9 +463,6 @@ nav #fEMenu:hover p {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -ms-grid-row: 3;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 2;
   grid-area: minimenu;
 }
 
@@ -467,17 +498,17 @@ nav #fEMenu:hover p {
     height: 80px;
     position: unset;
   }
-  header #title {
-    padding-left: 0.5rem;
+  header #logo {
+    padding-left: 5%;
     height: 100%;
-    width: 30%;
+    width: 40%;
     font-size: 1.8rem;
   }
   header h2 {
     display: none;
   }
   #div_for_icons {
-    width: 17.5%;
+    width: 20%;
     height: 100%;
     padding: 0;
     -webkit-box-pack: space-evenly;
@@ -503,9 +534,10 @@ nav #fEMenu:hover p {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-    width: 52.5%;
+    width: 40%;
     height: 100%;
     padding: 0;
+    font-size: 1.1rem;
   }
   nav .option_menu {
     height: 100%;
@@ -520,21 +552,66 @@ nav #fEMenu:hover p {
         -ms-flex-align: center;
             align-items: center;
     cursor: pointer;
-  }
-  nav #strona_glownaMenu {
-    width: 30%;
-  }
-  nav #f1Menu,
-  nav #f2Menu,
-  nav #fEMenu {
-    width: 13%;
-    font-size: 1.3em;
-  }
-  nav .lol {
     padding: 0;
   }
-  nav #pozostaleMenu {
-    width: 31%;
+  nav .option_menu:hover {
+    background-color: white;
+  }
+  nav .option_menu:hover p {
+    color: black;
+  }
+  nav #f1Menu,
+  nav #f2Menu {
+    width: 17%;
+    font-size: 1.3em;
+  }
+  nav #f1Menu:hover p {
+    color: #e10600;
+  }
+  nav #f2Menu:hover p {
+    color: #0090D0;
+  }
+  nav #otherSeries {
+    width: 45%;
+    position: relative;
+    cursor: context-menu;
+  }
+  nav #otherSeries i {
+    display: none;
+  }
+  nav #otherSeries .submenuOS {
+    background-color: black;
+    display: block;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: 0.1s;
+    transition: 0.1s;
+  }
+  nav #otherSeries .submenuOS li {
+    list-style: none;
+    cursor: pointer;
+    font-size: 1.1em;
+  }
+  nav #otherSeries .submenuOS li a {
+    padding: 0.5rem;
+  }
+  nav #otherSeries .submenuOS li a:hover p {
+    color: black;
+  }
+  nav #otherSeries:hover .submenuOS {
+    opacity: 1 !important;
+    visibility: visible;
+    -webkit-transition: 0.1s;
+    transition: 0.1s;
+  }
+  nav #otherSeries:hover .submenuOS p {
+    color: white;
+  }
+  nav #about {
+    width: 21%;
   }
   #footer {
     font-size: 0.9rem;
@@ -544,7 +621,7 @@ nav #fEMenu:hover p {
   }
 }
 
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 768px) {
   .con-title {
     font-size: 2rem;
     margin: 0 auto 2rem;
@@ -553,8 +630,7 @@ nav #fEMenu:hover p {
     margin-bottom: 3rem;
   }
   header nav #f1Menu,
-  header nav #f2Menu,
-  header nav #fEMenu {
+  header nav #f2Menu {
     -webkit-transition: 0.1s;
     transition: 0.1s;
   }
@@ -588,18 +664,14 @@ nav #fEMenu:hover p {
     width: 40px;
     background-size: 40px 40px;
   }
-  header #title {
-    padding-left: 0;
-    font-size: 2.3rem;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1224px) {
   nav {
     font-size: 1.6rem;
+  }
+  header #logo {
+    padding-left: 10%;
   }
 }
 
@@ -633,7 +705,7 @@ nav #fEMenu:hover p {
       flex-wrap: wrap;
 }
 
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 768px) {
   .articles .squares {
     width: 90%;
     -webkit-box-orient: horizontal;
@@ -648,7 +720,7 @@ nav #fEMenu:hover p {
   }
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1224px) {
   .articles .squares {
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;

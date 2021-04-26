@@ -6,7 +6,7 @@ $(document).ready(function () {
 
         ///canvas
           //console.log($(articles[i].children[2]));
-        $(articles[i].children[2].children[1]).append(createTriangle(300, "triangle"));
+     //   $(articles[i].children[2].children[1]).append(createTriangle(300, "triangle"));
         
 
     }
@@ -14,29 +14,29 @@ $(document).ready(function () {
     
 })
 
-let createTriangle = (height, className) => {
-    let canvas = document.createElement("canvas");
+// let createTriangle = (height, className) => {
+//     let canvas = document.createElement("canvas");
 
-        canvas.classList.add(className);
+//         canvas.classList.add(className);
 
 
-        canvas.width = (height/2).toString();
-        canvas.height = (height).toString();
+//         canvas.width = (height/2).toString();
+//         canvas.height = (height).toString();
 
-        let context = canvas.getContext("2d");
+//         let context = canvas.getContext("2d");
 
-        context.beginPath();
-        context.moveTo(0, height);
-        context.lineTo(height/3, height);
-        context.lineTo(height/3, 0);
+//         context.beginPath();
+//         context.moveTo(0, height);
+//         context.lineTo(height/3, height);
+//         context.lineTo(height/3, 0);
 
-        context.closePath();
+//         context.closePath();
 
-        context.fillStyle = "#FFFFFF";
-        context.fill();
+//         context.fillStyle = "#FFFFFF";
+//         context.fill();
 
-        return canvas;
-}
+//         return canvas;
+// }
 
 
 

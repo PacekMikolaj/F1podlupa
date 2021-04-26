@@ -1,0 +1,53 @@
+extends ../layout
+
+block css
+    link(rel='stylesheet' href="/css/f1teams.css")
+    link(rel='stylesheet' href="/css/f2teams.css")
+
+
+block title
+    title Kierowcy F2 - F1podlupą.pl
+
+block content
+    include ../views_components/f2driver
+    include ../views_components/see_more
+
+    #main
+        #introduction
+            .title Zespoły F2
+                .underline#f2
+        
+        #content
+            #list
+                +f2driver('Robert Shwartzman',"","Prema","Rosja","F2 2020 sezon: 4. miejsce, 2019 - mistrz F3, junior Ferrari","Shwartzman.jpg","FIA")
+                +f2driver('Oscar Piastri',"","Prema","Australia","F3 2020 sezon: pierwsze miejsce, junior Alpine","Piastri.jpg","F3")
+                +f2driver('Guanyu Zhou',"","Uni-Virtuosi","Chiny","F2 2020 sezon: 6. miejsce, testował kilka razy bolid F1 - zespołu Renault, junior Alpine","Zhou.jpg","F1")
+                +f2driver('Felipe Drugovich',"","Uni-Virtuosi","Brazylia","F2 2020 sezon: 9. miejsce","Drugovich.jpg","F1")
+                +f2driver('Dan Ticktum',"","Carlin","Wielka Brytania","F2 2020 sezon: 11. miejsce, junior Williamsa","Ticktum.jpg","F1")
+                +f2driver('Jehan Daruvala',"","Carlin","Indie","F2 2020 sezon: 12. miejsce, F3 2019 - 3. miejsce, junior Red Bulla","Daruvala.jpg","Red Bull")
+                +f2driver('Liam Lawson',"","Hitech GP","Nowa Zelandia","F3 2020 sezon: piąte miejsce, 2021 - dodatkowo będzie jeździł w DTM, junior Red Bulla","Lawson.jpeg","formulascout")
+                +f2driver('Jüri Vips',"","Hitech GP","Estonia","F2 2020 sezon: 16. miejsce (8 wyścigów), z powodu pandemii w 2020 nie startował w Super Formule, junior Red Bulla","Vips.jpg","F2")
+                +f2driver('Christian Lundgaard',"","ART GP","Dania","F2 2020 sezon: 7. miejsce, junior Alpine","Lundgaard.jpg","ART")
+                +f2driver('Théo Pourchaire',"","ART GP","Francja","F3 2020 sezon: 2. miejsce, junior Alfy Romeo","Pourchaire.jpg","ART")
+                +f2driver('Lirim Zendeli',"","MP Motorsport","Niemcy","F3 2020 sezon: 8. miejscei","Zendeli.jpg","F3")
+                +f2driver('jeszcze nie ustalony',"","MP Motorsport","","","","")
+                +f2driver('David Beckmann',"","Charouz Racing System","Niemcy","F3 2020 sezon: 6, miejsce","Beckmann.jpg","F3")
+                +f2driver('Guilherme Samaia',"","Charouz Racing System","Brazylia","F2 2020 sezon: 24. miejsce","Samaia.jpg","F1 Feeder Series")
+                +f2driver('Roy Nissany',"","DAMS","Izrael","F2 2020 sezon: 19. miejsce, junior Williamsa (wziął udział w kilku treningach)","Nissany.jpg","F1")
+                +f2driver('Marcus Armstrong',"","DAMS","Nowa Zelandia","F2 2020 sezon: 13. miejsce, F3 2019: 2. miejsce, junior Ferrari","Armstrong.jpg","Ferrari")
+                +f2driver('Gianluca Petecof',"","Campos","Brazylia","Formula Regional European Championship 2020 sezon: pierwsze miejsce","Petecof.jpg","Ferrari")
+                +f2driver('Ralph Boschung',"","Campos","Szwajcaria","kilka lat temu jeźdizł w F2, ale bez większych sukcesów","Boschung.jpg","Motorsport Images")
+                +f2driver('Matteo Nannini',"","HWA","Włochy","F3 2020 sezon: 18. miejsce","Nannini.jpg","F3")
+                +f2driver('Alessio Deledda',"","HWA","Włochy","F3 2020 sezon: 34. miejsce","Deledda.jpg","F3")
+                +f2driver('Bent Viscaal',"","Trident","Holandia","F3 2020 sezon: 13. miejsce","Viscaal.jpg","F3")
+                +f2driver('Marino Sato',"","Trident","Japonia","F2 2020 sezon: 22. miejsce","Sato.jpg","Euroformula Open")
+                .navAfterArticle
+                        a(href="/")
+                            i.fas.fa-chevron-left
+                            p Strona główna
+                        +see_more("f2")
+            #seeAlso
+                .con-title Zobacz także
+                .squares
+                    each val in articles
+                        +small_article(val)
