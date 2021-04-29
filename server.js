@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const bodyParser = require("body-parser");
 const connectDB = require('./connection');
 const { paginatedResults } = require('./middleware/paginatedResults');
 
@@ -30,8 +29,8 @@ app.use('/f2', f2Route);
 
 
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 app.use(express.static('static'));
 app.set("views", path.join(__dirname, "static/views"));
 app.set("view engine", "pug");

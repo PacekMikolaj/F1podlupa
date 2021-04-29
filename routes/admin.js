@@ -3,12 +3,12 @@ const Admin = require('../static/models/admin');
 const Article = require('../static/models/article');
 const bcrypt = require('bcryptjs');
 const path = require('path');
-const bodyParser = require("body-parser");
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const morgan = require('morgan');
 const fs = require('fs');
 const { redirectAdmin, redirectLogin } = require('../middleware/authorization');
+const express = require('express');
 
 
 require("dotenv").config();
@@ -16,8 +16,8 @@ require("dotenv").config();
 
 router.use(morgan("dev"));
 router.use(cookieParser());
-router.use(bodyParser.urlencoded({ extended: false }));
-router.use(bodyParser.json());
+router.use(express.urlencoded({ extended: false }));
+router.use(express.json());
 router.use(
     session({
         key: 'user_sid',

@@ -1,14 +1,14 @@
 const router = require('express').Router();
 const Article = require('../static/models/article');
 const path = require('path');
-const bodyParser = require("body-parser");
+const express = require("express");
 
 
 require("dotenv").config();
 
 
-router.use(bodyParser.urlencoded({ extended: false }));
-router.use(bodyParser.json());
+router.use(express.urlencoded({ extended: false }));
+router.use(express.json());
 
 let limit = 6;
 

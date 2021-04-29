@@ -7,7 +7,7 @@ class Div_imageView {
     constructor() {
 
 
-        this.input = $('<input name="imageInput" type="file" required>');
+        this.input = $('<input name="imageInput" class="imageInput" type="file" required>');
 
         $(this.input).on('change', () => { this.handleChange() });
         console.log($(this.input));
@@ -84,34 +84,38 @@ class Div_imageView {
 
 $(document).ready(() => {
 
+//$(".form").ajaxSumbit({url: '/admin/add/test', type: 'post'});
+
+
     // setTimeout(() => {
 
     //     let editor = document.getElementById("cke_ckeditor");
-    
+
     //     console.log(editor);
-    
+
     //     //ckeditor tab handling
     //     //const editor = this.editor;
     //     const view = editor.editing.view;
     //     const viewDocument = view.document;
-    
+
     //     viewDocument.on('keydown', (evt, data) => {
-    
+
     //         if ((data.keyCode == keyCodes.tab) && viewDocument.isFocused) {
-    
+
     //             // with white space setting to pre  
     //             editor.execute('input', { text: "\t" });
     //             // editor.execute( 'input', { text: "     " } );
-    
+
     //             evt.stop(); // Prevent executing the default handler.
     //             data.preventDefault();
     //             view.scrollToTheSelection();
     //         }
-    
+
     //     });
 
 
     // },1000)
+
 
 
 
@@ -153,3 +157,44 @@ $(document).ready(() => {
 
 })
 
+
+let myFunction = (e) => {
+    console.log("some shiiiiiit");
+
+    console.log(e.target);
+
+    let form = $('.form');
+    
+    console.log('form:' + form);
+
+    let fd = new FormData(form.serialize());
+
+    //  let cover = document.querySelector('.coverInput').files[0];
+    //let inputs = document.querySelectorAll('.imageInput');
+    // let images = [];
+
+    // inputs.forEach((input) => {
+
+    //     fd.append('images[]', input.file);
+    // })
+
+    // fd.append('images[]', document.querySelector('.coverInput').files[0]);
+    // fd.append('lol', 'xd');
+
+    for (var [key, value] of fd.entries()) {
+        console.log(key, value);
+    }
+
+    $.ajax({
+        url: '/admin/add/test',
+        type: "POST",
+        data: form.serialize(),
+        // contentType: false,
+        // processData: false,
+        success: function (data) {
+            console.log(data);
+        }
+
+    })
+    
+}

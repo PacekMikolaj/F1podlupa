@@ -60,7 +60,7 @@ block content
             div
                 h2 Z datą: 
                 p= date
-    form(method="POST", action="/admin/add", enctype="multipart/form-data")  
+    form(method="POST", action="/admin/add/test", enctype="multipart/form-data" class="form")  
 
         if code
             input(type="hidden" name="date" value=date)
@@ -109,7 +109,7 @@ block content
                     p(style="text-transform: uppercase;") #{val}
                     br
               
-
+        button(class="submit" onclick="myFunction()") Button
         button(value="Submit" class="submit") Submit
 
     .instrukcja

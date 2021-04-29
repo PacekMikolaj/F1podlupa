@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const fs = require('fs');
 const formidable = require('formidable');
-//const bodyParser = require("body-parser");
 const express = require("express");
 const Article = require('./../static/models/article');
 const { redirectAdmin, redirectLogin } = require('../middleware/authorization');
@@ -11,7 +10,18 @@ const sharp = require('sharp');
 router.use(express.urlencoded({ extended: true }));
 router.use(express.json());
 
-const sections = [ "f1","f2","fe","f1basics","rallycross","other"];
+const sections = ["f1", "f2", "fe", "f1basics", "rallycross", "other"];
+
+router.post('/test', (req,res) =>{
+    console.log(req.body);
+
+    // req.body.images.forEach( (image) => {
+    //     console.log(image.name);
+    // })
+
+    res.send(data = {number: 'yo man its ok'});
+})
+
 
 router.route('/')
     .get(redirectLogin, (req, res) => {
@@ -34,7 +44,10 @@ router.route('/')
         //FORM PARSE
         form.parse(req, async function (err, fields, files) {
 
-            console.log('PARSE')
+
+
+            console.log('files')
+            console.log(files);
 
             let date;
             let html;
@@ -58,13 +71,14 @@ router.route('/')
             console.log('moresections:');
             console.log(fields.moreSections);
 
+            article.moreSections = [];
             article.title = fields.title;
             article.author = fields.author;
             article.short = fields.short;
             article.section = fields.section;
-            article.moreSections = fields.moreSections;
             article.date = date;
             article.ID = id;
+
 
             article.save(function (err) {
                 if (err) {
@@ -87,12 +101,12 @@ router.route('/')
         });
 
         //FORM ON FILE
-        form.on('file', function (field, file) {
+        form.on('file', function (field, file) {//async
 
             console.log("FIELD:")
             console.log(field)
 
-            addFile(file, field, id, form.uploadDir);
+           addFile(file, field, id, form.uploadDir); //await
 
         });
 
@@ -148,28 +162,32 @@ let addFile = (file, field, id, uploadDir) => {
 
     console.log('ext: ' + ext);
 
-    fs.rename(file.path, uploadDir + `${id}/${name}.${ext}`, function (err) {
+   // await new Promise( () => {
 
-        if (err) console.log(err);
+        fs.rename(file.path, uploadDir + `${id}/${name}.${ext}`, function (err) {
 
-        sharp(uploadDir + id + `/${name}.${ext}`)
-            .resize({ width: 1000 })
-            .webp({ quality: 90 })
-            .toFile(uploadDir + id + `/${name}.webp`)
-            .then(data => {
-                fs.unlink(uploadDir + id + `/${name}.${ext}`, (err) => {
-                    if (err) throw err;
-                })
-            }
-            )
-            .catch(err => console.log(err))
-    });
+            if (err) {console.log(err) };
+
+            sharp(uploadDir + id + `/${name}.${ext}`)
+                .resize({ width: 1000 })
+                .webp({ quality: 90 })
+                .toFile(uploadDir + id + `/${name}.webp`)
+                .then(data => {
+                    fs.unlink(uploadDir + id + `/${name}.${ext}`, (err) => {
+                        if (err) throw err;
+                    })
+                }
+                )
+                .catch(err => console.log(err))
+        });
+
+  //  });
 
 }
 
 let setDate = (id) => {
 
-    let date = new Date( parseInt(id) );
+    let date = new Date(parseInt(id));
 
     let minuty;
 
