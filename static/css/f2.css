@@ -340,14 +340,13 @@
     background-color: inherit;
     position: relative;
   }
-  .achievements #links a .bg {
+  .achievements #links a p::after {
+    border-left-width: 400px;
+    border-left-style: solid;
+    border-bottom: 40px solid transparent;
     position: absolute;
-    bottom: 230px;
-    left: 0;
-    width: 100%;
-    height: 30px;
-    background-color: inherit;
-    z-index: 2;
+    right: unset;
+    top: 30px;
   }
   .achievements #links a .img {
     height: 230px;
@@ -362,16 +361,6 @@
     margin-right: 0;
     z-index: 1;
   }
-  .achievements #links a::after {
-    position: absolute;
-    border-bottom: 20px solid transparent;
-    border-left-width: 28.6vw;
-    bottom: 210px;
-    left: 0;
-    right: unset;
-    top: unset;
-    z-index: 4;
-  }
   .achievements #links a:hover .img,
   .achievements #links a:hover p {
     -webkit-transform: scale(1.2);
@@ -384,6 +373,11 @@
 @media only screen and (min-width: 950px) {
   .achievements #links a p {
     font-size: 1.8rem;
+  }
+  .achievements #links a p::after {
+    border-left-width: 600px;
+    border-bottom: 50px solid transparent;
+    top: 30px;
   }
 }
 
@@ -404,16 +398,13 @@
     margin-bottom: 0.5rem;
     font-size: 2.4rem;
   }
-  .achievements #links a .bg {
-    bottom: 270px;
-    height: 50px;
+  .achievements #links a p::after {
+    border-left-width: 600px;
+    border-bottom: 50px solid transparent;
+    top: 40px;
   }
   .achievements #links a .img {
     height: 280px;
-  }
-  .achievements #links a::after {
-    bottom: 240px;
-    border-bottom: 30px solid transparent;
   }
 }
 
@@ -460,9 +451,10 @@
     margin-bottom: 1rem;
     font-size: 2.5rem;
   }
-  .achievements #links a .bg {
-    bottom: 310px;
-    height: 50px;
+  .achievements #links a p::after {
+    border-left-width: 800px;
+    border-bottom: 70px solid transparent;
+    top: 45px;
   }
   .achievements #links a .img {
     height: 320px;

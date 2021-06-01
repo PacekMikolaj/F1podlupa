@@ -3,11 +3,11 @@ const app = express();
 const path = require("path");
 const connectDB = require('./connection');
 const { paginatedResults } = require('./middleware/paginatedResults');
+const Article = require("./static/models/article");
 
 
 const port = process.env.PORT || 3000;
 
-let Article = require("./static/models/article");
 
 
 require('dotenv').config();
@@ -81,9 +81,16 @@ app.get("/", paginatedResults(Article, limit, newest), async function (req, res)
 app.get("/article/:ID", async function (req, res) {
 
     let data = {};
-    data.articles = await Article.find({ "ID": { $ne: req.params.ID } }).limit(4).sort({ ID: -1 }).exec();
+
+
     data.article = await Article.find({ "ID": req.params.ID }).sort({ ID: -1 }).exec();
     data.article = data.article[0]; // changing from array to simple element
+
+
+    data.articlesSliderA = await Article.find({ $and: [  { "ID": { $ne: req.params.ID } },{ "section": { $ne: data.article.section} }  ] }).limit(4).sort({ ID: -1 }).exec();
+
+    data.articlesSliderB = await Article.find({ $and: [  { "ID": { $ne: req.params.ID } },{ "section": data.article.section }  ] }).limit(4).sort({ ID: -1 }).exec();
+    data.articles = await Article.find({ "ID": { $ne: req.params.ID } }).limit(4).sort({ ID: -1 }).exec();
 
     res.render("article", data);
 

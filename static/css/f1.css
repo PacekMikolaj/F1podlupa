@@ -175,7 +175,7 @@
 
 .slider .slick-arrow {
   /* position: absolute; */
-  top: 50%;
+  top: 45%;
   z-index: 4;
   width: 2.5rem;
   height: 2.5rem;
@@ -246,6 +246,15 @@
   }
   .slider .slide a {
     height: 470px;
+  }
+  .slider .slide a .slick-arrow {
+    top: 50%;
+  }
+  .slider .slide a .slick-prev {
+    left: unset;
+  }
+  .slider .slide a .slick-next {
+    right: unset;
   }
 }
 

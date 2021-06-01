@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const Admin = require('../static/models/admin');
 const Article = require('../static/models/article');
+const Data = require('../static/models/data');
 const bcrypt = require('bcryptjs');
 const path = require('path');
 const cookieParser = require('cookie-parser');
@@ -210,7 +211,23 @@ router.post('/delete/confirmation', redirectLogin, async (req, res) => {
 
 module.exports = router;
 
+router
+    .route('/changeData')
+    .get(redirectLogin, (req, res) => {
+        res.render('admin/change_data');
+    })
 
+router
+    .route('/changeData/:type')
+    .get(redirectLogin, async (req, res) => {
+
+        let data = {};
+
+        console.log(req.params.type);
+        data.data = await Data.find({ "type": req.params.type });
+       console.log(data)
+        res.render('admin/data', data);
+    })
 
 
 // router.get('/register', (req, res) => {

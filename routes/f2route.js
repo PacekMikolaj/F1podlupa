@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const Article = require('../static/models/article');
+const Data = require('../static/models/data');
 const path = require('path');
 const express = require("express");
 
@@ -34,8 +35,9 @@ router.get("/", paginatedResults(Article, limit, newest, "f2"), async function (
 router.get('/teams', async (req, res) => {
 
     let data = {};
-    data.articles = await Article.find({ "ID": { $ne: req.params.ID } }).limit(4).sort({ ID: -1 }).exec();
+   data.articles = await Article.find().limit(4).sort({ ID: -1 }).exec();
 
+   data.data = await Data.find( { "type": "f2team"} );
     res.render("f2/teams", data);
 
 })
@@ -44,8 +46,8 @@ router.get('/teams', async (req, res) => {
 router.get('/drivers', async (req, res) => {
 
     let data = {};
-    data.articles = await Article.find({ "ID": { $ne: req.params.ID } }).limit(4).sort({ ID: -1 }).exec();
-
+    data.articles = await Article.find().limit(4).sort({ ID: -1 }).exec();
+    data.data = await Data.find( { "type": "f2driver"} );
     res.render("f2/drivers", data);
 
 })

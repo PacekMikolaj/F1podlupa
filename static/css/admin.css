@@ -67,6 +67,7 @@
 
 .desktop a:hover {
   color: white;
+  background-color: black;
 }
 
 .desktop .add:hover {
@@ -83,6 +84,10 @@
 
 .desktop .logout:hover {
   background-color: black;
+}
+
+.desktop .changeData:hover {
+  background-color: #02f3e9;
 }
 
 .desktop h1 {
@@ -187,6 +192,45 @@
 
 .DC form .no {
   background-color: #e10600;
+}
+
+form[name="dataForm"] {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 1rem auto 1rem;
+}
+
+form[name="dataForm"] input {
+  margin: 0 !important;
+  font-size: 1rem;
+}
+
+form[name="dataForm"] input[name="name"] {
+  width: 20%;
+}
+
+form[name="dataForm"] input[name="nation"] {
+  width: 10%;
+}
+
+form[name="dataForm"] input[name="achievements"] {
+  width: 40%;
+}
+
+form[name="dataForm"] input[name="src"] {
+  width: 5%;
 }
 
 @media only screen and (min-width: 650px) {

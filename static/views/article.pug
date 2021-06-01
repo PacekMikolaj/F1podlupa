@@ -1,9 +1,16 @@
 extends layout
 
 block css
+        //- link(rel='stylesheet' href='/slick/slick.css')
+        //- link(rel="stylesheet" href="/slick/slick-theme.css")
         link(rel='stylesheet' href='/css/article_site.css')
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"> 
+        style(type="text/css").
+            .f2{
+                background-color: green !important;
+            }
+        
 block title
  title #{article.title} - F1podlupą.pl
 
@@ -60,6 +67,14 @@ block content
 
         #seeAlso
             .con-title Zobacz także
+            .slider#sliderA
+                each val in articlesSliderA
+                    .slide
+                        +small_article(val) 
+            .slider#sliderB
+                each val in articlesSliderB
+                    .slide
+                        +small_article(val)
             .squares
                 each val in articles
                     +small_article(val)

@@ -60,8 +60,7 @@ block content
             div
                 h2 Z datą: 
                 p= date
-    form(method="POST", action="/admin/add/test", enctype="multipart/form-data" class="form")  
-
+    form(method="POST", action="/admin/add/test", class="form") 
         if code
             input(type="hidden" name="date" value=date)
             input(type="hidden" name="code" value=code)
@@ -70,6 +69,8 @@ block content
         //-     label#saveData.label
         //-         p.Names Zachować starą datę?
         //-         input(type="checkbox" name="old_data")
+                            //- enctype="multipart/form-data" 
+
 
         label#title.label
             p.Names Title:

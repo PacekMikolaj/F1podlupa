@@ -12,14 +12,38 @@ router.use(express.json());
 
 const sections = ["f1", "f2", "fe", "f1basics", "rallycross", "other"];
 
-router.post('/test', (req,res) =>{
-    console.log(req.body);
+router.post('/test', (req, res) => {
+    // console.log(req.body);
+
+    // let data = JSON.parse(req.body);
+    try {
+
+        let data = req.body;
+        console.log(data.imageInput);
+
+    } catch (err) {
+        console.log('error w nieparsowanym');
+        console.log(err);
+    }
+
+    // try {
+    //     let data = JSON.parse(req.body);
+    //     console.log(data.fd);
+    // } catch (err) {
+    //     console.log('error w parsowanym');
+    //     console.log(err);
+    // }
+
+
+    // for (var [key, value] of data.entries()) {
+    //     console.log(key, value);
+    // }
 
     // req.body.images.forEach( (image) => {
     //     console.log(image.name);
     // })
 
-    res.send(data = {number: 'yo man its ok'});
+    res.send(data = { number: 'yo man its ok' });
 })
 
 
@@ -106,7 +130,7 @@ router.route('/')
             console.log("FIELD:")
             console.log(field)
 
-           addFile(file, field, id, form.uploadDir); //await
+            addFile(file, field, id, form.uploadDir); //await
 
         });
 
@@ -162,26 +186,26 @@ let addFile = (file, field, id, uploadDir) => {
 
     console.log('ext: ' + ext);
 
-   // await new Promise( () => {
+    // await new Promise( () => {
 
-        fs.rename(file.path, uploadDir + `${id}/${name}.${ext}`, function (err) {
+    fs.rename(file.path, uploadDir + `${id}/${name}.${ext}`, function (err) {
 
-            if (err) {console.log(err) };
+        if (err) { console.log(err) };
 
-            sharp(uploadDir + id + `/${name}.${ext}`)
-                .resize({ width: 1000 })
-                .webp({ quality: 90 })
-                .toFile(uploadDir + id + `/${name}.webp`)
-                .then(data => {
-                    fs.unlink(uploadDir + id + `/${name}.${ext}`, (err) => {
-                        if (err) throw err;
-                    })
-                }
-                )
-                .catch(err => console.log(err))
-        });
+        sharp(uploadDir + id + `/${name}.${ext}`)
+            .resize({ width: 1000 })
+            .webp({ quality: 90 })
+            .toFile(uploadDir + id + `/${name}.webp`)
+            .then(data => {
+                fs.unlink(uploadDir + id + `/${name}.${ext}`, (err) => {
+                    if (err) throw err;
+                })
+            }
+            )
+            .catch(err => console.log(err))
+    });
 
-  //  });
+    //  });
 
 }
 

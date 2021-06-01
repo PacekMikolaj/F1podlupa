@@ -1,0 +1,21 @@
+extends ../layout
+
+block css
+    link(rel='stylesheet' href="/css/admin.css")
+
+
+block title
+    title Zmień dane - F1podlupą.pl
+
+block content
+
+    #main
+        .desktop
+            h1 ZMIEŃ DANE
+            a(href="/admin/add") Kierowcy F1
+            a(href="/admin/add") Zespoły F1
+            a(href="/admin/add") Tory F1
+            a(href="/admin/changeData/f2driver") Kierowcy F2
+            a(href="/admin/changeData/f2team") Zespoły F2
+            a(href=".") Wróć
+    

@@ -5,22 +5,22 @@ mixin small_article(val)
           .notImg
             case val.section
               when "f1"
-                .type.top#f1
+                .type.top#f1(style="background-color: #e10600")
                   .little FORMUŁA 1
               when "f2"
-                .type.top#f2
+                .type.top#f2(style="background-color: #0090d0")
                   .little FORMUŁA 2
               when "fe"
-                .type.top#fE
+                .type.top#fE(style="background-color: #50cef7")
                   .little FORMUŁA E
               when "f1basics"
-                .type.top#f1Basics
+                .type.top#f1Basics(style="background-color: #f7360c")
                   .little PODSTAWY F1
               when "rallycross"
-                .type#rallycross
+                .type#rallycross(style="background-color: #02f3e9")
                   .little RALLYCROSS
               when "other"
-                .type.top#other
+                .type.top#other(style="background-color: #3be307")
                   .little POZOSTAŁE ARTYKUŁY
             .content
               .title

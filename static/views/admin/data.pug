@@ -1,0 +1,29 @@
+extends ../layout
+
+block css
+    link(rel='stylesheet' href="/css/admin.css")
+
+
+block title
+    title Dane - F1podlupą.pl
+
+block content
+
+    #main
+        .desktop
+            h1 ZMIEŃ DANE
+            each val in data
+                form(method="POST" name="dataForm")
+                    if val.name
+                        input(type="text" name="name" value=val.name)
+                    if val.nation
+                        input(type="text" name="nation" value=val.nation)
+                    if val.achievements
+                        input(type="text" name="achievements" value=val.achievements)
+                    if val.src
+                        input(type="text" name="src" value=val.src)
+
+                    input(type="submit" value="potwierdź")
+            
+            a(href=".") Wróć
+    

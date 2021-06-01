@@ -84,7 +84,7 @@ class Div_imageView {
 
 $(document).ready(() => {
 
-//$(".form").ajaxSumbit({url: '/admin/add/test', type: 'post'});
+    //$(".form").ajaxSumbit({url: '/admin/add/test', type: 'post'});
 
 
     // setTimeout(() => {
@@ -158,16 +158,14 @@ $(document).ready(() => {
 })
 
 
-let myFunction = (e) => {
+let myFunction = () => {
     console.log("some shiiiiiit");
 
-    console.log(e.target);
+    let form = document.querySelector('.form');
 
-    let form = $('.form');
-    
     console.log('form:' + form);
 
-    let fd = new FormData(form.serialize());
+    let fd = new FormData(form);
 
     //  let cover = document.querySelector('.coverInput').files[0];
     //let inputs = document.querySelectorAll('.imageInput');
@@ -185,16 +183,27 @@ let myFunction = (e) => {
         console.log(key, value);
     }
 
+    // fd = JSON.stringify(fd);
+
+    var object = {};
+    fd.forEach((value, key) => object[key] = value);
+   // var json = JSON.stringify(object);
+
     $.ajax({
         url: '/admin/add/test',
         type: "POST",
-        data: form.serialize(),
         // contentType: false,
-        // processData: false,
+        //  processData: false,
+        dataType: 'json',
+        data: object,
+        //contentType: 'application/json',
+        headers: {
+            'Content-Type': 'application/json'
+        },
         success: function (data) {
             console.log(data);
         }
 
     })
-    
+
 }

@@ -22,6 +22,14 @@
   background-color: #02f3e9;
 }
 
+#sliderA, #sliderB {
+  display: none;
+}
+
+.slick-initialized {
+  display: none;
+}
+
 .navAfterArticle {
   width: 100%;
   display: -webkit-box;
@@ -140,6 +148,9 @@
 
 @media only screen and (min-width: 1224px) {
   #seeAlso {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 1.5rem;
     width: 30%;
     margin: unset;
     margin-left: 5%;
@@ -153,6 +164,43 @@
     -webkit-box-align: end;
         -ms-flex-align: end;
             align-items: flex-end;
+  }
+  #seeAlso .squares {
+    display: none;
+  }
+  #seeAlso .slider {
+    width: 100%;
+    display: none;
+  }
+  #seeAlso .slider .slick-arrow {
+    /* position: absolute; */
+    top: 45%;
+    z-index: 4;
+    width: 2rem;
+    height: 2rem;
+    /* color: white;
+                opacity: 0.7; */
+    /* cursor: pointer; */
+  }
+  #seeAlso .slider .slick-track {
+    width: 100%;
+  }
+  #seeAlso .slider .slick-prev {
+    left: -10%;
+  }
+  #seeAlso .slider .slick-next {
+    right: -10%;
+  }
+  #seeAlso .slider .slick-prev:before,
+  #seeAlso .slider .slick-next:before {
+    font-size: 2rem;
+    color: darkgrey;
+  }
+  #seeAlso .slick-initialized {
+    display: block;
+  }
+  #seeAlso #sliderA, #seeAlso #sliderB {
+    display: unset;
   }
   #seeAlso .square {
     width: 100%;

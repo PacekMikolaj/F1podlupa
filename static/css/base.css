@@ -501,11 +501,11 @@ nav #otherSeries .submenuOS li a {
             flex-direction: row;
     height: 80px;
     position: unset;
+    padding: 0 10% 0;
   }
   header #logo {
-    padding-left: 5%;
     height: 100%;
-    width: 40%;
+    width: 35%;
     font-size: 1.8rem;
   }
   header h2 {
@@ -538,7 +538,7 @@ nav #otherSeries .submenuOS li a {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-    width: 40%;
+    width: 45%;
     height: 100%;
     padding: 0;
     font-size: 1.1rem;
@@ -673,9 +673,6 @@ nav #otherSeries .submenuOS li a {
 @media only screen and (min-width: 1224px) {
   nav {
     font-size: 1.6rem;
-  }
-  header #logo {
-    padding-left: 10%;
   }
 }
 
