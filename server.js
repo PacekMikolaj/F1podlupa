@@ -21,7 +21,6 @@ const f1Route = require('./routes/f1Route');
 const f2Route = require('./routes/f2Route');
 const RXroute = require('./routes/RXRoute');
 
-//test
 
 
 //Route Middleware
