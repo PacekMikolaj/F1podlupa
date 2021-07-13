@@ -1,7 +1,6 @@
 extends ../layout
 
 block css
-    link(rel='stylesheet' href="/css/f1teams.css")
     link(rel='stylesheet' href="/css/f2teams.css")
 
 
@@ -21,14 +20,5 @@ block content
             #list
                 each val in data
                     +team(val.name, val.nation, val.achievements, val.photo, val.src)
-                    
-                .navAfterArticle
-                        a(href="/")
-                            i.fas.fa-chevron-left
-                            p Strona główna
-                        +see_more("f2")
-            #seeAlso
-                .con-title Zobacz także
-                .squares
-                    each val in articles
-                        +small_article(val)
+            +see_more("f2")
+        +see_also(articlesSliderA, articlesSliderB, articles)

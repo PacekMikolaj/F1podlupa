@@ -1,0 +1,67 @@
+///MOBILE
+@mixin desktopMenu {
+    // no niby do 480px
+    @media only screen and (min-width: 650px) {
+        @content;
+    }
+}
+
+///768PX
+@mixin tablet {
+    @media only screen and (min-width: 768px) {
+        @content;
+    }
+}
+
+///950PX
+@mixin desktopHD {
+    @media only screen and (min-width: 950px) {
+        @content;
+    }
+}
+
+///1224PX
+@mixin desktopHDplus {
+    @media only screen and (min-width: 1224px) {
+        @content;
+    }
+}
+
+///1500PX
+@mixin desktopFHD {
+    @media only screen and (min-width: 1500px) {
+        @content;
+    }
+}
+
+///COLORS
+$formula1: #e10600;
+$formula2: #0090d0;
+$formulaE: #50cef7;
+$rallycross: #02f3e9;
+$f1Basics: #f7360c;
+$other: #3be307;
+
+#f1 {
+    background-color: #e10600;
+}
+
+#f2 {
+    background-color: #0090d0;
+}
+
+#fE {
+    background-color: #50cef7;
+}
+
+#f1Basics {
+    background-color: #f7360c;
+}
+
+#other {
+    background-color: #3be307;
+}
+
+#rallycross {
+    background-color: #02f3e9;
+}

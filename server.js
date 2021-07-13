@@ -19,6 +19,8 @@ connectDB();
 const admin = require('./routes/admin');
 const f1Route = require('./routes/f1Route');
 const f2Route = require('./routes/f2Route');
+const RXroute = require('./routes/RXRoute');
+
 
 
 
@@ -26,6 +28,7 @@ const f2Route = require('./routes/f2Route');
 app.use('/admin', admin);
 app.use('/f1', f1Route);
 app.use('/f2', f2Route);
+app.use('/rallycross', RXroute);
 
 
 
@@ -43,8 +46,7 @@ app.get("/", paginatedResults(Article, limit, newest), async function (req, res)
 
     let data = {};
 
-    if(res.paginationInfo.page == 1)
-    {
+    if (res.paginationInfo.page == 1) {
         data.newest = await Article.find().sort({ ID: -1 }).limit(newest).exec();
     }
 
@@ -83,32 +85,29 @@ app.get("/article/:ID", async function (req, res) {
     let data = {};
 
 
-    data.article = await Article.find({ "ID": req.params.ID }).sort({ ID: -1 }).exec();
-    data.article = data.article[0]; // changing from array to simple element
+    data.article = await Article.findOne({ "ID": req.params.ID }).sort({ ID: -1 }).exec();
 
+    data.articlesSliderA = await Article.find({ $and: [{ "ID": { $ne: req.params.ID } }, { "section": { $ne: data.article.section } }] }).limit(4).sort({ ID: -1 }).exec();
 
-    data.articlesSliderA = await Article.find({ $and: [  { "ID": { $ne: req.params.ID } },{ "section": { $ne: data.article.section} }  ] }).limit(4).sort({ ID: -1 }).exec();
+    data.articlesSliderB = await Article.find({ $and: [{ "ID": { $ne: req.params.ID } }, { "section": data.article.section }] }).limit(4).sort({ ID: -1 }).exec();
 
-    data.articlesSliderB = await Article.find({ $and: [  { "ID": { $ne: req.params.ID } },{ "section": data.article.section }  ] }).limit(4).sort({ ID: -1 }).exec();
-    data.articles = await Article.find({ "ID": { $ne: req.params.ID } }).limit(4).sort({ ID: -1 }).exec();
+    data.articles = data.articlesSliderA.concat(data.articlesSliderB);
+    data.articles = data.articles.sort((a, b) => a.ID < b.ID ? 1 : -1);
 
     res.render("article", data);
 
 })
 
-app.get('/aboutUs', async (req,res) => {
+app.get('/aboutUs', async (req, res) => {
     res.render('aboutUs');
-} )
+})
 
-app.get('/fE', async (req,res) => {
+app.get('/fE', async (req, res) => {
     res.render('fE');
-} )
+})
 
-app.get('/rallycross', async (req,res) => {
-    res.render('rallycross');
-} )
 
-app.get('/otherSeries', async (req,res) => {
+app.get('/otherSeries', async (req, res) => {
     res.render('otherSeries');
 })
 

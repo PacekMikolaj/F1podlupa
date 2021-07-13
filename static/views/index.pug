@@ -11,10 +11,35 @@ block title
 block content
   #main
     if paginationInfo.page == 1
-      .newest-articles
+      #newest-articles
         .con-title Najnowsze wiadomości
         each val in newest
           +new_article(val)
+      .addictionalInfo
+        #supportingSeries
+          .part
+            h2 Następny weekend wyścigowy: 
+            p 1.07-3.07
+            p Austria
+          .part
+            h2 Serie towarzyszące: 
+            p W Series 
+            p Formuła 3
+        #goTos
+          a.goTo(href='/f1')#f1
+            .goToContent
+              h2 Formuła 1
+              p
+                i.fas.fa-chevron-right(style="transform: rotate(180deg)")
+                i.fas.fa-chevron-right(style="transform: rotate(180deg); margin-right: .5rem;")
+                | Czytaj więcej
+          a.goTo(href='/f2')#f2
+            .goToContent
+              h2 formuła 2
+              p Czytaj więcej
+                i.fas.fa-chevron-right(style="margin-left: .5rem;")
+                i.fas.fa-chevron-right
+
       
         
     .articles
@@ -31,7 +56,6 @@ block content
 block scripts
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js" integrity="sha512-IQLehpLoVS4fNzl7IfH8Iowfm5+RiMGtHykgZJl9AWMgqx0AmJ6cRWcB+GaGVtIsnC4voMfm8f2vwtY+6oPjpQ==" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/CSSRulePlugin.min.js" integrity="sha512-6MT8e40N5u36Um5SXKtwZmoKcCSg1XaKtexnXZPpQ4iJDHrBEHXKz37fnDovXezsaCd4oKCH5Y+vrcl7qpLPoA==" crossorigin="anonymous"></script>
-  script(src='js/main_ui.js' crossorigin="anonymous")
 
   
   

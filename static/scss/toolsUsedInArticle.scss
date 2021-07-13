@@ -1,0 +1,173 @@
+@import "mixins.scss";
+
+#sliderA, #sliderB{
+    display: none;
+}
+
+.slick-initialized {
+    display: none;
+}
+
+.navAfterArticle {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 1rem 0 1rem;
+
+    a {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 49%;
+        padding: 0.4rem;
+        font-size: 4.8vw;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        color: white;
+        font-family: "Exo 2", sans-serif;
+        position: relative;
+
+        i {
+            font-size: 1.2em;
+            position: absolute;
+            top: 20%;
+            right: 5%;
+        }
+        p {
+            width: 80%;
+            text-align: center;
+        }
+    }
+
+    a:first-child {
+        background-color: black;
+
+        i {
+            left: 5%;
+            right: unset;
+        }
+
+        p {
+            width: 100%;
+            text-align: right;
+        }
+    }
+}
+
+#seeAlso {
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+
+    display: flex;
+    flex-direction: column;
+}
+
+@include desktopMenu {
+    .navAfterArticle {
+        a {
+            font-size: 1.6rem;
+            width: 47%;
+            transition: 0.2s;
+            padding: 0.5rem;
+
+            p {
+                text-align: center !important;
+            }
+
+            &:hover {
+                transform: translateX(5%);
+                transition: 0.2s;
+            }
+        }
+
+        a:first-child {
+            &:hover {
+                transform: translateX(-5%);
+            }
+        }
+    }
+}
+
+@include tablet {
+    #seeAlso {
+        width: 90%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+}
+
+@include desktopHDplus {
+    #seeAlso {
+        $arrow-size: 2rem;
+
+        .squares {
+            display: none;
+        }
+        .slider {
+            width: 100%;
+            display: none;
+
+            .slick-arrow {
+                /* position: absolute; */
+                top: 45%;
+                z-index: 4;
+                width: $arrow-size;
+                height: $arrow-size;
+                /* color: white;
+                opacity: 0.7; */
+                /* cursor: pointer; */
+            }
+
+            .slick-track {
+                width: 100%;
+            }
+
+            .slick-prev {
+                left: -10%;
+            }
+
+            .slick-next {
+                right: -10%;
+            }
+
+            .slick-prev:before,
+            .slick-next:before {
+                font-size: $arrow-size;
+                //color: #F7360C;
+               color: darkgrey;
+            }
+        }
+
+        .slick-initialized {
+            display: block;
+        }
+
+        #sliderA, #sliderB{
+            display: unset;
+        }
+        
+
+        position: sticky;
+        top: 1.5rem;
+        width: 30%;
+        margin: unset;
+        margin-left: 5%;
+        flex-direction: column;
+        justify-content: unset;
+        align-items: flex-end;
+
+        .square {
+            width: 100%;
+        }
+    }
+}
+
+@include desktopFHD {
+    #seeAlso {
+        width: 25%;
+    }
+}

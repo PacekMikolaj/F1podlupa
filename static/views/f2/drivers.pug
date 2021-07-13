@@ -1,6 +1,7 @@
 extends ../layout
 
 block css
+    link(rel='stylesheet' href='/css/article_site.css')
     link(rel='stylesheet' href="/css/f1teams.css")
     link(rel='stylesheet' href="/css/f2teams.css")
 
@@ -10,7 +11,6 @@ block title
 
 block content
     include ../views_components/f2driver
-    include ../views_components/see_more
 
     #main
         #introduction
@@ -21,14 +21,5 @@ block content
             #list
                 each val in data
                     +f2driver(val.name, val.age, val.team, val.nation, val.achievements, val.photo, val.src)
-                    
-                .navAfterArticle
-                        a(href="/")
-                            i.fas.fa-chevron-left
-                            p Strona główna
-                        +see_more("f2")
-            #seeAlso
-                .con-title Zobacz także
-                .squares
-                    each val in articles
-                        +small_article(val)
+            +see_more("f2")
+        +see_also(articlesSliderA,articlesSliderB,articles)

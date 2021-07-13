@@ -1,0 +1,43 @@
+mixin f1driver()
+    .driver 
+        .name Lewis Hamilton 
+            .underline(style="background-color: red")
+        img.logo(src="/img/f1drivers/Hamilton.jpg" alt="")
+        h3 F1
+        div.help
+            .achievements
+                .achievement
+                    .icon
+                        img(src='../img/icons/trophy.png' alt='trophy')
+                    p 7
+                .achievement
+                    .icon
+                        img(src='../img/icons/gold-medal.png' alt='gold-medal')
+                    p 98
+                .achievement
+                    .icon
+                        img(src='../img/icons/podium.png' alt='podium')
+                    p 169
+                .achievement
+                    .icon
+                        img(src='../img/icons/pole.png' alt='pole')
+                    p 100
+            #numberAndTeam 
+                #number 44
+                a#team(href='/f1/teams#' + 'Mercedes') Mercedes
+        .infos
+            .info
+                p Kraj: 
+                    b Wielka Brytania
+            .info
+                p Wiek:
+                    b 36
+            .info
+                p
+                    b mistrz GP2 - 2006
+            .info 
+                p Ciekawostki:
+                a(href='#xd') link
+                p już w wieku 12 lat Lewis dołączył do programu juniorskiego McLarena 
+                p 1 stycznia 2021 roku Hamilton otrzymał tytuł szlachecki 
+                p zespół Williams chciał już w 2004 roku podpisać kontrakt z Brytyjczykiem, jednak dostawca silników nie zgodził się.

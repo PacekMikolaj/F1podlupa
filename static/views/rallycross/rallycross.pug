@@ -1,0 +1,52 @@
+extends ../layout
+
+block css
+    link(rel='stylesheet' href='/css/tile_introduction.css')
+    link(rel='stylesheet' href="/css/rallycross.css")
+    link(rel='stylesheet' href="/css/f2.css")
+    link(rel='stylesheet' href="/css/car_display.css")
+
+
+
+block title
+    title Rallycross - F1podlupą.pl
+
+block content
+    include ../views_components/car_display.pug
+    include ../views_components/tile_introduction.pug
+
+
+    #main
+        #introduction
+            .description
+                //- .leftD
+                //- .titleOnClickD Formuła 2
+                    .underline
+                //- .centerD
+                h1.title Rallycross
+                    .underline#rallycross
+                .text Po żwirze, błocie, asfalcie: to tutaj kierowcy walczą ze sobą w krótkich, lecz wymagających i pełnych emocji wyścigach. Poznaj rallycrossowy świat.
+                #links_introduction
+                    +tile_introduction("/rallycross/about", "Czym jest Rallycross?", "/img/question-mark-draw.png", "/img/rallycross_tile_intro.jpg", "rx")
+                    +tile_introduction("/rallycross/teams", "Zespoły WRX","/img/group.png", "/img/rx_teams.jpg", "team")
+
+            +car_display("/img/f2car_1.jpg")
+            
+        .shifter
+        if paginationInfo.page == 1
+            .newest-articles
+                .con-title Najnowsze wiadomości - Rallycross
+                each val in newest
+                    +new_article(val)
+
+
+        .articles
+            .con-title Artykuły - Rallycross
+            .squares
+                each val in articlesF2
+                    +small_article(val)
+        +pagination(paginationInfo)
+
+
+        block scripts
+        script(src='/js/car_display.js')

@@ -1,0 +1,297 @@
+@import "../mixins.scss";
+
+#content {
+    margin: 0 auto;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.underline {
+    width: 100%;
+    height: 3px;
+    margin-top: 3px;
+}
+
+.title {
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    font-family: "Exo 2", sans-serif;
+    font-style: italic;
+    font-size: 3rem;
+    margin-bottom: 2rem;
+}
+
+#list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.team {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+
+    .underline {
+        height: 4px;
+    }
+
+    .name {
+        width: 100%;
+        margin: 1rem auto 0;
+        text-align: center;
+        font-family: "Exo 2", sans-serif;
+        font-style: italic;
+        font-size: 2rem;
+        margin-bottom: 1.3rem;
+    }
+
+    .logo,
+    .classPhoto {
+        width: 100%;
+        margin: 1rem auto 3rem;
+    }
+}
+
+$icons_size: 40px;
+
+.achievements {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto auto;
+    margin-bottom: 1em;
+}
+
+.achievement {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 0.5em 1em 1em;
+
+    .icon {
+        display: block;
+        width: $icons_size;
+        height: $icons_size;
+        margin: 0;
+        position: relative;
+
+        img {
+            margin: 0;
+            width: 100%;
+        }
+
+        &::after {
+            position: absolute;
+            content: ":";
+            font-family: "Exo 2", sans-serif;
+            font-size: 2em;
+            right: -0.4em;
+        }
+    }
+
+    p {
+        font-family: "Exo 2", sans-serif;
+        font-size: 2.3em;
+        font-style: italic;
+        width: 50%;
+        text-align: center;
+    }
+}
+
+.infos {
+    font-family: "Lato", sans-serif;
+    font-size: 1.4rem;
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    color: #353535;
+}
+
+.info {
+    width: 100%;
+    margin-bottom: 1em;
+    padding-bottom: 1em;
+    border-bottom: 2px dotted #353535;
+
+    p {
+        padding: 0.4rem;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        font-size: 1em;
+
+        b {
+            display: block;
+            margin-left: 0;
+            text-align: end;
+            font-size: 1em;
+        }
+    }
+
+    a {
+        display: block;
+        width: 100%;
+        padding: 0.4rem;
+    }
+
+    .bold {
+        font-weight: bold;
+    }
+}
+
+#drivers {
+    font-family: "Exo 2", sans-serif;
+    color: black;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 1.9rem;
+
+    p {
+        display: block;
+        text-align: center;
+        margin-bottom: 0.5em;
+        font-size: 1em;
+        width: 100%;
+    }
+
+    a {
+        display: block;
+        text-align: center;
+        font-size: 0.8em;
+        padding-bottom: 0;
+        width: 240px;
+        margin: 0.5em;
+        cursor: pointer;
+    }
+}
+
+.help {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+@include desktopMenu {
+    .team {
+        .name {
+            font-size: 2.5rem;
+        }
+    }
+    #list {
+        width: 90%;
+    }
+    .info {
+        p {
+            font-size: 1.2em;
+        }
+    }
+
+    .achievement{
+        justify-content: space-evenly;
+        }
+}
+
+@include tablet {
+    .title {
+        font-size: 4rem;
+    }
+    .help {
+        flex-direction: row;
+        margin-bottom: 1rem;
+    }
+
+    #drivers,
+    .achievements {
+        margin: 0;
+        width: 50%;
+    }
+    .infos {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        //justify-content: space-between; to jest spoko do przemyślenia
+        align-items: center;
+        height: 520px;
+    }
+
+    .team {
+        .classPhoto {
+            margin-top: 0;
+        }
+    }
+    .info {
+        width: 48%;
+        p {
+            font-size: 1em;
+        }
+    }
+}
+
+@include desktopHDplus {
+    #content {
+        width: 50%;
+        flex-direction: column;
+        justify-content: center;
+        white-space: pre-line;
+        display: flex;
+        align-items: flex-start;
+        margin: unset;
+        margin-bottom: 2rem;
+    }
+    .title {
+        width: 100%;
+        margin: 0 0 2rem 0;
+    }
+
+    #list {
+        width: 100%;
+    }
+}
+
+@include desktopFHD {
+    $icons_size: 50px;
+    .team {
+        .name {
+            font-size: 3rem;
+        }
+    }
+    #drivers {
+        font-size: 2.4rem;
+    }
+    .infos{
+        height: 550px;
+    }
+    .info {
+        p {
+            font-size: 1.2em;
+        }
+    }
+    .achievement {
+        .icon {
+            width: $icons_size;
+            height: $icons_size;
+
+            &::after{
+                font-size: 2.3em;
+            }
+        }
+
+        p {
+            font-size: 2.7em;
+        }
+    }
+}

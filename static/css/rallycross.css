@@ -1,0 +1,37 @@
+#f1 {
+  background-color: #e10600;
+}
+
+#f2 {
+  background-color: #0090d0;
+}
+
+#fE {
+  background-color: #50cef7;
+}
+
+#f1Basics {
+  background-color: #f7360c;
+}
+
+#other {
+  background-color: #3be307;
+}
+
+#rallycross {
+  background-color: #02f3e9;
+}
+
+#introduction a.tile_introduction:first-child p {
+  font-size: 1em;
+}
+
+#introduction a.tile_introduction P {
+  border-color: #02f3e9;
+}
+
+@media only screen and (min-width: 1500px) {
+  #introduction a.tile_introduction:first-child p {
+    font-size: 1.4em;
+  }
+}

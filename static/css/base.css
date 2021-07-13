@@ -204,7 +204,7 @@ nav #otherSeries {
 
 nav #otherSeries i {
   position: absolute;
-  top: .8rem;
+  top: 0.8rem;
   right: 8%;
   -webkit-transform-origin: center;
           transform-origin: center;
@@ -501,7 +501,7 @@ nav #otherSeries .submenuOS li a {
             flex-direction: row;
     height: 80px;
     position: unset;
-    padding: 0 10% 0;
+    padding: 0 5% 0;
   }
   header #logo {
     height: 100%;
@@ -673,6 +673,12 @@ nav #otherSeries .submenuOS li a {
 @media only screen and (min-width: 1224px) {
   nav {
     font-size: 1.6rem;
+  }
+}
+
+@media only screen and (min-width: 1500px) {
+  header {
+    padding: 0 10% 0;
   }
 }
 

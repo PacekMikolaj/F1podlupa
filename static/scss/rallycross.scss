@@ -1,0 +1,23 @@
+@import "mixins.scss";
+
+
+
+#introduction 
+{
+    a.tile_introduction:first-child p {
+        font-size: 1em;
+    }
+    a.tile_introduction P {
+
+        border-color: $rallycross;
+    }
+}
+
+@include desktopFHD {
+    #introduction 
+{
+    a.tile_introduction:first-child p {
+        font-size: 1.4em;
+    }
+}
+}

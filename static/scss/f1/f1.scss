@@ -1,0 +1,585 @@
+@import "../mixins.scss";
+
+$arrow-size: 2.5rem;
+
+// #help {
+//     width: 100%;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: space-between;
+//     margin: 0 auto;
+// }
+
+#introduction {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .tile_introduction p {
+        border-color: $formula1;
+    }
+}
+
+.underline {
+    width: 100%;
+    height: 3px;
+    background-color: $formula1;
+    margin-top: 3px;
+}
+
+// #description {
+//     width: 90%;
+//     margin: 0 auto 2rem;
+//     display: flex;
+//     flex-direction: column;
+
+//     .title {
+//         width: 90%;
+//         margin: 0 auto;
+//         text-align: center;
+//         font-family: "Exo 2", sans-serif;
+//         font-style: italic;
+//         font-size: 3.3rem;
+//         margin-bottom: 0.7rem;
+//     }
+
+//     .text {
+//         font-family: "Exo 2", sans-serif;
+//         font-size: 1.2rem;
+//         width: 90%;
+//         margin: 0 auto;
+//         margin-bottom: 1rem;
+//         text-align: center;
+//     }
+
+//     .tile_introduction p {
+//         border-color: $formula1;
+//     }
+// }
+
+.description {
+    width: 90%;
+    margin: 0 auto 2rem;
+    display: flex;
+    flex-direction: column;
+
+    .titleOnClickD {
+        display: none;
+    }
+
+    .title {
+        width: 90%;
+        text-align: center;
+        font-family: "Exo 2", sans-serif;
+        font-style: italic;
+        font-size: 3.2rem;
+        margin: 0 auto 1rem;
+    }
+
+    .text {
+        font-family: "Exo 2", sans-serif;
+        font-size: 1.2rem;
+        width: 90%;
+        margin: 0 auto;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+}
+
+/*    F1CAR    */
+
+// #f1car {
+//     width: 90%;
+//     background-color: #16161d;
+//     margin: 0 auto;
+//     margin-bottom: 1rem;
+//     display: flex;
+//     flex-direction: column;
+//     padding: 1.4rem;
+
+//     .title {
+//         color: white;
+//         font-family: "Exo 2", sans-serif;
+//         margin: 0 auto;
+//         text-align: center;
+//         font-size: 2.1rem;
+//         width: 100%;
+//         margin-bottom: 0.5rem;
+//     }
+
+//     .text,
+//     .text2,
+//     a {
+//         color: white;
+//         font-family: "Exo 2", sans-serif;
+//         width: 100%;
+//         margin: 0 auto;
+//         text-align: center;
+//     }
+
+//     .text {
+//         font-size: 1.3rem;
+//         margin-bottom: 1rem;
+//     }
+
+//     img {
+//         width: 100%;
+//         margin: 0 auto;
+//         display: block;
+//         margin-bottom: 1rem;
+//     }
+
+//     .text2 {
+//         font-size: 1rem;
+//         margin-bottom: 0.2rem;
+//     }
+
+//     a {
+//         font-size: 1.1rem;
+//         margin-top: 0.1rem;
+//     }
+// }
+
+/*     F1BASICS    */
+
+.f1basics {
+    width: 100%;
+    margin: 0 auto;
+
+    > .title {
+        font-family: "Exo 2", sans-serif;
+        margin: 0 auto;
+        text-align: center;
+        font-size: 2.5rem;
+        width: 81%;
+        margin-bottom: 0.5rem;
+    }
+
+    > .text {
+        font-family: "Exo 2", sans-serif;
+        font-size: 1.3rem;
+        width: 81%;
+        margin: 0 auto;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+}
+
+/*   SLIDER   */
+.slider {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+
+    .square {
+        width: 80%;
+    }
+
+    .slick-arrow {
+        /* position: absolute; */
+        top: 45%;
+        z-index: 4;
+        width: $arrow-size;
+        height: $arrow-size;
+        /* color: white;
+        opacity: 0.7; */
+        /* cursor: pointer; */
+    }
+
+    .slick-track {
+        width: 100%;
+    }
+
+    .slick-prev {
+        left: 7%;
+    }
+
+    .slick-next {
+        right: 7%;
+    }
+
+    .slide {
+        display: flex !important;
+        justify-content: center !important;
+
+        a {
+            height: 270px;
+        }
+    }
+}
+
+.slick-prev:before,
+.slick-next:before {
+    font-size: $arrow-size;
+    //color: #F7360C;
+    color: red;
+}
+
+.slick-dots {
+    bottom: 10px;
+}
+
+/*   ARTICLESF1   */
+
+.articlesF1 {
+    margin: 0 auto;
+    width: 100%;
+}
+
+@include desktopMenu {
+    // #f1car {
+    //     .title {
+    //         font-size: 3rem;
+    //     }
+
+    //     .text {
+    //         font-size: 1.9rem;
+    //     }
+
+    //     .text2 {
+    //         font-size: 1.4rem;
+    //     }
+    //     a {
+    //         font-size: 1.4rem;
+    //     }
+
+    //     > .title {
+    //         font-size: 3rem;
+    //     }
+    //     > .text {
+    //         font-size: 1.7rem;
+    //     }
+    // }
+    .slider .slide a {
+        height: 470px;
+
+        .slick-arrow {
+            top: 50%;
+        }
+
+        .slick-prev {
+            left: unset;
+        }
+
+        .slick-next {
+            right: unset;
+        }
+    }
+}
+
+@include tablet {
+    #introduction {
+        flex-direction: row;
+        justify-content: space-between;
+        width: 90%;
+        align-items: unset;
+        margin: 0 auto;
+    }
+
+    .description {
+        height: unset;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        // background-color: white;
+        width: 47%;
+        margin: 0;
+        overflow: hidden;
+        border-radius: 2rem;
+        position: relative;
+        opacity: 1;
+        transition: 0.2s;
+        background-color: 2rem;
+        background-color: white;
+        border-radius: 2rem;
+        padding: 1.4rem;
+
+        .title {
+            font-size: 2.9rem;
+            margin: 0 auto 2rem;
+            line-height: 2.7rem;
+        }
+
+        .animationCD {
+            transition: 0.3s;
+            transform: translateX(-90%);
+            & > * {
+                opacity: 0;
+                transition: 0.3s;
+            }
+        }
+
+        .animationTD {
+            transform: rotate(-90deg);
+            transition: 0.3s;
+            transition-delay: 0.2s;
+            opacity: 1;
+        }
+    }
+
+    .slider {
+        width: 95%;
+
+        .slide a {
+            height: unset;
+        }
+
+        .square {
+            width: 90%;
+        }
+
+        .slick-dots {
+            bottom: -10px;
+        }
+    }
+
+    // #description {
+    //     margin: 0;
+    //     //margin-top: 5rem;
+    //     width: 47%;
+    //     border-radius: 2rem;
+    //     background-color: white;
+    //     padding: 1.4rem;
+
+    //     .title {
+    //         font-size: 2.9rem;
+    //         margin: 0 0 2rem 0;
+    //         line-height: 2.7rem;
+    //     }
+
+    //     .title,
+    //     .text,
+    //     #links {
+    //         width: 100%;
+    //     }
+
+    //     .text {
+    //         font-size: 1.5rem;
+    //         margin-bottom: 3rem;
+    //         text-align: center;
+    //     }
+    // }
+
+    // #f1car {
+    //     margin: 0;
+
+    //     width: 47%;
+    //     border-radius: 2rem;
+
+    //     .title {
+    //         font-size: 2.3rem;
+    //     }
+
+    //     .text {
+    //         font-size: 1.4rem;
+    //     }
+
+    //     .text2 {
+    //         font-size: 1.1rem;
+    //     }
+
+    //     a {
+    //         font-size: 1.1rem;
+    //         margin-top: 0.2rem;
+    //     }
+    // }
+
+    // #help {
+    //     flex-direction: row;
+    //     width: 90%;
+    //     padding-bottom: 2rem;
+    //     justify-content: space-between;
+    // }
+
+    .articlesF1 {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+}
+
+@include desktopHD {
+    // #description {
+    //     .text {
+    //         font-size: 1.5rem;
+    //         margin-bottom: 1.5rem;
+    //     }
+
+    //     .title {
+    //         margin-bottom: 3rem;
+    //     }
+    // }
+}
+
+@include desktopHDplus {
+
+    #introduction {
+        .tile_introduction {
+            width: 46%;
+
+            p {
+                font-size: 1.6rem;
+            }
+            p::after{
+                background-color: $formula1;
+            }
+
+            .img {
+                height: 230px;
+            }
+        }
+    }
+
+    .articlesF1 {
+        justify-content: space-between;
+    }
+
+    .slider {
+        width: 90%;
+        transform: scale(103%);
+    }
+
+    // #f1car,
+    // #description {
+    //     padding: 2rem;
+    // }
+
+    // #f1car {
+    //     width: 45%;
+    // }
+
+    // #description {
+    //     width: 50%;
+
+    //     .title {
+    //         margin-bottom: 3rem;
+    //     }
+
+    //     .text {
+    //         font-size: 1.6rem;
+    //     }
+
+    //     .tile_introduction {
+    //         p::after {
+    //             background-color: $formula1;
+    //         }
+    //     }
+    // }
+}
+
+@include desktopFHD {
+    // .articlesF1 {
+    //     width: 80%;
+    // }
+
+    #main > * {
+        width: 100%;
+        padding: 0 10%;
+    }
+
+    #introduction {
+        .title {
+            margin-bottom: 1rem;
+        }
+
+        // #links_introduction {
+        //     margin-top: 2rem;
+        // }
+
+        .text {
+            font-size: 1.3rem;
+        }
+
+        .tile_introduction {
+            .img {
+                height: 240px;
+            }
+
+            p {
+                font-size: 2rem;
+            }
+        }
+    }
+
+    .description {
+        width: 62%;
+        padding: 2rem;
+
+        .title {
+            font-size: 4rem;
+            line-height: 3.5rem;
+        }
+
+        .text {
+            font-size: 1.6rem;
+        }
+    }
+
+    // #f1car,
+    // #description {
+    //     padding: 2.5rem;
+    //     border-radius: 2.5rem;
+    // }
+
+    // #f1car {
+    //     width: 40%;
+
+    //     .title {
+    //         font-size: 3rem;
+    //     }
+
+    //     .text {
+    //         font-size: 1.6rem;
+    //     }
+
+    //     .text2 {
+    //         font-size: 1.2rem;
+    //     }
+
+    //     a {
+    //         font-size: 1.4rem;
+    //     }
+    // }
+
+    // #description {
+    //     width: 55%;
+
+    //     .title {
+    //         margin-bottom: 1rem;
+    //         font-size: 4rem;
+    //         line-height: 3.5rem;
+    //     }
+
+    //     .text {
+    //         margin: 0;
+    //         margin-bottom: 2rem;
+    //     }
+    // }
+
+    .f1basics {
+        width: 80%;
+
+        & > .title {
+            font-size: 3rem;
+        }
+
+        & > .text {
+            font-size: 1.7rem;
+        }
+    }
+
+    #help {
+        width: 80%;
+    }
+
+    .slider {
+        width: 100%;
+    }
+
+    .lol {
+        width: 50px;
+    }
+}

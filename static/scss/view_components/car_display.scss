@@ -1,0 +1,361 @@
+@import "../mixins.scss";
+
+.shifter {
+    display: none;
+}
+
+.carDisplay {
+    position: relative;
+    width: 90%;
+    background-color: #16161d;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    padding: 1.4rem;
+
+    .title {
+        color: white;
+        font-family: "Exo 2", sans-serif;
+        margin: 0 auto;
+        text-align: center;
+        font-size: 2.45rem;
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+
+    .support {
+        display: none;
+    }
+
+    .real{
+        display: none;
+    }
+
+    .text,
+    .expand {
+        color: white;
+        font-family: "Exo 2", sans-serif;
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .text {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .text2 {
+        width: 100%;
+        font-size: 1rem;
+        margin-bottom: 2rem;
+        display: none;
+        color: white;
+        font-size: 1.1rem;
+        margin-top: 1.3em;
+        flex-direction: column;
+
+        h5 {
+            width: 100%;
+            font-size: 1.3rem;
+            margin-bottom: 0.5em;
+            font-family: "Exo 2", sans-serif;
+            text-align: center;
+        }
+
+        p {
+            width: 100%;
+            text-align: left;
+            margin-bottom: 0.5em;
+            padding-bottom: 0.6em;
+            border-bottom: 2px dotted white;
+            font-family: "Lato", sans-serif;
+            font-weight: bold;
+
+            i {
+                margin-left: 0.6em;
+                font-weight: normal;
+                font-style: normal;
+            }
+        }
+    }
+
+    .clickText2 {
+        display: flex;
+    }
+
+    .ps {
+        p {
+            border: none;
+            font-size: 0.8rem;
+            text-align: right;
+            font-style: italic;
+            color: white;
+        }
+    }
+
+    .info {
+        color: white;
+        text-align: right;
+        width: 100%;
+        font-size: 0.7rem;
+        font-family: "Lato", sans-serif;
+        padding: 0;
+        margin-top: 0.2em;
+    }
+
+    & > div {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    img {
+        width: 100%;
+        margin: 0 auto 2rem;
+        display: block;
+    }
+
+    .expand {
+        position: absolute;
+        background-color: #16161d;
+        width: 100%;
+        height: 40px;
+        padding: 0 8%;
+        margin: 0.1rem auto;
+        font-size: 1.1rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        bottom: 0;
+        left: 0;
+        cursor: pointer;
+        transition: 0.2s;
+
+        h4 {
+            color: white;
+            text-transform: uppercase;
+            font-size: 1.4rem;
+        }
+
+        i {
+            transform: rotate(180deg);
+            font-size: 1.5rem;
+        }
+    }
+}
+
+@include tablet {
+
+    .shifter{
+        display: block;
+        width: 0%;
+        height: 50px;
+    }
+
+    .carDisplay {
+        height: unset;
+        margin: 0;
+        width: 50%;
+        border-radius: 2rem;
+        padding: 0;
+        background-color: transparent;
+        position: relative;
+        background-color: #16161d;
+
+        .support {
+            background-color: #16161d;
+            display: block;
+            position: absolute;
+            z-index: 1;
+                }
+
+        .blockTR,
+        .blockTL,
+        .blockBL,
+        .blockBR {
+            width: 2rem;
+            height: 2rem;
+        }
+
+        .blockTL {
+            border-radius: 2rem 0 0 0;
+            top: 0;
+            left: 0;
+        }
+
+        .blockTR {
+            border-radius: 0 2rem 0 0;
+            top: 0;
+            right: 0;
+        }
+
+        .blockBR {
+            border-radius: 0 0 2rem 0;
+            bottom: 0;
+            right: 0;
+
+            &::after{
+                content: "";
+                position: absolute;
+                left: -2px;
+                width: 2px;
+                height: 100%;
+                background-color: #16161d;
+            }
+        }
+
+        .blockBL {
+            border-radius: 0 0 0 2rem;
+            bottom: 0;
+            left: 0;
+        }
+
+        .blockT,
+        .blockB {
+            height: 2rem;
+        }
+
+        .blockL,
+        .blockR {
+            width: 2rem;
+        }
+
+        .blockT {
+            top: 0;
+            right: 2rem;
+            transform-origin: right;
+        }
+
+        .blockB {
+            bottom: 0;
+            left: 2rem;
+            transform-origin: right;
+        }
+
+        .blockL {
+            top: 2rem;
+            left: 0;
+            transform-origin: top;
+        }
+
+        .blockR {
+            bottom: 2rem;
+            right: 0;
+            transform-origin: top;
+        }
+
+        .bgc1,
+        .bgc2,
+        .bgc3 {
+            background-color: #16161d;
+        }
+
+        .bgc1 {
+            transform: scaleX(0);
+            top: 1.95rem;
+            left: 1.95rem;
+            transform-origin: top left;
+        }
+
+        .bgc2 {
+            transform: scaleY(0);
+            bottom: 1.95rem;
+            right: 1.95rem;
+            transform-origin: bottom right;
+        }
+
+        .bgc3 {
+            transform: scale(0);
+            bottom: 1.95rem;
+            left: 1.95rem;
+            transform-origin: bottom left;
+        }
+
+        & > .centerC {
+            opacity: 1;
+        }
+
+        .centerC {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            position: absolute;
+            padding: 2rem 0 2rem;
+            top: 0;
+            align-items: unset;
+            justify-content: unset;
+            z-index: 2;
+            transform: scaleY(0);
+
+            & > * {
+                --width: 50%;
+                width: calc(var(--width) - 4rem);
+                margin: 0 2rem 1rem;
+            }
+
+            .real {
+                transition-duration: 0s;
+                transition-delay: 0s;
+                opacity: 0;
+                display: block;
+            }
+
+            .text2 {
+                display: block;
+                font-size: 1rem;
+                opacity: 0;
+                transition-duration: 0.3s;
+
+                h5 {
+                    font-size: 1.2rem;
+                }
+            }
+
+        }
+
+        .fake {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .expand {
+            padding: 0 2.7%;
+            z-index: 2;
+            bottom: 0;
+            background-color: transparent;
+            transition: .3s;
+        }
+    }
+}
+
+@include desktopFHD{
+
+    .carDisplay{
+
+        width: calc(100% /3);
+
+        .title{
+            font-size: 3rem;
+        }
+
+        .centerC{
+
+            & > * {
+                --width: (100%/3);
+                width: calc(var(--width) - 4rem);
+                margin: 0 2rem 1rem;
+            }
+        }
+    }
+}

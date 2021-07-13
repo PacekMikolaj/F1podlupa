@@ -1,0 +1,14 @@
+mixin see_also(A, B, C)
+    #seeAlso
+            .con-title Zobacz także
+            .slider#sliderA
+                each val in A
+                    .slide
+                        +small_article(val) 
+            .slider#sliderB
+                each val in B
+                    .slide
+                        +small_article(val)
+            .squares
+                each val in C
+                    +small_article(val)

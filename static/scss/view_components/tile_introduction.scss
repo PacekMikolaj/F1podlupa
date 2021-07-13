@@ -1,0 +1,240 @@
+@import "../mixins.scss";
+
+#links_introduction {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.tile_introduction {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border-radius: 1rem;
+    background-color: #16161d;
+    text-decoration: none;
+    position: relative;
+    height: 60px;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    transition: 0.4s;
+
+    p {
+        margin-left: 0.6rem;
+        color: white;
+        font-family: "Exo 2", italic;
+        font-style: italic;
+        font-size: 1.4rem;
+        width: 100%;
+        border-left-width: 2px;
+        border-left-style: solid;
+        padding-left: 0.4rem;
+    }
+
+    .icon {
+        position: absolute;
+        right: 1.5rem;
+        width: 37px;
+        height: 37px;
+        filter: invert(1);
+    }
+
+    .img {
+        display: none;
+    }
+
+    &:hover {
+        transition: 0.4s;
+        background-color: #e9e9e2;
+        //background-color: $formula1;
+        // border: 15px solid black;
+
+        p {
+            color: black;
+        }
+
+        .icon {
+            filter: invert(0);
+        }
+    }
+}
+
+@include tablet {
+    #links_introduction {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+    .tile_introduction {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        border-radius: 1rem;
+        background-color: #16161d;
+        text-decoration: none;
+        position: relative;
+        height: 75px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        transition: 0.4s;
+
+        p {
+            margin-left: 1rem;
+            color: white;
+            font-family: "Exo 2", italic;
+            font-style: italic;
+            font-size: 1.6rem;
+            width: 100%;
+        }
+
+        .icon {
+            position: absolute;
+            right: 1.5rem;
+            width: 45px;
+            height: 45px;
+            filter: invert(1);
+        }
+
+        .img {
+            display: none;
+        }
+
+        &:hover {
+            transition: 0.4s;
+            background-color: #e9e9e2;
+            //background-color: $formula1;
+            // border: 15px solid black;
+
+            p {
+                color: black;
+            }
+
+            .icon {
+                filter: invert(0);
+            }
+        }
+    }
+}
+
+@include desktopHD {
+    #links_introduction {
+        margin-top: 3rem;
+    }
+
+    .tile_introduction {
+        height: 80px;
+
+        p {
+            font-size: 1.6rem;
+        }
+
+        .icon {
+            width: 50px;
+            height: 50px;
+        }
+
+        .img {
+            margin-bottom: -1rem;
+        }
+    }
+}
+
+// width samemu
+@include desktopHDplus {
+    #links_introduction {
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 1rem;
+    }
+    .tile_introduction {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        height: 300px;
+        overflow: hidden;
+        padding: 1rem 1rem 0;
+        width: 46%;
+        position: relative;
+        border-radius: 1.5rem;
+
+        .icon {
+            display: none;
+        }
+
+        p {
+            width: unset;
+            font-size: 1.8rem;
+            transition: 0.2s;
+            text-align: center;
+            margin: 0 auto;
+            padding: 0;
+            border-left-width: 0px;
+            position: relative;
+
+            &::after {
+                position: absolute;
+                content: "";
+                display: block;
+                width: 110%;
+                height: 2px;
+                bottom: -5px;
+                left: -5%;
+                ///background color należy ustawic na stronie
+            }
+        }
+        .img {
+            position: absolute;
+            bottom: 0;
+            transition: 0.2s;
+            width: unset;
+            object-fit: cover;
+            object-position: 50% 0;
+            display: block;
+            margin-right: 0;
+            z-index: 1;
+            height: 200px;
+        }
+
+        &:hover {
+            p {
+                transition: 0.2s;
+                //transform: translateY(-0.5rem);
+                transform: scale(1.1);
+            }
+
+            .img {
+                transition: 0.2s;
+                // transform-origin: top;
+                transform: scale(1.1);
+            }
+        }
+    }
+}
+
+@include desktopFHD {
+    #links_introduction {
+        margin-top: 2rem;
+
+        .tile_introduction {
+            width: 47%;
+            height: 320px;
+
+            p {
+                font-size: 2.3rem;
+                margin-bottom: 3rem;
+
+                &::after {
+                    bottom: -8px;
+                }
+            }
+
+            .img {
+                height: 230px;
+            }
+        }
+    }
+}

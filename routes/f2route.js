@@ -1,8 +1,10 @@
 const router = require('express').Router();
 const Article = require('../static/models/article');
 const Data = require('../static/models/data');
+const Car = require('../static/models/car');
 const path = require('path');
 const express = require("express");
+const car = require('../static/models/car');
 
 
 require("dotenv").config();
@@ -19,25 +21,39 @@ let newest = 3;
 router.get("/", paginatedResults(Article, limit, newest, "f2"), async function (req, res) {
 
     let data = {};
-    if(res.paginationInfo.page == 1)
-    {
-        data.newest = await Article.find({ "section": "f2"}).sort({ ID: -1 }).limit(newest).exec();
+    if (res.paginationInfo.page == 1) {
+        data.newest = await Article.find({ "section": "f2" }).sort({ ID: -1 }).limit(newest).exec();
     }
+
+    data.car = await Car.find({ "type": "f2" });
+    data.car = data.car[0]; //zmiana z tab na pojedynczy elem
+
+    data.car.informations = data.car.info.map(elem =>
+        elem.split('|').map(e => {
+            e = e.split(':');
+            if (e.length > 0) e[0] += ':';
+            return e;
+        })
+    );
 
     data.articlesF2 = res.paginatedModels;
     data.paginationInfo = res.paginationInfo;
 
     res.render("f2/f2", data);
 
-
 })
 
 router.get('/teams', async (req, res) => {
 
     let data = {};
-   data.articles = await Article.find().limit(4).sort({ ID: -1 }).exec();
 
-   data.data = await Data.find( { "type": "f2team"} );
+    data.articlesSliderA = await Article.find({ "section": { $ne: "f2" } }).limit(4).sort({ ID: -1 }).exec();
+    data.articlesSliderB = await Article.find({ "section": "f2" }).limit(4).sort({ ID: -1 }).exec();
+
+    data.articles = data.articlesSliderA.concat(data.articlesSliderB);
+    data.articles = data.articles.sort((a, b) => a.ID < b.ID ? 1 : -1);
+
+    data.data = await Data.find({ "type": "f2team" });
     res.render("f2/teams", data);
 
 })
@@ -46,8 +62,14 @@ router.get('/teams', async (req, res) => {
 router.get('/drivers', async (req, res) => {
 
     let data = {};
-    data.articles = await Article.find().limit(4).sort({ ID: -1 }).exec();
-    data.data = await Data.find( { "type": "f2driver"} );
+
+    data.articlesSliderA = await Article.find({ "section": { $ne: "f2" } }).limit(4).sort({ ID: -1 }).exec();
+    data.articlesSliderB = await Article.find({ "section": "f2" }).limit(4).sort({ ID: -1 }).exec();
+
+    data.articles = data.articlesSliderA.concat(data.articlesSliderB);
+    data.articles = data.articles.sort((a, b) => a.ID < b.ID ? 1 : -1);
+
+    data.data = await Data.find({ "type": "f2driver" });
     res.render("f2/drivers", data);
 
 })

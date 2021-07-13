@@ -250,8 +250,6 @@
   }
   .description {
     height: unset;
-  }
-  .description {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -387,6 +385,9 @@
   }
   #introduction .tile_introduction p {
     font-size: 1.6rem;
+  }
+  #introduction .tile_introduction p::after {
+    background-color: #0090d0;
   }
   #introduction .tile_introduction .img {
     height: 230px;

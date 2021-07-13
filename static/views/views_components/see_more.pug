@@ -1,22 +1,26 @@
 mixin see_more(val)
-    case val
-        when "f1"
-            a(href="/f1")#f1
-                p Więcej o F1
-                i.fas.fa-chevron-right
-        when "f2"
-            a(href="/f2")#f2
-                p Więcej o F2
-                i.fas.fa-chevron-right
-        when "fe"
-            a(href="/fE")#fE
-                p Więcej o FE
-                i.fas.fa-chevron-right
-        when "rallycross"
-            a(href="/rallycross")#rallycross
-                p Więcej o RX
-                i.fas.fa-chevron-right
-        default
-            a(href="/f1")#f1
-                p Więcej o F1
-                i.fas.fa-chevron-right
+    .navAfterArticle
+        a(href="/")
+            i.fas.fa-chevron-left
+            p Strona główna
+        case val
+            when "f1"
+                a(href="/f1")#f1
+                    p Więcej o F1
+                    i.fas.fa-chevron-right
+            when "f2"
+                a(href="/f2")#f2
+                    p Więcej o F2
+                    i.fas.fa-chevron-right
+            when "fe"
+                a(href="/fE")#fE
+                    p Więcej o FE
+                    i.fas.fa-chevron-right
+            when "rallycross"
+                a(href="/rallycross")#rallycross
+                    p Więcej o RX
+                    i.fas.fa-chevron-right
+            default
+                a(href="/f1")#f1
+                    p Więcej o F1
+                    i.fas.fa-chevron-right

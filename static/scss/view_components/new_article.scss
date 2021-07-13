@@ -1,0 +1,376 @@
+@import "../mixins.scss";
+
+.article {
+  margin: 0 auto;
+  width: 90%;
+  background-color: white;
+  margin-bottom: 1rem;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  //flex-direction: column;
+  text-decoration: none;
+  color: black;
+  overflow: hidden;
+  //height: 140px;
+  min-height: 120px;
+  flex-direction: row;
+  align-items: flex-start;
+
+  img {
+    display: block;
+    width: 190px;
+    min-height: 120px;
+    max-width: 55%;
+    object-fit: cover;
+    object-position: 50% 0;
+    // margin-bottom: -1rem;
+  }
+
+  ///zdjecie musi byc 185.5:132 -> 1.41
+
+  .triangle {
+    display: none;
+  }
+
+  .container_for_img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .notImg {
+    min-width: 45%;
+    background-color: white;
+    padding: 0.4rem 19px 0.4rem 0.4rem;
+    height: 100%;
+    //min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      height: 100%;
+      width: 10px;
+      box-sizing: border-box;
+      border-bottom: 80px solid white;
+      border-right: 10px solid white;
+      border-top: 80px solid transparent;
+      border-left: 10px solid transparent;
+      left: -19px;
+      top: -10px;
+    }
+  }
+
+  .type {
+    display: block;
+    //width: 100%;
+    //height: 1.3rem;
+    transition: 0.2s;
+    position: absolute;
+    height: 100%;
+    width: 15px;
+    top: 0;
+    right: 0;
+    background-color: red;
+    z-index: 2;
+
+    .little {
+      display: block;
+      font-family: "Exo 2", sans-serif;
+      font-style: italic;
+      color: white;
+      font-size: 0.8rem;
+      height: 100%;
+      width: 100%;
+      text-align: center;
+      display: flex;
+      transition: 0.1s;
+      transform: rotate(180deg);
+      // writing-mode: sideways-lr; czekamy....
+      writing-mode: vertical-lr;
+      line-height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      align-items: center;
+      justify-content: center;
+      opacity: 1;
+
+      p {
+        text-align: center;
+        width: 100%;
+      }
+    }
+  }
+
+  .title {
+    font-size: 4vw;
+    font-weight: bold;
+    font-family: "Exo 2", sans-serif;
+    word-break: break-word;
+    //  margin-bottom: 1rem;
+  }
+
+  .text {
+    font-size: 1.2rem;
+    font-family: "Lato", sans-serif;
+    display: none;
+  }
+}
+
+@include desktopMenu {
+  .article {
+    min-height: 150px;
+
+    img {
+      max-width: 270px;
+    }
+
+    .notImg {
+      padding-right: 22px;
+
+      &::after {
+        top: 0px;
+        left: -40px;
+        width: 20px;
+        border-bottom: 110px solid white;
+        border-right: 20px solid white;
+        border-top: 110px solid transparent;
+        border-left: 20px solid transparent;
+      }
+    }
+
+    .text {
+      display: block;
+      font-size: 2vw;
+    }
+
+    .title {
+      font-size: 2.7vw;
+      margin-bottom: 0.5rem;
+    }
+
+    .type {
+      width: 18px;
+
+      .little {
+        font-size: 0.9rem;
+        // margin-right: 0.1rem;
+        // width: unset;
+        // margin: 0 0.05rem;
+        width: 100%;
+      }
+    }
+  }
+}
+
+@include tablet {
+  .article {
+    height: 200px;
+    cursor: pointer;
+    flex-direction: row;
+    align-items: center;
+
+    .title {
+      font-size: 1.5rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .text {
+      font-size: 1.9vw;
+    }
+
+    img {
+      width: 40%;
+      height: 100%;
+      margin: 0;
+      max-width: unset;
+    }
+
+    .notImg {
+      width: 57%;
+      height: 100%;
+      position: relative;
+      padding: 0.7rem;
+      padding-left: 0;
+
+      &::after {
+        content: unset;
+        position: absolute;
+        height: 100%;
+        width: 40px;
+        box-sizing: border-box;
+        border-bottom: 100px solid white;
+        border-right: 40px solid white;
+        border-top: 100px solid transparent;
+        border-left: 40px solid transparent;
+        right: 60%;
+        bottom: 0;
+      }
+    }
+
+    .type {
+      width: 20px;
+      max-width: 26px;
+      z-index: unset;
+
+      .little {
+        font-size: 1rem;
+      }
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      height: 100%;
+      width: 40px;
+      box-sizing: border-box;
+      border-bottom: 100px solid white;
+      border-right: 40px solid white;
+      border-top: 100px solid transparent;
+      border-left: 40px solid transparent;
+      right: 60%;
+      bottom: 0;
+    }
+  }
+}
+
+@include desktopHD {
+  .article {
+    height: 250px;
+
+    .title {
+      font-size: 2.6vw;
+      margin-bottom: 0.2rem;
+    }
+
+    .text {
+      font-size: 2vw;
+    }
+
+    img {
+      width: 40%;
+      max-width: 400px;
+    }
+
+    .notImg {
+      padding: 0.7rem;
+
+      &::after {
+        content: "";
+        width: 40px;
+        border-bottom: 125px solid white;
+        border-right: 40px solid white;
+        border-top: 125px solid transparent;
+        border-left: 40px solid transparent;
+        left: -80px;
+        bottom: 0;
+      }
+    }
+
+    .type {
+      max-width: 26px;
+      width: 3%;
+      margin: 0;
+
+      .little {
+        transform: rotate(180deg);
+        font-size: 1.2rem;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &::after {
+      content: unset;
+    }
+  }
+}
+
+@include desktopHDplus {
+  .article {
+    margin-bottom: 1.5rem;
+    .title {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    .text {
+      font-size: 1.5rem;
+    }
+
+    img {
+      transition: 0.2s;
+    }
+
+    .type {
+      transition: 0.2s;
+      height: 100%;
+      width: 3%;
+      max-width: 26px;
+      transform: scale(0.23, 0.8);
+
+      .little {
+        transition: 0.1s;
+        font-size: 1.3rem;
+        opacity: 0;
+      }
+    }
+
+    &:hover {
+      transition: 0.2;
+
+      img {
+        transition: 0.2s;
+        transform: scale(1.1);
+      }
+      .type {
+        transform: scale(1, 1);
+        transition: 0.2s;
+
+        .little {
+          transition-delay: 0.07s;
+          transition-duration: 0.2s;
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+@include desktopFHD {
+  .article {
+    width: 80%;
+    height: 300px;
+
+    img {
+      width: 40%;
+      max-width: 500px;
+    }
+
+    .notImg {
+      &::after {
+        content: "";
+        width: 60px;
+        border-bottom: 150px solid white;
+        border-right: 60px solid white;
+        border-top: 150px solid transparent;
+        border-left: 60px solid transparent;
+        left: -120px;
+        bottom: 0;
+      }
+    }
+
+    .title {
+      font-size: 2.8rem;
+    }
+    .text {
+      font-size: 1.8rem;
+    }
+  }
+}
+/////////////////////////////////////////

@@ -1,0 +1,187 @@
+@import "../mixins.scss";
+
+#main {
+    justify-content: center;
+    align-items: center;
+}
+
+.desktop {
+    margin: 2rem auto 2rem;
+    width: 90%;
+    border-radius: 2rem;
+    background-color: white;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    a {
+
+        width: 100%;
+        color: black;
+        text-decoration: none;
+        margin: 1rem;
+        font-family: "Lalezar", cursive;
+        font-size: 1.5rem;
+        display: block;
+        text-align: center;
+        overflow: hidden;
+        border-radius: 0.5rem;
+
+        &:hover {
+            color: white;
+            background-color: black;
+        }
+    }
+    .add:hover{
+        background-color: darkorange;
+    }
+    .edit:hover{
+        background-color: $formula2;
+    }
+
+    .delete:hover{
+        background-color: $formula1;
+    }
+    .logout:hover{
+        background-color: black;
+    }
+
+    .changeData:hover{
+        background-color: $rallycross;
+    }
+
+    h1 {
+        font-family: "Exo 2", sans-serif;
+        font-size: 2rem;
+        border-bottom: 3px solid red;
+        padding: 0.2rem;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    .loginForm {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    label {
+        width: 260px;
+        margin: 1px;
+        font-family: "Lalezar", cursive;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: row;
+        margin-bottom: 0.6rem;
+
+        input[type="text"],
+        input[type="password"] {
+            font-size: 1rem;
+            width: 60%;
+        }
+    }
+
+    input[type="submit"] {
+        //width: 120px;
+        //height: 30px;
+        padding: 0.3rem 1.5rem;
+        font-size: 1.2rem;
+        font-family: "Lalezar", cursive;
+        border: 2px solid black;
+        border-radius: 0.6rem;
+        background-color: lightgrey;
+        text-align: center;
+        cursor: pointer;
+    }
+}
+
+.DC{
+    form{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        p{
+            width: 100%;
+        }
+        input[type="submit"]{
+            width: 40%;
+            border: none;
+            color: white;
+        }
+        .title{
+            font-size: 1.5rem;
+            font-family: "Lato", sans-serif;
+            margin: .5rem auto 2rem;
+        }
+        .yes{
+            background-color: $formula2;
+        }
+        .no{
+            background-color: $formula1;
+        }
+    }
+}
+
+    form[name="dataForm"]{
+
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        margin: 1rem auto 1rem;
+
+        input{
+            margin: 0 !important;
+            font-size: 1rem;
+        }
+
+        input[name="name"]{
+            width:20%;
+        }
+
+        input[name="nation"]{
+            width:10%;
+        }
+
+        input[name="achievements"]{
+            width:40%;
+        }
+
+        input[name="src"]{
+            width:5%;
+        }
+
+
+    }
+
+@include desktopMenu {
+    .desktop {
+        width: 70%;
+        align-items: center;
+
+        input[type="text"],
+        input[type="password"] {
+            margin-right: 10%;
+        }
+
+        a {
+            width: 40%;
+            min-width: 200px;
+            padding: 0.7rem;
+            font-size: 1.8rem;
+            border-radius: 0.8rem;
+        }
+
+        label {
+            width: 300px;
+        }
+    }
+}

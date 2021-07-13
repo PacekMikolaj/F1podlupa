@@ -47,9 +47,9 @@
 
 .article img {
   display: block;
-  width: 55%;
+  width: 190px;
   min-height: 120px;
-  max-width: 190px;
+  max-width: 55%;
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: 50% 0;

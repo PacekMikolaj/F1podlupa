@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $(".slider").slick({
+    $("#sliderForF1").slick({
         infinite: false,
         // prevArrow: '<span><i class="fas fa-chevron-circle-left prev"></i></span>',
         // nextArrow: '<span><i class="fas fa-chevron-circle-right next"></i></span>',

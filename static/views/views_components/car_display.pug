@@ -1,4 +1,4 @@
-mixin car_display(imgSrc)
+mixin car_display(data)
     .carDisplay
                 .blockTR.support
                 .blockTL.support
@@ -12,73 +12,85 @@ mixin car_display(imgSrc)
                 .blockL.support
                 .blockR.support
                 .fake
-                    h1.title Samochody F2
+                    h1.title #{data.title}
                         .underline
-                    .text Wymagające, równe, a przede wszystkim - szybkie.
-                    img(src=imgSrc alt="f2car")
+                    .text #{data.description}
+                    img(src="img/" + data.img alt=data.imgSrc)
 
                 .centerC
                     .real
-                        h1.title Samochody F2
+                        h1.title #{data.title}
                             .underline
-                        .text Wymagające, równe, a przede wszystkim - szybkie.
-                        img(src="/img/f2car_1.jpg" alt="f2car")
-                    .dimensions.text2
-                        h5 Wymiary
-                            .underline
-                        p Długość:
-                            i 522.4 cm
-                        p Szerokość:
-                            i 190.0 cm
-                        p Wysokość:
-                            i 109.7 cm
-                        p Rozstaw osi kół:
-                            i 314.5 cm
-                        p Waga* :
-                            i 755 kg
-                    .engine.text2
-                        h5 Silnik
-                            .underline
-                        p V6 - 3.4l z pojedynczym systemem turbo
-                        p 620 KM przy 8750obr./min
-                        p Moment obrotowy: 
-                            i 570Nm przy 6000obr./min
-                        p Wyprodukowany przez Mecachrome
-                    .performance.text2
-                        h5 Osiągi
-                            .underline
-                        p 0 - 100km/h:
-                            i 2.90s
-                        p 0 - 200km/h:
-                            i 6.60s
-                        p Prędkość maksymalna:
-                            i 335km/h
-                        p Przeciążenia boczne:
-                            i +-3.9G
-                    .wheels.text2
-                        h5 Opony
-                            .underline
-                        p 18-to calowe ( ok. 45.72cm ) opony Pirelli       
-                        p Cztery rodzaje na suchą nawierzchnie ( na wyścig Pierlli spośród nich wybiera dwie mieszanki ) i jeden rodzaj na mokrą nawierzchnię
-                    .others.text2
-                        h5 Pozostałe informacje
-                            .underline
-                        p Cena:
-                            i ok. 567,000€, czyli ok. 2,562,000zł (bolid 500,000€, silnik 67,000€)
-                        p Pojemność zbiornika paliwowego: 
-                            i 125l
-                        p Skrzynia biegów:
-                            i 6-cio biegowa sekwencyjna
-                        p Zawieszenie z możliwością wprowadzenia wielu regulacji
-                        p System DRS
-                        p Hamulce hydrauliczne, talerze i klocki hamulcowe wykonane z Karbonu
-                        p Przeciążenia przy hamowaniu do 3.5G
-                        p Kierownica z wyświetlaczem zawirajaca systemy VSC oraz informacje o flagach na torze
-                        p System HALO wraz z klatką bezpieczeństwa kierowcy
-                        p Nadwozie zbudowane z włókna węglowego przez firmę Dallara
+                        .text #{data.description}
+                        img(src="img/" + data.img alt=data.imgSrc)
+                    each section in data.informations
+                        .text2
+                            each item,index in section 
+                                if index == 0
+                                    h5 #{item}
+                                        .underline 
+                                else if item.length > 0
+                                    p #{item[0]}
+                                        i #{item[1]}
+                                else 
+                                    p #{item}
+                    //- .dimensions.text2
+                    //-     h5 Wymiary
+                    //-         .underline
+                    //-     p Długość:
+                    //-         i 522.4 cm
+                    //-     p Szerokość:
+                    //-         i 190.0 cm
+                    //-     p Wysokość:
+                    //-         i 109.7 cm
+                    //-     p Rozstaw osi kół:
+                    //-         i 314.5 cm
+                    //-     p Waga* :
+                    //-         i 755 kg
+                    //- .engine.text2
+                    //-     h5 Silnik
+                    //-         .underline
+                    //-     p V6 - 3.4l z pojedynczym systemem turbo
+                    //-     p 620 KM przy 8750obr./min
+                    //-     p Moment obrotowy: 
+                    //-         i 570Nm przy 6000obr./min
+                    //-     p Wyprodukowany przez Mecachrome
+                    //- .performance.text2
+                    //-     h5 Osiągi
+                    //-         .underline
+                    //-     p 0 - 100km/h:
+                    //-         i 2.90s
+                    //-     p 0 - 200km/h:
+                    //-         i 6.60s
+                    //-     p Prędkość maksymalna:
+                    //-         i 335km/h
+                    //-     p Przeciążenia boczne:
+                    //-         i +-3.9G
+                    //- .wheels.text2
+                    //-     h5 Opony
+                    //-         .underline
+                    //-     p 18-to calowe ( ok. 45.72cm ) opony Pirelli       
+                    //-     p Cztery rodzaje na suchą nawierzchnie ( na wyścig Pierlli spośród nich wybiera dwie mieszanki ) i jeden rodzaj na mokrą nawierzchnię
+                    //- .others.text2
+                    //-     h5 Pozostałe informacje
+                    //-         .underline
+                    //-     p Cena:
+                    //-         i ok. 567,000€, czyli ok. 2,562,000zł (bolid 500,000€, silnik 67,000€)
+                    //-     p Pojemność zbiornika paliwowego: 
+                    //-         i 125l
+                    //-     p Skrzynia biegów:
+                    //-         i 6-cio biegowa sekwencyjna
+                    //-     p Zawieszenie z możliwością wprowadzenia wielu regulacji
+                    //-     p System DRS
+                    //-     p Hamulce hydrauliczne, talerze i klocki hamulcowe wykonane z Karbonu
+                    //-     p Przeciążenia przy hamowaniu do 3.5G
+                    //-     p Kierownica z wyświetlaczem zawirajaca systemy VSC oraz informacje o flagach na torze
+                    //-     p System HALO wraz z klatką bezpieczeństwa kierowcy
+                    //-     p Nadwozie zbudowane z włókna węglowego przez firmę Dallara
 
-                    .ps.text2
-                        p *Waga wraz z kierowcą
+                    if data.ps
+                        .ps.text2
+                            p #{data.ps}
 
                     .underline(style="margin-top: 0").text2
                     p.info.text2 Specyfikacja samochodu firmy Dallara stworzonego na lata 2020-2023 FIA F2 Championship. 

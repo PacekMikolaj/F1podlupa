@@ -1,0 +1,61 @@
+mixin f1team(team)
+    .team
+        img.logo(src='../img/f1teams/' + team.teamLogo alt=team.teamLogoSrc)
+        h3 #{team.teamLogoSrc}
+        h2.name(id= team.shortName) #{team.name}
+            .underline(style='background-color: ' + team.color)
+        div.help
+            .achievements
+                .achievement
+                    .icon
+                        img(src='../img/icons/trophy.png' alt='trophy')
+                    p #{team.constructorChampionships}
+                .achievement
+                    .icon
+                        img(src='../img/icons/gold-medal.png' alt='gold-medal')
+                    p #{team.wins}
+                .achievement
+                    .icon
+                        img(src='../img/icons/podium.png' alt='podium')
+                    p #{team.podiums}
+                .achievement
+                    .icon
+                        img(src='../img/icons/pole.png' alt='pole')
+                    p #{team.polePositions}
+
+            #drivers
+                p Kierowcy:
+                a(style='border-bottom: 3px solid' + team.color) #{team.driverA }
+                a(style='border-bottom: 3px solid' + team.color) #{team.driverB }
+        .infos
+            .info
+                p Kraj: 
+                    b #{team.nation}
+
+            .info
+                p Siedziba: 
+                    b #{team.home }
+
+            if team.boss
+                .info
+                    p Szef Zespołu: 
+                        b #{team.boss }
+
+            .info
+                p.bold #{ team.others }
+
+            .info
+                p Dostawca silników:
+                    b #{team.engine }
+            if team.beforeAs
+                .info
+                    p W przeszłości jako: 
+                    each val in team.beforeAs
+                        p.bold #{ val }
+                    
+            .info
+                p Debiut: 
+                    b #{team.debut }
+            
+        img.classPhoto(src='../img/f1teams/' + team.teamPhoto alt=team.teamPhotoSrc)
+        h3 #{team.teamPhotoSrc}
