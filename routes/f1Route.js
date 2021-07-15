@@ -4,6 +4,8 @@ const F1team = require('../static/models/f1team');
 const F1driver = require('../static/models/f1driver');
 const path = require('path');
 const express = require("express");
+const Car = require('../static/models/car');
+
 
 
 require("dotenv").config();
@@ -25,6 +27,17 @@ router.get('/', paginatedResults(Article, limit, newest, "f1"), async (req, res)
 
         data.newest = await Article.find({ "section": "f1"}).sort({ ID: -1 }).limit(newest).exec();
     }
+
+    data.car = await Car.find({ "type": "f2" });
+    data.car = data.car[0]; //zmiana z tab na pojedynczy elem
+
+    data.car.informations = data.car.info.map(elem =>
+        elem.split('|').map(e => {
+            e = e.split(':');
+            if (e.length > 0) e[0] += ':';
+            return e;
+        })
+    );
 
     data.articlesF1 = res.paginatedModels;
     data.paginationInfo = res.paginationInfo;
