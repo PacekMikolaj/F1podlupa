@@ -5,6 +5,7 @@ p {
 }
 
 #content {
+    margin: 0 auto;
     width: 90%;
     display: flex;
     flex-direction: column;
@@ -18,32 +19,14 @@ p {
     margin-top: 3px;
 }
 
-#introduction {
+#content > .title {
     width: 90%;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    margin: 0 auto;
+    text-align: center;
+    font-family: "Exo 2", sans-serif;
+    font-style: italic;
+    font-size: 3rem;
     margin-bottom: 2rem;
-
-    .title {
-        width: 90%;
-        margin: 0 auto;
-        text-align: center;
-        font-family: "Exo 2", sans-serif;
-        font-style: italic;
-        font-size: 3rem;
-        margin-bottom: 1rem;
-    }
-
-    .text {
-        font-family: "Exo 2", sans-serif;
-        font-size: 1.5rem;
-        width: 90%;
-        margin: 0 auto;
-        margin-bottom: 1rem;
-    }
 }
 
 #list {
@@ -75,21 +58,66 @@ p {
         font-size: 2rem;
         margin-bottom: 1.3rem;
     }
+}
+
+.team > .img {
+    width: 100%;
+    margin: 1rem auto 3rem;
 
     img {
         width: 100%;
-        margin: 1rem auto 3rem;
+    }
+}
+
+.infos {
+    font-family: "Lato", sans-serif;
+    font-size: 1.4rem;
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    color: #353535;
+    display: flex;
+    flex-direction: column;
+}
+
+.info {
+    width: 100%;
+    margin-bottom: 1em;
+    padding-bottom: 1em;
+    border-bottom: 2px dotted #353535;
+
+    p {
+        padding: 0.4rem;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        font-size: 1em;
+    }
+
+    b {
+        display: block;
+        margin-left: 0;
+        font-size: 1em;
+    }
+
+    p > b {
+        text-align: end;
     }
 }
 
 @include tablet {
-    #left {
-        width: 80%;
-        margin-bottom: 2rem;
-    }
+    // #left {
+    //     width: 80%;
+    //     margin-bottom: 2rem;
+    // }
     .info {
         font-size: 1.3rem;
     }
+
+    .infos {
+        align-items: flex-end;
+    }
+
     .team {
         display: grid;
         align-items: center;
@@ -97,8 +125,8 @@ p {
         grid-template-rows: auto auto;
         grid-template-areas:
             "name name"
-            "img info";
-        ///
+            "img info"
+            "h3 info";
 
         .img {
             grid-area: img;
@@ -110,11 +138,19 @@ p {
             grid-area: name;
             margin-top: 3rem;
         }
+        h3 {
+            grid-area: h3;
+        }
     }
     .team:nth-child(odd) {
         grid-template-areas:
             "name name"
-            "info img";
+            "info img"
+            "info h3";
+
+        .infos {
+            align-items: flex-start;
+        }
     }
     .info {
         width: 90%;
@@ -122,18 +158,23 @@ p {
 }
 
 @include desktopHDplus {
+
     #content {
-        flex-direction: row;
+        width: 50%;
+        flex-direction: column;
         justify-content: center;
         white-space: pre-line;
         display: flex;
         align-items: flex-start;
-        width: 100%;
         margin: unset;
         margin-bottom: 2rem;
     }
+    #content > .title {
+        width: 100%;
+        margin: 0 0 2rem 0;
+    }
 
     #list {
-        width: 50%;
+        width: 100%;
     }
 }

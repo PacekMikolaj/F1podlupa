@@ -26,7 +26,11 @@ let Schema = mongoose.Schema({
         required: true
     }],
     ps: {
-        type: String
+        type: [ String ]
+    },
+    specification: {
+        type: String,
+        required: true
     }
 
 });

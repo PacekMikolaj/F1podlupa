@@ -5,6 +5,7 @@ const F1driver = require('../static/models/f1driver');
 const path = require('path');
 const express = require("express");
 const Car = require('../static/models/car');
+const { carInfoChange } = require('../static/js/carInfoChange');
 
 
 
@@ -28,16 +29,10 @@ router.get('/', paginatedResults(Article, limit, newest, "f1"), async (req, res)
         data.newest = await Article.find({ "section": "f1"}).sort({ ID: -1 }).limit(newest).exec();
     }
 
-    data.car = await Car.find({ "type": "f2" });
+    data.car = await Car.find({ "type": "f1" });
     data.car = data.car[0]; //zmiana z tab na pojedynczy elem
 
-    data.car.informations = data.car.info.map(elem =>
-        elem.split('|').map(e => {
-            e = e.split(':');
-            if (e.length > 0) e[0] += ':';
-            return e;
-        })
-    );
+    data.car.informations = carInfoChange(data.car.info);
 
     data.articlesF1 = res.paginatedModels;
     data.paginationInfo = res.paginationInfo;
@@ -64,12 +59,14 @@ router.get('/teams', async (req, res) => {
 router.get('/drivers', async (req, res) => {
 
     let data = {};
-    data.f1drivers = await F1driver.find();
+    data.drivers = await F1driver.find();
     
     data.articlesSliderA = await Article.find({ "section": { $ne: "f1" } }).limit(4).sort({ ID: -1 }).exec();
     data.articlesSliderB = await Article.find({ "section": "f1" }).limit(4).sort({ ID: -1 }).exec();
     data.articles = data.articlesSliderA.concat(data.articlesSliderB);
     data.articles = data.articles.sort( (a,b) => a.ID < b.ID ? 1 : -1 );
+
+    console.log(data.drivers)
 
     res.render("f1/drivers", data);
 

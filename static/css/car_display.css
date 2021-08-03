@@ -398,7 +398,7 @@
     width: calc(100% /3);
   }
   .carDisplay .title {
-    font-size: 3rem;
+    font-size: 2.9rem;
   }
   .carDisplay .centerC > * {
     --width: (100%/3);

@@ -41,6 +41,10 @@ let f1Schema = mongoose.Schema({
         required: true
 
     },
+    thirdDrivers: [{
+        type: String,
+        required: true
+    }],
     boss: {
         type: String,
     },

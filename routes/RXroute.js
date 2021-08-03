@@ -29,8 +29,6 @@ router.get("/", paginatedResults(Article, limit, newest, "rallycross"), async fu
 
     res.render("rallycross/rallycross", data);
 
-
 })
-
 
 module.exports = router;

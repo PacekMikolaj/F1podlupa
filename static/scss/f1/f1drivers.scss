@@ -15,13 +15,13 @@
     margin-top: 3px;
 }
 
-.title {
+#content > .title {
     width: 90%;
     margin: 0 auto;
     text-align: center;
     font-family: "Exo 2", sans-serif;
     font-style: italic;
-    font-size: 3rem;
+    font-size: 2.5rem;
     margin-bottom: 2rem;
 }
 
@@ -60,6 +60,27 @@
         width: 100%;
         margin: 1rem auto 3rem;
     }
+}
+#numberAndTeam {
+    width: 100%;
+    margin: 0 auto 1rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#number {
+    font-size: 3.5em;
+    font-family: "Exo 2", sans-serif;
+    font-style: italic;
+}
+
+#team {
+    font-size: 2em;
+    font-family: "Exo 2", sans-serif;
+    text-decoration: none;
+    color: black;
+    border-bottom: 3px solid;
 }
 
 $icons_size: 40px;
@@ -130,12 +151,20 @@ $icons_size: 40px;
         justify-content: space-between;
         font-size: 1em;
 
-        b {
-            display: block;
-            margin-left: 0;
-            text-align: end;
-            font-size: 1em;
-        }
+    }
+    b {
+        display: block;
+        margin-left: 0;
+        text-align: end;
+        font-size: 1em;
+    }
+
+    .previousTeam{
+        padding: 0.4rem;
+        display: block;
+        margin-left: 0;
+        text-align: start;
+        font-size: 1em;
     }
 
     a {
@@ -146,36 +175,6 @@ $icons_size: 40px;
 
     .bold {
         font-weight: bold;
-    }
-}
-
-#drivers {
-    font-family: "Exo 2", sans-serif;
-    color: black;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    font-size: 1.9rem;
-
-    p {
-        display: block;
-        text-align: center;
-        margin-bottom: 0.5em;
-        font-size: 1em;
-        width: 100%;
-    }
-
-    a {
-        display: block;
-        text-align: center;
-        font-size: 0.8em;
-        padding-bottom: 0;
-        width: 240px;
-        margin: 0.5em;
-        cursor: pointer;
     }
 }
 
@@ -200,8 +199,8 @@ $icons_size: 40px;
         }
     }
 
-    .achievement{
-    justify-content: space-evenly;
+    .achievement {
+        justify-content: space-evenly;
     }
 }
 
@@ -214,10 +213,43 @@ $icons_size: 40px;
         margin-bottom: 1rem;
     }
 
-    #drivers,
+    .driver {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: auto;
+        grid-template-areas: 
+        "name name"
+        "logo help"
+        "h3 help"
+        "infos infos";
+    }
+
+    .name{
+        grid-area: name;
+    }
+    .logo{
+        grid-area: logo;
+    }
+    h3{
+        grid-area: h3;
+    }
+    .help{
+        grid-area: help;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-self: stretch;
+    }
+    .infos{
+        grid-area: infos;
+    }
+
+    #numberAndTeam,
     .achievements {
         margin: 0;
-        width: 50%;
+    }
+
+    #number{
+        font-size: 4em;
     }
     .infos {
         display: flex;
@@ -264,7 +296,7 @@ $icons_size: 40px;
 
 @include desktopFHD {
     $icons_size: 50px;
-    .team {
+    .driver {
         .name {
             font-size: 3rem;
         }
@@ -272,11 +304,14 @@ $icons_size: 40px;
     #drivers {
         font-size: 2.4rem;
     }
-    .infos{
+    .infos {
         height: 550px;
     }
     .info {
         p {
+            font-size: 1.2em;
+        }
+        .previousTeam{
             font-size: 1.2em;
         }
     }
@@ -285,7 +320,7 @@ $icons_size: 40px;
             width: $icons_size;
             height: $icons_size;
 
-            &::after{
+            &::after {
                 font-size: 2.3em;
             }
         }

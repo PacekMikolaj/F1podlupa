@@ -1,0 +1,13 @@
+mixin f2team({name, nation, achievements, photo, src})
+    .team
+        .name #{name}
+        img.img(src="/img/f2teams/" + photo , alt="photo")
+        h3 #{src}
+        .infos
+            .info 
+                p Kraj: 
+                    b #{nation}
+            br
+            .info 
+                p Osiągnięcia: 
+                    b #{achievements}

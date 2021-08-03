@@ -1,61 +1,65 @@
-mixin f1team(team)
-    .team
-        img.logo(src='../img/f1teams/' + team.teamLogo alt=team.teamLogoSrc)
-        h3 #{team.teamLogoSrc}
-        h2.name(id= team.shortName) #{team.name}
-            .underline(style='background-color: ' + team.color)
+mixin f1team({name, shortName, color, teamLogo, teamLogoSrc, constructorChampionships, wins, podiums, polePositions, driverA, driverB, nation, home, boss, engine, others, beforeAs, thirdDrivers, debut, teamPhoto, teamPhotoSrc })
+    .team(id= shortName)
+        h2.name #{name}
+            .underline(style='background-color: ' + color)
+        img.logo(src='../img/f1teams/' + teamLogo alt=teamLogoSrc)
+        h3 #{teamLogoSrc}
         div.help
             .achievements
                 .achievement
                     .icon
                         img(src='../img/icons/trophy.png' alt='trophy')
-                    p #{team.constructorChampionships}
+                    p #{constructorChampionships}
                 .achievement
                     .icon
                         img(src='../img/icons/gold-medal.png' alt='gold-medal')
-                    p #{team.wins}
+                    p #{wins}
                 .achievement
                     .icon
                         img(src='../img/icons/podium.png' alt='podium')
-                    p #{team.podiums}
+                    p #{podiums}
                 .achievement
                     .icon
                         img(src='../img/icons/pole.png' alt='pole')
-                    p #{team.polePositions}
+                    p #{polePositions}
 
             #drivers
                 p Kierowcy:
-                a(style='border-bottom: 3px solid' + team.color) #{team.driverA }
-                a(style='border-bottom: 3px solid' + team.color) #{team.driverB }
+                a(href="/f1/drivers#" + driverA, style='border-bottom: 3px solid' + color) #{driverA }
+                a(href="/f1/drivers#" + driverB, style='border-bottom: 3px solid' + color) #{driverB }
         .infos
             .info
                 p Kraj: 
-                    b #{team.nation}
+                    b #{nation}
 
             .info
                 p Siedziba: 
-                    b #{team.home }
+                    b #{home }
 
-            if team.boss
+            if boss
                 .info
-                    p Szef Zespołu: 
-                        b #{team.boss }
+                    p Szef zespołu: 
+                        b #{boss }
 
             .info
-                p.bold #{ team.others }
+                p.bold #{ others }
 
             .info
                 p Dostawca silników:
-                    b #{team.engine }
-            if team.beforeAs
+                    b #{engine }
+            if beforeAs
                 .info
                     p W przeszłości jako: 
-                    each val in team.beforeAs
+                    each val in beforeAs
                         p.bold #{ val }
+            .info 
+                p Trzeci kierowcy: 
+                each val in thirdDrivers 
+                    p.bold #{val}
                     
             .info
                 p Debiut: 
-                    b #{team.debut }
+                    b #{debut }
             
-        img.classPhoto(src='../img/f1teams/' + team.teamPhoto alt=team.teamPhotoSrc)
-        h3 #{team.teamPhotoSrc}
+        img.classPhoto(src='../img/f1teams/' + teamPhoto alt=teamPhotoSrc)
+        h3 #{teamPhotoSrc}

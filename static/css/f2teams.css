@@ -27,6 +27,7 @@ p {
 }
 
 #content {
+  margin: 0 auto;
   width: 90%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -49,40 +50,14 @@ p {
   margin-top: 3px;
 }
 
-#introduction {
-  width: 90%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-bottom: 2rem;
-}
-
-#introduction .title {
+#content > .title {
   width: 90%;
   margin: 0 auto;
   text-align: center;
   font-family: "Exo 2", sans-serif;
   font-style: italic;
   font-size: 3rem;
-  margin-bottom: 1rem;
-}
-
-#introduction .text {
-  font-family: "Exo 2", sans-serif;
-  font-size: 1.5rem;
-  width: 90%;
-  margin: 0 auto;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 #list {
@@ -134,18 +109,68 @@ p {
   margin-bottom: 1.3rem;
 }
 
-.team img {
+.team > .img {
   width: 100%;
   margin: 1rem auto 3rem;
 }
 
+.team > .img img {
+  width: 100%;
+}
+
+.infos {
+  font-family: "Lato", sans-serif;
+  font-size: 1.4rem;
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  color: #353535;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.info {
+  width: 100%;
+  margin-bottom: 1em;
+  padding-bottom: 1em;
+  border-bottom: 2px dotted #353535;
+}
+
+.info p {
+  padding: 0.4rem;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-size: 1em;
+}
+
+.info b {
+  display: block;
+  margin-left: 0;
+  font-size: 1em;
+}
+
+.info p > b {
+  text-align: end;
+}
+
 @media only screen and (min-width: 768px) {
-  #left {
-    width: 80%;
-    margin-bottom: 2rem;
-  }
   .info {
     font-size: 1.3rem;
+  }
+  .infos {
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
   }
   .team {
     display: -ms-grid;
@@ -157,7 +182,7 @@ p {
         grid-template-columns: 50% 50%;
     -ms-grid-rows: auto auto;
         grid-template-rows: auto auto;
-        grid-template-areas: "name name" "img info";
+        grid-template-areas: "name name" "img info" "h3 info";
   }
   .team .img {
     -ms-grid-row: 2;
@@ -166,6 +191,7 @@ p {
   }
   .team .info {
     -ms-grid-row: 2;
+    -ms-grid-row-span: 2;
     -ms-grid-column: 1;
     grid-area: info;
   }
@@ -176,8 +202,18 @@ p {
     grid-area: name;
     margin-top: 3rem;
   }
+  .team h3 {
+    -ms-grid-row: 3;
+    -ms-grid-column: 2;
+    grid-area: h3;
+  }
   .team:nth-child(odd) {
-        grid-template-areas: "name name" "info img";
+        grid-template-areas: "name name" "info img" "info h3";
+  }
+  .team:nth-child(odd) .infos {
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
   }
   .info {
     width: 90%;
@@ -186,10 +222,11 @@ p {
 
 @media only screen and (min-width: 1224px) {
   #content {
-    -webkit-box-orient: horizontal;
+    width: 50%;
+    -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
+        -ms-flex-direction: column;
+            flex-direction: column;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
@@ -200,11 +237,14 @@ p {
     -webkit-box-align: start;
         -ms-flex-align: start;
             align-items: flex-start;
-    width: 100%;
     margin: unset;
     margin-bottom: 2rem;
   }
+  #content > .title {
+    width: 100%;
+    margin: 0 0 2rem 0;
+  }
   #list {
-    width: 50%;
+    width: 100%;
   }
 }

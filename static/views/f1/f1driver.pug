@@ -1,43 +1,48 @@
-mixin f1driver()
-    .driver 
-        .name Lewis Hamilton 
-            .underline(style="background-color: red")
-        img.logo(src="/img/f1drivers/Hamilton.jpg" alt="")
-        h3 F1
+mixin f1driver(data)
+    .driver(id=data.name)
+        .name #{data.name}
+            .underline(style="background-color: " + data.color)
+        img.logo(src="/img/f1drivers/" + data.photo alt="")
+        h3 #{data.photoSrc}
         div.help
             .achievements
                 .achievement
                     .icon
                         img(src='../img/icons/trophy.png' alt='trophy')
-                    p 7
+                    p #{data.driverChampionships}
                 .achievement
                     .icon
                         img(src='../img/icons/gold-medal.png' alt='gold-medal')
-                    p 98
+                    p #{data.wins}
                 .achievement
                     .icon
                         img(src='../img/icons/podium.png' alt='podium')
-                    p 169
+                    p #{data.podiums}
                 .achievement
                     .icon
                         img(src='../img/icons/pole.png' alt='pole')
-                    p 100
+                    p #{data.polePositions}
             #numberAndTeam 
-                #number 44
-                a#team(href='/f1/teams#' + 'Mercedes') Mercedes
+                #number(style=`color: ${data.color};`) ##{data.number}
+                a#team(href='/f1/teams#' + data.team, style=`border-bottom: 3px solid ${data.color};`) #{data.team}
         .infos
             .info
                 p Kraj: 
-                    b Wielka Brytania
+                    b #{data.nation}
             .info
                 p Wiek:
-                    b 36
+                    b #{data.age}
             .info
                 p
-                    b mistrz GP2 - 2006
-            .info 
-                p Ciekawostki:
-                a(href='#xd') link
-                p już w wieku 12 lat Lewis dołączył do programu juniorskiego McLarena 
-                p 1 stycznia 2021 roku Hamilton otrzymał tytuł szlachecki 
-                p zespół Williams chciał już w 2004 roku podpisać kontrakt z Brytyjczykiem, jednak dostawca silników nie zgodził się.
+                    b #{data.previousAchievement}
+            if data.previousTeams 
+                .info
+                    p Zespoły: 
+                    each val in data.previousTeams 
+                        b.previousTeam #{val}
+
+            if data.funFacts
+                .info 
+                    p Ciekawostki:
+                    each val in data.funFacts 
+                        p #{ val }

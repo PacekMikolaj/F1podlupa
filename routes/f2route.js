@@ -5,6 +5,7 @@ const Car = require('../static/models/car');
 const path = require('path');
 const express = require("express");
 const car = require('../static/models/car');
+const { carInfoChange } = require('../static/js/carInfoChange');
 
 
 require("dotenv").config();
@@ -28,13 +29,7 @@ router.get("/", paginatedResults(Article, limit, newest, "f2"), async function (
     data.car = await Car.find({ "type": "f2" });
     data.car = data.car[0]; //zmiana z tab na pojedynczy elem
 
-    data.car.informations = data.car.info.map(elem =>
-        elem.split('|').map(e => {
-            e = e.split(':');
-            if (e.length > 0) e[0] += ':';
-            return e;
-        })
-    );
+    data.car.informations = carInfoChange(data.car.info);
 
     data.articlesF2 = res.paginatedModels;
     data.paginationInfo = res.paginationInfo;

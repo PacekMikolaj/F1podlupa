@@ -46,7 +46,7 @@
   margin-top: 3px;
 }
 
-.title {
+#content > .title {
   width: 90%;
   margin: 0 auto;
   text-align: center;
@@ -97,7 +97,7 @@
 
 .team .name {
   width: 100%;
-  margin: 1rem auto 0;
+  margin: 5rem auto 0;
   text-align: center;
   font-family: "Exo 2", sans-serif;
   font-style: italic;
@@ -247,6 +247,8 @@
   width: 240px;
   margin: 0.5em;
   cursor: pointer;
+  text-decoration: none;
+  color: black;
 }
 
 .help {
@@ -263,6 +265,7 @@
 @media only screen and (min-width: 650px) {
   .team .name {
     font-size: 2.5rem;
+    margin-top: 2rem;
   }
   #list {
     width: 90%;
@@ -275,10 +278,13 @@
         -ms-flex-pack: space-evenly;
             justify-content: space-evenly;
   }
+  #drivers a {
+    font-size: 1em;
+  }
 }
 
 @media only screen and (min-width: 768px) {
-  .title {
+  #content > .title {
     font-size: 4rem;
   }
   .help {
@@ -306,7 +312,7 @@
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    height: 520px;
+    height: 580px;
   }
   .team .classPhoto {
     margin-top: 0;
@@ -339,12 +345,15 @@
     margin: unset;
     margin-bottom: 2rem;
   }
-  .title {
+  #content > .title {
     width: 100%;
     margin: 0 0 2rem 0;
   }
   #list {
     width: 100%;
+  }
+  .infos {
+    height: 600px;
   }
 }
 
@@ -355,8 +364,11 @@
   #drivers {
     font-size: 2.4rem;
   }
+  #drivers a {
+    width: unset;
+  }
   .infos {
-    height: 550px;
+    height: 650px;
   }
   .info p {
     font-size: 1.2em;

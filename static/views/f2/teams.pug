@@ -1,24 +1,25 @@
 extends ../layout
 
 block css
+    link(rel='stylesheet' href='/css/article_site.css')
     link(rel='stylesheet' href="/css/f2teams.css")
+
 
 
 block title
     title Zespoły F2 - F1podlupą.pl
 
 block content
-    include ../views_components/team
+    include f2team
     include ../views_components/see_more
 
-    #main
-        #introduction
+    #main  
+        #content
             .title Zespoły F2
                 .underline#f2
-        
-        #content
+
             #list
                 each val in data
-                    +team(val.name, val.nation, val.achievements, val.photo, val.src)
+                    +f2team(val)
             +see_more("f2")
         +see_also(articlesSliderA, articlesSliderB, articles)

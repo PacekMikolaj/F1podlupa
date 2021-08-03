@@ -46,13 +46,13 @@
   margin-top: 3px;
 }
 
-.title {
+#content > .title {
   width: 90%;
   margin: 0 auto;
   text-align: center;
   font-family: "Exo 2", sans-serif;
   font-style: italic;
-  font-size: 3rem;
+  font-size: 2.5rem;
   margin-bottom: 2rem;
 }
 
@@ -109,6 +109,34 @@
 .driver .classPhoto {
   width: 100%;
   margin: 1rem auto 3rem;
+}
+
+#numberAndTeam {
+  width: 100%;
+  margin: 0 auto 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#number {
+  font-size: 3.5em;
+  font-family: "Exo 2", sans-serif;
+  font-style: italic;
+}
+
+#team {
+  font-size: 2em;
+  font-family: "Exo 2", sans-serif;
+  text-decoration: none;
+  color: black;
+  border-bottom: 3px solid;
 }
 
 .achievements {
@@ -192,10 +220,18 @@
   font-size: 1em;
 }
 
-.info p b {
+.info b {
   display: block;
   margin-left: 0;
   text-align: end;
+  font-size: 1em;
+}
+
+.info .previousTeam {
+  padding: 0.4rem;
+  display: block;
+  margin-left: 0;
+  text-align: start;
   font-size: 1em;
 }
 
@@ -207,46 +243,6 @@
 
 .info .bold {
   font-weight: bold;
-}
-
-#drivers {
-  font-family: "Exo 2", sans-serif;
-  color: black;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 100%;
-  font-size: 1.9rem;
-}
-
-#drivers p {
-  display: block;
-  text-align: center;
-  margin-bottom: 0.5em;
-  font-size: 1em;
-  width: 100%;
-}
-
-#drivers a {
-  display: block;
-  text-align: center;
-  font-size: 0.8em;
-  padding-bottom: 0;
-  width: 240px;
-  margin: 0.5em;
-  cursor: pointer;
 }
 
 .help {
@@ -288,10 +284,59 @@
             flex-direction: row;
     margin-bottom: 1rem;
   }
-  #drivers,
+  .driver {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 50% 50%;
+        grid-template-columns: 50% 50%;
+    -ms-grid-rows: auto;
+        grid-template-rows: auto;
+        grid-template-areas: "name name" "logo help" "h3 help" "infos infos";
+  }
+  .name {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+    grid-area: name;
+  }
+  .logo {
+    -ms-grid-row: 2;
+    -ms-grid-column: 1;
+    grid-area: logo;
+  }
+  h3 {
+    -ms-grid-row: 3;
+    -ms-grid-column: 1;
+    grid-area: h3;
+  }
+  .help {
+    -ms-grid-row: 2;
+    -ms-grid-row-span: 2;
+    -ms-grid-column: 2;
+    grid-area: help;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    -ms-flex-item-align: stretch;
+        -ms-grid-row-align: stretch;
+        align-self: stretch;
+  }
+  .infos {
+    -ms-grid-row: 4;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+    grid-area: infos;
+  }
+  #numberAndTeam,
   .achievements {
     margin: 0;
-    width: 50%;
+  }
+  #number {
+    font-size: 4em;
   }
   .infos {
     display: -webkit-box;
@@ -349,7 +394,7 @@
 }
 
 @media only screen and (min-width: 1500px) {
-  .team .name {
+  .driver .name {
     font-size: 3rem;
   }
   #drivers {
@@ -359,6 +404,9 @@
     height: 550px;
   }
   .info p {
+    font-size: 1.2em;
+  }
+  .info .previousTeam {
     font-size: 1.2em;
   }
   .achievement .icon {

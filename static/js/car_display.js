@@ -1,72 +1,65 @@
-let flag = false;
+// let flag = false;
 
-$(document).ready(function () {
+// $(document).ready(function () {
 
-    changeSize();
+//     changeSize();
 
-    let lol = setInterval(() => {
+//     $('.expand').on('click', (e) => {
 
-        console.log(flag);
-
-    }, 1000);
-
-    lol;
+//         console.log(flag)
 
 
-    $('.expand').on('click', (e) => {
+//         flag = !flag;
+//         flip();
 
-        console.log(flag)
+//         if (flag) {
+//             if (window.matchMedia('(max-width: 767px)').matches) {
+//                 $(".text2").css("display", "flex");
 
+//             }
+//             else {
+//              //   let height,ext,scale;
 
-        flag = !flag;
-        flip();
+//                 if (window.matchMedia('(min-width: 768px)').matches && window.matchMedia('(max-width: 949px)').matches) {
+//                     show(700, 515, 2);
+//                 }
 
-        if (flag) {
-            if (window.matchMedia('(max-width: 767px)').matches) {
-                $(".text2").css("display", "flex");
+//                 if (window.matchMedia('(min-width: 950px)').matches && window.matchMedia('(max-width: 1223px)').matches) {
+//                     show(570, 550, 2);
+//                 }
 
-            }
-            else {
+//                 if (window.matchMedia('(min-width: 1224px)').matches && window.matchMedia('(max-width: 1499px)').matches) {
+//                     show(520, 610, 2);
+//                 }
 
-                if (window.matchMedia('(min-width: 768px)').matches && window.matchMedia('(max-width: 949px)').matches) {
-                    show(700, 515, 2);
-                }
+//                 if (window.matchMedia('(min-width: 1500px)').matches) {
+//                     show(300, 610, 3);
 
-                if (window.matchMedia('(min-width: 950px)').matches && window.matchMedia('(max-width: 1223px)').matches) {
-                    show(570, 550, 2);
-                }
+//                 }
 
-                if (window.matchMedia('(min-width: 1224px)').matches && window.matchMedia('(max-width: 1499px)').matches) {
-                    show(520, 610, 2);
-                }
-
-                if (window.matchMedia('(min-width: 1500px)').matches) {
-                    show(300, 610, 3);
-
-                }
-
-            }
+//             }
 
 
-        } else {
-            hide();
-            $(".text2").css("display", "");
+//         } else {
+//             hide();
+//             $(".text2").css("display", "");
 
-        }
+//         }
 
 
 
-    })
+//     })
 
-    $(window).on("resize", (e) => {
-        changeSize();
+//     $(window).on("resize", (e) => {
+//         changeSize();
+//     })
 
-    })
-
-})
+// });
 
 
-let changeSize = () => {
+let changeSize = (carDimentions) => {
+
+    console.log(carDimentions);
 
     flip();
 
@@ -85,50 +78,60 @@ let changeSize = () => {
             $(".text2").css("display", "");
 
 
-            let ext;
-            let height;
-            let scale;
+            let ext, height, scale;
 
             let width = $('.carDisplay').width();
             let rightCenter = -1 * (width);
 
             if (window.matchMedia('(min-width: 768px)').matches && window.matchMedia('(max-width: 949px)').matches) {
 
-                ext = 515;
-                height = 700;
-                scale = 2;
+                console.log('bingo')
+                //  ext = 515;
+                // height = 700;
+                // scale = 2;
+                ext = carDimentions.s.ext;
+                height = carDimentions.s.height;
+                scale = carDimentions.s.scale;
             }
             if (window.matchMedia('(min-width: 950px)').matches && window.matchMedia('(max-width: 1223px)').matches) {
 
-                ext = 550;
-                height = 570;
-                scale = 2;
+                // ext = 550;
+                // height = 570;
+                // scale = 2;
+                ext = carDimentions.m.ext;
+                height = carDimentions.m.height;
+                scale = carDimentions.m.scale;
             }
 
             if (window.matchMedia('(min-width: 1224px)').matches && window.matchMedia('(max-width: 1499px)').matches) {
 
-                ext = 610;
-                height = 520;
-                scale = 2;
-
+                // ext = 610;
+                // height = 520;
+                // scale = 2;
+                ext = carDimentions.l.ext;
+                height = carDimentions.l.height;
+                scale = carDimentions.l.scale;
             }
 
             if (window.matchMedia('(min-width: 1500px)').matches) {
 
-                ext = 610;
-                height = 300;
-                scale = 3;
+                // ext = 610;
+                // height = 300;
+                // scale = 3;
+                ext = carDimentions.xl.ext;
+                height = carDimentions.xl.height;
+                scale = carDimentions.xl.scale;
 
                 $('.centerC').css('right', rightCenter * 2);
 
                 $('.bgc1').css('width', (width * 2) + 'px');
-                $('.bgc1').css('height', (ext - 32) + 'px');
+                $('.bgc1').css('height', (height - 32) + 'px');
 
                 $('.bgc2').css('width', ((width) - 32) + 'px');
-                $('.bgc2').css('height', (height + 32) + 'px');
+                $('.bgc2').css('height', (ext + 32) + 'px');
 
                 $('.bgc3').css('width', (width * 2) + 'px');
-                $('.bgc3').css('height', (height + 32) + 'px');
+                $('.bgc3').css('height', (ext + 32) + 'px');
 
 
             } else {
@@ -136,13 +139,13 @@ let changeSize = () => {
                 $('.centerC').css('right', rightCenter);
 
                 $('.bgc1').css('width', (width) + 'px');
-                $('.bgc1').css('height', (ext - 32) + 'px');
+                $('.bgc1').css('height', (height - 32) + 'px');
 
                 $('.bgc2').css('width', (width - 32) + 'px');
-                $('.bgc2').css('height', (height + 32) + 'px');
+                $('.bgc2').css('height', (ext + 32) + 'px');
 
                 $('.bgc3').css('width', width + 'px');
-                $('.bgc3').css('height', (height + 32) + 'px');
+                $('.bgc3').css('height', (ext + 32) + 'px');
 
             }
 
@@ -158,10 +161,10 @@ let changeSize = () => {
             $('.blockB').css('width', (width - 64) + 'px');
 
             $('.centerC').css('height', (ext + height) + 'px');
-            $('#introduction .decription').css('height', ext);
-            $('#introduction .carDisplay').css('height', ext);
-            $('.blockL').css('height', (ext - 64) + 'px');
-            $('.blockR').css('height', (ext - 64) + 'px');
+            $('#introduction .decription').css('height', height);
+            $('#introduction .carDisplay').css('height', height);
+            $('.blockL').css('height', (height - 64) + 'px');
+            $('.blockR').css('height', (height - 64) + 'px');
 
             if (flag) {
                 hide();
@@ -172,14 +175,11 @@ let changeSize = () => {
 
     }, 150)
 
-
-
-
-
-
 }
 
-let show = (ext, height, scale) => {
+let show = ({ ext, height, scale }) => {
+
+    console.log(ext,height,scale);
 
     let width = $('.centerC').width();
     let rightCenter = $('.centerC').css('right');
@@ -318,5 +318,4 @@ let flip = () => {
         $('.fa-chevron-up').css('transform', 'rotate(180deg)');
         $('h4').text('pokaż szczegóły');
     }
-}
-
+};

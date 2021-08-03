@@ -44,8 +44,6 @@ html
                 img(src="/img/f1kolorlogo.png" alt="logo")
             nav#navElements   
                 
-                //- a#strona_glownaMenu.option_menu(href='/')
-                //-     p Strona główna
                 a#f1Menu.option_menu(href='/f1')
                     p F1
                 a#f2Menu.option_menu(href='/f2')
@@ -55,15 +53,12 @@ html
                         i.fas.fa-chevron-up#crossForMenu
                     ul.submenuOS
                         li
-                            a.option_menu(href="") 
-                                //- do zmiany /fe
+                            a.option_menu(href="/fe") 
                                 p FE
                         li 
-                            a.option_menu(href="") 
-                                //- do zmiany /rallycross
+                            a.option_menu(href="/rallycross") 
                                 p Rallycross
-                a#about.option_menu(href='')
-                    //- do zmiany /aboutUs
+                a#about.option_menu(href='/aboutUs')
                     p O Nas
             #div_for_icons
                     a#fb.icons(href='#' target="_blank")
@@ -83,11 +78,9 @@ html
                     p F1
                 a#f2Menu.option_menu(href='/f2')
                     p F2
-                a#otherSeries.option_menu(href="")
-                    //- do zmiany /otherSeries
+                a#otherSeries.option_menu(href="/otherSeries")
                     p Inne Serie Wyścigowe
-                a#about.option_menu(href='')
-                    //- do zmiany /aboutUs
+                a#about.option_menu(href='/aboutUs')
                     p O Nas
 
             #kontakt

@@ -9,6 +9,10 @@ let Schema = mongoose.Schema({
         type: String,
         required: true
     },
+    color: {
+        type: String,
+        required: true
+    },
     age: {
         type: String,
         required: true
@@ -23,7 +27,6 @@ let Schema = mongoose.Schema({
     previousAchievement: {
         type: String,
         required: true
-
     },
     number: {
         type: Number,
@@ -36,9 +39,6 @@ let Schema = mongoose.Schema({
         type: Number,
     },
     polePositions: {
-        type: Number,
-    },
-    fastestLaps: {
         type: Number,
     },
     driverChampionships: {
