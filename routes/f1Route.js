@@ -26,7 +26,7 @@ router.get('/', paginatedResults(Article, limit, newest, "f1"), async (req, res)
 
     if (res.paginationInfo.page == 1) {
 
-        data.newest = await Article.find({ "section": "f1"}).sort({ ID: -1 }).limit(newest).exec();
+        data.newest = await Article.find({ $or: [ {"section": "f1"},{"moreSections": { $all: ["fe"] }}]}).sort({ ID: -1 }).limit(newest).exec();
     }
 
     data.car = await Car.find({ "type": "f1" });
@@ -39,7 +39,6 @@ router.get('/', paginatedResults(Article, limit, newest, "f1"), async (req, res)
     data.articlesF1basics = await Article.find({ "section": "f1basics" }).sort({ _id: -1 }).exec();
 
     res.render("f1/f1", data);
-
 })
 
 router.get('/teams', async (req, res) => {

@@ -204,61 +204,6 @@ nav {
   font-family: "Lalezar", cursive;
 }
 
-/* PAGINATION */
-
-.pagination {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 1.5rem;
-
-  * {
-    font-size: 1.3rem;
-    font-weight: bold;
-    font-family: "Exo 2", sans-serif;
-  }
-
-  .number,
-  .arrow {
-    display: flex;
-    padding: 0 0.5rem;
-    margin: 0 0.1rem;
-    min-width: 25px;
-    height: 30px;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    text-decoration: none;
-    color: black;
-
-    i {
-      display: block;
-      font-size: 1.1rem;
-      margin-top: 0.3rem;
-    }
-
-    &:hover {
-      background-color: black;
-      color: white;
-    }
-  }
-
-  #thisPage {
-    text-decoration: underline;
-    cursor: default;
-  }
-}
-#thisPage {
-  color: $formula1;
-
-  &:hover {
-    color: white;
-  }
-}
-
 /*   FOOTER    */
 
 $icons_footer: 30px;

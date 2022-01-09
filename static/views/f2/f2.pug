@@ -5,8 +5,6 @@ block css
     link(rel='stylesheet' href="/css/f2.css")
     link(rel='stylesheet' href="/css/car_display.css")
 
-
-
 block title
     title F2 - F1podlupą.pl
 
@@ -18,10 +16,6 @@ block content
     #main
         #introduction
             .description
-                //- .leftD
-                //- .titleOnClickD Formuła 2
-                    .underline
-                //- .centerD
                 h1.title Formuła 2
                     .underline
                 .text To tutaj młody kierowca zmienia się w mistrza wyścigów. Tylko najlepsi dostają się do Formuły 1. Jeśli chcesz zobaczyć szczegóły wędrówki kierowców do królowej motorsportu, to dobrze trafiłeś.
@@ -53,14 +47,12 @@ block content
                         p#third F2 2017-2020
                         img.img(src="/img/f2_2017.jpg" alt="f2_2017")
 
-
-
         .articles
             .con-title Artykuły - Formuła 2
             .squares
                 each val in articlesF2
                     +small_article(val)
-        +pagination(paginationInfo)
+        +pagination(paginationInfo,'/f2')
 
         block scripts
         script(src='/js/car_display.js')

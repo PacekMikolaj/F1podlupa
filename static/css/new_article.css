@@ -251,6 +251,7 @@
   }
   .article .type .little {
     font-size: 1rem;
+    padding-left: 2px;
   }
   .article::after {
     content: "";

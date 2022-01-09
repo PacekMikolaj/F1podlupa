@@ -1,19 +1,19 @@
-mixin pagination(paginationInfo)
+mixin pagination(paginationInfo, link = "")
     .pagination
         if paginationInfo.previous
-          a.arrow(href='/?page=' + paginationInfo.previous.page) 
+          a.arrow(href=link + '/?page=' + paginationInfo.previous.page) 
             i.fas.fa-chevron-left
         if paginationInfo.first
-          a.number(href='/?page=1') 1
+          a.number(href=link + '/?page=1') 1
         if paginationInfo.less
           p ...
         each val in paginationInfo.tabOfNumbers
           if paginationInfo.page == val
             p.number#thisPage= val++
           else
-            a.number(href='/?page=' + val)= val++
+            a.number(href=link + '/?page=' + val)= val++
         if paginationInfo.more
           p ...
         if paginationInfo.next
-          a.arrow(href='/?page=' + paginationInfo.next.page)
+          a.arrow(href=link + '/?page=' + paginationInfo.next.page)
             i.fas.fa-chevron-right

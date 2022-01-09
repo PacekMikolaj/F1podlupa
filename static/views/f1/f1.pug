@@ -19,30 +19,8 @@ block content
     include ../views_components/car_display.pug
 
     #main
-        //- #help
-        //-     #description
-        //-         h1.title Formuła 1
-        //-             .underline
-        //-         .text W tym dziale znajdziesz najważniejsze i najnowsze wiadomości ze świata F1, a także mnóstwo artykułów i ciekawostek o królowej motorsportu.
-
-        //-         #links_introduction
-        //-             +tile_introduction("/f1/drivers", "Kierowcy" , "/img/driver.png" , "/img/f1driver.jpg", "driver")
-        //-             +tile_introduction("/f1/teams", "Zespoły" , "/img/group.png" , "/img/f1team.jpg", "team")
-
-        //-     #f1car
-        //-         h1.title Samochody F1
-        //-             .underline
-        //-         .text Najszybsze. Najlepsze. Najbardziej wymagające.
-        //-         img(src="/img/f1car.jpg" alt="f1car")
-        //-         .text2 Chcesz dowiedzieć się o budowie tych cudów technologii? Jakie prędkości osiągają? Jakie przeciążenia towarzyszą kierowcy podczas pokonywania najbardziej wymagających zakrętów?
-        //-         a(href="") Kliknij tutaj
-
         #introduction
             .description
-                //- .leftD
-                //- .titleOnClickD Formuła 2
-                    .underline
-                //- .centerD
                 h1.title Formuła 1
                     .underline
                 .text W tym dziale znajdziesz najważniejsze i najnowsze wiadomości ze świata F1, a także mnóstwo artykułów i ciekawostek o królowej motorsportu.
@@ -76,12 +54,8 @@ block content
             .squares
                 each val in articlesF1
                     +small_article(val)
-        +pagination(paginationInfo)
+        +pagination(paginationInfo,'/f1')
         
-
-
-            
-
     block scripts
     script(src='/js/car_display.js')
     script(src="/js/f1.js")

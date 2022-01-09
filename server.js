@@ -5,13 +5,9 @@ const connectDB = require('./connection');
 const { paginatedResults } = require('./middleware/paginatedResults');
 const Article = require("./static/models/article");
 
-
 const port = process.env.PORT || 3000;
 
-
-
 require('dotenv').config();
-
 
 connectDB();
 
@@ -21,15 +17,11 @@ const f1Route = require('./routes/f1Route');
 const f2Route = require('./routes/f2Route');
 const RXroute = require('./routes/RXRoute');
 
-
-
 //Route Middleware
 app.use('/admin', admin);
 app.use('/f1', f1Route);
 app.use('/f2', f2Route);
 app.use('/rallycross', RXroute);
-
-
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -56,28 +48,6 @@ app.get("/", paginatedResults(Article, limit, newest), async function (req, res)
     res.render("index", data);
 
 })
-
-
-// app.get("/f1", async function (req, res) {
-
-//     let data = {}
-//     data.articlesF1 = await Article.find({ "section": "f1" }).sort({ ID: -1 }).exec();
-//     data.articlesF1basics = await Article.find({ "section": "f1basics" }).sort({ ID: -1 }).exec();
-
-//     res.render("f1", data);
-// })
-
-// app.get("/f2", paginatedResults(Article, limit, newest, "f2"), async function (req, res) {
-
-//     let data = {};
-//     data.newest = await Article.find({ "section": "f2" }).sort({ ID: -1 }).limit(newest).exec();
-//     data.articlesF2 = res.paginatedModels;
-//     //data.newest = await Article.find().sort({ ID: -1 }).limit(newest).exec();
-//     //data.articlesF2 = await Article.find({ "section": "f2" }).sort({ ID: -1 }).exec();
-//     //data.articlesF1basics = await Article.find({ "section": "f1basics" }).sort({ ID: -1 }).exec();
-
-//     res.render("f2/f2", data);
-// })
 
 app.get("/article/:ID", async function (req, res) {
 

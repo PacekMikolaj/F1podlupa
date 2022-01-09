@@ -1,0 +1,95 @@
+#f1 {
+  background-color: #e10600;
+}
+
+#f2 {
+  background-color: #0090d0;
+}
+
+#fE {
+  background-color: #50cef7;
+}
+
+#f1Basics {
+  background-color: #f7360c;
+}
+
+#other {
+  background-color: #3be307;
+}
+
+#rallycross {
+  background-color: #02f3e9;
+}
+
+.pagination {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.pagination * {
+  font-size: 1.3rem;
+  font-weight: bold;
+  font-family: "Exo 2", sans-serif;
+}
+
+.pagination .number,
+.pagination .arrow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: .5rem .5rem .7rem .5rem;
+  border-radius: .3rem;
+  margin: 0 0.1rem;
+  min-width: 25px;
+  height: 30px;
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+}
+
+.pagination .number i,
+.pagination .arrow i {
+  display: block;
+  font-size: 1.1rem;
+  margin-top: 0.3rem;
+}
+
+.pagination .number:hover,
+.pagination .arrow:hover {
+  background-color: black;
+  color: white;
+}
+
+.pagination #thisPage {
+  text-decoration: underline;
+  cursor: default;
+}
+
+#thisPage {
+  color: #e10600;
+}
+
+#thisPage:hover {
+  color: white;
+}
